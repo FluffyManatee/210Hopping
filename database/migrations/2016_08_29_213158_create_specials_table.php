@@ -12,7 +12,14 @@ class CreateSpecialsTable extends Migration
      */
     public function up()
     {
-        //
+		Schema::create('specials', function (Blueprint $table) {
+			$table->increments('id');
+			$table->integer('bar_id')->unsigned();
+			$table->foreign('bar_id')->references('id')->on('bars');
+			$table->string('title');
+			$table->string('content');
+			$table->timestamps();
+		});
     }
 
     /**

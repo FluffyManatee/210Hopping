@@ -12,7 +12,19 @@ class CreateBarsTable extends Migration
      */
     public function up()
     {
-        //
+		Schema::create('bars', function (Blueprint $table) {
+			$table->increments('id');
+			$table->string('type');
+			$table->string('name')->unique();
+			$table->string('address');
+			$table->integer('phone');
+			$table->string('website');
+			$table->string('email');
+			$table->boolean('owner');
+			$table->integer('owner_id')->unsigned();
+			$table->foreign('owner_id')->references('id')->on('users');
+			$table->timestamps();
+		});
     }
 
     /**
