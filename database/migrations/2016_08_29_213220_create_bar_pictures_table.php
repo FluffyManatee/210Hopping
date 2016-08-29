@@ -12,7 +12,12 @@ class CreateBarPicturesTable extends Migration
      */
     public function up()
     {
-        //
+		Schema::create('bars', function (Blueprint $table) {
+			$table->increments('id');
+			$table->integer('bar_id')->unsigned();
+			$table->foreign('bar_id')->references('id')->on('bars');
+			$table->string('pic_file');
+		});
     }
 
     /**
