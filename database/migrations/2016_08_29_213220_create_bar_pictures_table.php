@@ -28,6 +28,6 @@ class CreateBarPicturesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bar_pictures');
+		Schema::drop('bar_pictures');
     }
 }
