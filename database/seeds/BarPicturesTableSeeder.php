@@ -11,6 +11,6 @@ class BarPicturesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Picture::class, 10)->create();
     }
 }
