@@ -11,6 +11,6 @@ class SpecialsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Special::class, 50)->create();
     }
 }
