@@ -34,6 +34,6 @@ class CreateBarsTable extends Migration
      */
     public function down()
     {
-		Schema::drop('bars');
+        Schema::drop('bars');
     }
 }
