@@ -11,6 +11,6 @@ class BarsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Bar::class, 100)->create();
     }
 }

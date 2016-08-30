@@ -19,6 +19,7 @@ class CreateVotes extends Migration
             $table->boolean('vote')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
