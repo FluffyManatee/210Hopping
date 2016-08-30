@@ -12,7 +12,7 @@ class CreateBarPicturesTable extends Migration
      */
     public function up()
     {
-		Schema::create('bars', function (Blueprint $table) {
+		Schema::create('bar_pictures', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('bar_id')->unsigned();
 			$table->foreign('bar_id')->references('id')->on('bars');
@@ -27,6 +27,6 @@ class CreateBarPicturesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('bar_pictures');
     }
 }

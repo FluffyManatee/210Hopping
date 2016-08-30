@@ -16,7 +16,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('title');
             $table->string('content');
-            $table->string('posted_by')->unsigned();
+            $table->integer('posted_by')->unsigned();
             $table->foreign('posted_by')->references('id')->on('users');
             $table->integer('beer_rating')->unsigned();
             $table->integer('bar_id')->unsigned();
