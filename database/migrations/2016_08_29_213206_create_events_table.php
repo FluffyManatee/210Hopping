@@ -21,7 +21,7 @@ class CreateEventsTable extends Migration
 			$table->string('content');
 			$table->string('event_pic');
 			$table->integer('created_by');
-			$table->integer('created_by')->references('id')->on('users');
+			$table->foreign('created_by')->references('id')->on('users');
 			$table->timestamps();
 		});
     }
@@ -33,6 +33,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        //
+		Schema::drop('events');
     }
 }

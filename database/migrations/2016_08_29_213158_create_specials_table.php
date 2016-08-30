@@ -29,6 +29,6 @@ class CreateSpecialsTable extends Migration
      */
     public function down()
     {
-        //
+		Schema::drop('specials');
     }
 }
