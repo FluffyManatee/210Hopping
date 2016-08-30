@@ -20,7 +20,7 @@ class CreateEventsTable extends Migration
 			$table->string('date');
 			$table->string('content');
 			$table->string('event_pic');
-			$table->integer('created_by');
+			$table->integer('created_by')->unsigned();
 			$table->foreign('created_by')->references('id')->on('users');
 			$table->timestamps();
 		});
