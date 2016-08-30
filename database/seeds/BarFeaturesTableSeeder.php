@@ -11,6 +11,6 @@ class BarFeaturesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Feature::class, 100)->create();
     }
 }
