@@ -17,6 +17,7 @@ class CreateBarPicturesTable extends Migration
 			$table->integer('bar_id')->unsigned();
 			$table->foreign('bar_id')->references('id')->on('bars');
 			$table->string('pic_url');
+            $table->timestamps();
 		});
     }
 

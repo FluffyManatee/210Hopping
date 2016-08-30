@@ -20,7 +20,7 @@ class CreateBarsTable extends Migration
 			$table->integer('phone')->nullable();;
 			$table->string('website')->nullable();;
 			$table->string('email')->nullable();;
-			$table->boolean('owner');
+			$table->boolean('owner')->default(0);
 			$table->integer('owner_id')->unsigned()->nullable();;
 			$table->foreign('owner_id')->references('id')->on('users');
 			$table->timestamps();
