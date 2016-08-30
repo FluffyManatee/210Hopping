@@ -23,6 +23,8 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+    protected $redirectPath = '/';
+
     /**
      * Create a new authentication controller instance.
      *
@@ -59,7 +61,7 @@ class AuthController extends Controller
     {
         return User::create([
             'first_name' => $data['first_name'],
-			'last_name' => $data['last_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);

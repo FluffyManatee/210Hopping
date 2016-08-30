@@ -1,0 +1,14 @@
+.navigation#top {
+	position: relative;
+	top: 0;
+	height: 6vh;
+}
+.navigation#bottom {
+	position: fixed;
+	bottom: 0;
+	height: 10vh;
+}
+.nav-nearby.nav-search.nav-home.nav-activity.nav-more {
+	height: 100% !important;
+	text-align: center;
+}
