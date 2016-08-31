@@ -21,9 +21,9 @@
 				@foreach ($bar->pictures as $picture)
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<img src="$picture->pic_url" alt="...">
+						<img src="{{ $picture->pic_url }}" alt="...">
 						<div class="carousel-caption">
-							...
+						<!-- maybe add captions to pictures table? -->
 						</div>
 					</div>
 				</div>
@@ -56,12 +56,11 @@
 					@foreach ($bar->reviews as $review)
 					<div class="row">
 						<div class="col-xs-3">
-							
+						{{ $review->beerRating() }}
 						</div>
 						<div class="col-xs-9">
-							<h4>{{ $review->title }}</h4>
+							<h4>{{ $review->title }} <small>posted {{ $review->created_at->diffForHumans() }}</small></h4>
 							{{ $review->content }}
-							{{ $review->beer_rating }}
 						</div>
 					</div>
 					@endforeach
