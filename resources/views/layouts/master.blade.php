@@ -9,6 +9,7 @@
 	<script src="https://use.fontawesome.com/2bcd30c787.js"></script>
 </head>
 <body>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Header -->
 	<div class="container-fluid navigation" id="top">
 		<div class="row">
@@ -34,27 +35,27 @@
 		<div class="row">
 			<div class="btn-group btn-group-justified navigation" id="bottom" role="group" aria-label="navigation">
 				<a href="" class="btn btn-default nav-nearby" role="group" aria-label="nearby">
-					<i class="fa fa-location-arrow fa-4x" aria-hidden="true"></i>
+					<i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
 					<br>
 					Nearby
 				</a>
 				<a href="" class="btn btn-default nav-search" role="group" aria-label="search">
-					<i class="fa fa-search fa-4x" aria-hidden="true"></i>
+					<i class="fa fa-search fa-2x" aria-hidden="true"></i>
 					<br>
 					Search
 				</a>
 				<a href="/" class="btn btn-default nav-home" role="group" aria-label="home">
-					<i class="fa fa-home fa-5x" aria-hidden="true"></i>
+					<i class="fa fa-home fa-4x" aria-hidden="true"></i>
 					<br>
 					Home
 				</a>
 				<a href="" class="btn btn-default nav-activity" role="group" aria-label="activity">
-					<i class="fa fa-bolt fa-4x" aria-hidden="true"></i>
+					<i class="fa fa-bolt fa-2x" aria-hidden="true"></i>
 					<br>
 					Activity
 				</a>
 				<a href="" class="btn btn-default nav-more" role="group" aria-label="more">
-					<i class="fa fa-bars fa-4x" aria-hidden="true"></i>
+					<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
 					<br>
 					More
 				</a>
