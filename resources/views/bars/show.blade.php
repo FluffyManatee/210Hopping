@@ -8,6 +8,9 @@
 			avg rating here
 			<br>
 			avg price here
+			<br>
+			<div class="feature-box">
+			</div>
 		</div>
 		<div class="col-xs-6" id="photos">
 			<div id="carousel" class="carousel slide" data-ride="carousel">
@@ -23,7 +26,7 @@
 					<div class="item active">
 						<img src="{{ $picture->pic_url }}" alt="...">
 						<div class="carousel-caption">
-						<!-- maybe add captions to pictures table? -->
+							<!-- maybe add captions to pictures table? -->
 						</div>
 					</div>
 				</div>
@@ -56,16 +59,16 @@
 					@foreach ($bar->reviews as $review)
 					<div class="row">
 						<div class="col-xs-3">
-						<img src="{{ $review->user->avatar }}" class="thumbnail responsive" height="60" width="60">
-						<h5>{{ $review->user->first_name }} {{ $review->user->last_name }}</h5>
-						<br>
-						user score
-						<br>
-						helpful?
+							<img src="{{ $review->user->avatar }}" class="thumbnail responsive" height="60" width="60">
+							<h5>{{ $review->user->first_name }} {{ $review->user->last_name }}</h5>
+							<br>
+							user score
+							<br>
+							helpful?
 						</div>
 						<div class="col-xs-9">
 							<h4>{{ $review->title }} <small>posted {{ $review->created_at->diffForHumans() }}</small></h4>
-							<p>{{ $review->beerRating() }}</p>
+							<p><h4>{{ $review->beerRating() }}</h4></p>
 							<p>{{ $review->content }}</p>
 						</div>
 					</div>

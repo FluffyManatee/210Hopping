@@ -11,9 +11,11 @@
 <body>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Header -->
-	<div class="container-fluid navigation" id="top">
-		<div class="row">
-			210hopping
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid navigation" id="top">
+			<div class="row">
+				210hopping
+			</div>
 		</div>
 	</div>
 	<!-- end Header -->
@@ -32,6 +34,8 @@
 	<!-- views will appear here --> 
 	@yield('content')
 	<!-- bottom navigation -->
+	<div class="bottom-nav-spacer">
+	</div>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="btn-group btn-group-justified navigation" id="bottom" role="group" aria-label="navigation">
