@@ -8,6 +8,13 @@ class Review extends Model
 {
     protected $table = 'reviews';
 
+	public static $rules =
+		[
+			'title' => 'required|max:255',
+			'content' => 'required|max:255',
+			'beer_rating' => 'required',
+		];
+
     public function votes(){
         return $this->hasMany(Vote::class, 'review_id');
 
