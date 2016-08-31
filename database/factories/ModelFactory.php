@@ -23,9 +23,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 
 $factory->define(App\Bar::class, function (Faker\Generator $faker) {
-    $types = ['Dive Bar', 'Jazz Bar', 'Club'];
+    $types = ['Dive Bar', 'Jazz Bar', 'Club', 'Country Bar'];
+    $areas = ['Downtown', 'Alamo Heights', 'SouthTown', 'Stone Oak', 'North Central', 'Tobin Hill', 'The Rim'];
     return [
-        'type' => $types[mt_rand(0,2)],
+        'type' => $types[mt_rand(0,3)],
+        'area' => $areas[mt_rand(0,6)],
         'name' => $faker->unique()->company,
         'address' => $faker->streetAddress,
         'phone' => $faker->randomNumber(7),
