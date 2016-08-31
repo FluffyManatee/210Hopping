@@ -29,8 +29,9 @@
 		{{ session('ERROR_MESSAGE') }}
 	</div>
 	@endif
-	@yield('content')
 	<!-- views will appear here --> 
+	@yield('content')
+	<!-- bottom navigation -->
 	<div class="container-fluid">
 		<div class="row">
 			<div class="btn-group btn-group-justified navigation" id="bottom" role="group" aria-label="navigation">

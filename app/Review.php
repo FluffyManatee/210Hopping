@@ -10,7 +10,7 @@ class Review extends Model
 
 	public static $rules =
 		[
-			'title' => 'required|max:255',
+			'title' => 'required|max:50',
 			'content' => 'required|max:255',
 			'beer_rating' => 'required',
 		];
