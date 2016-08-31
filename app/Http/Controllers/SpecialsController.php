@@ -9,79 +9,86 @@ use App\Http\Controllers\Controller;
 
 class SpecialsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+	public function index()
+	{
+		$specials = Special::orderDesc(10);
+		$data = [
+			'specials' => $specials
+		];
+		return view ('specials.index', $data);
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+	public function create()
+	{
+		return view('specials.create');
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+	public function store(Request $request)
+	{
+		session()->flash('fail', 'Your post was NOT created. Please fix errors.');
+		$this->validate($request, Special::$rules);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+		$special = new Special();
+		// Will change based on view
+		$special->bar_id = $request->get('bar_id');
+		//
+		$special->title = $request->get('title');
+		$special->content = $request->get('content');
+		$special->timestamp();
+		$special->save();
+		session()->flash('success', 'Your post was created successfully!');
+		return redirect()->action('SpecialsController@index');
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+	public function show($id)
+	{
+		$special = Special::find($id);
+		if (!$special) {
+			abort(404);
+		}
+		$data = [
+			'special' => $special
+		];
+		return view('specials.show', $data);
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	public function edit($id)
+	{
+		$special = Sepcial::find($id);
+		if (!$special) {
+			abort(404);
+		}
+		$data = [
+			'special' => $special
+		];
+		return view('specials.edit', $data);
+	}
+
+	public function update(Request $request, $id)
+	{
+		session()->flash('fail', 'Your post was NOT updated. Please fix errors.');
+		$this->validate($request, Special::$rules);
+
+		$special = Special::find($id);
+		if (!$special) {
+			abort(404);
+		}
+		$special->title = $request->get('title');
+		$special->content = $request->get('content');
+		$special->save();
+		session()->flash('success', 'Your post was updated successfully!');
+		return redirect()->action('SpecialsController@show', $special->id);
+	}
+
+	public function destroy(Request $request, $id)
+	{
+		$special = Special::find($id);
+		if (!$special) {
+			abort(404);
+		}
+		$special->delete();
+		$request->session()->flash('success', 'Your post was deleted successfully!');
+		return redirect()->action('SpecialsController@index');
+	}
 }

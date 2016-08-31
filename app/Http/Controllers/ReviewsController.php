@@ -9,79 +9,90 @@ use App\Http\Controllers\Controller;
 
 class ReviewsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+	public function index()
+	{
+		$reviews = Review::orderDesc(10);
+		$data = [
+			'reviews' => $reviews
+		];
+		return view ('reviews.index', $data);
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+	public function create()
+	{
+		return view('reviews.create');
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+	public function store(Request $request)
+	{
+		session()->flash('fail', 'Your post was NOT created. Please fix errors.');
+		$this->validate($request, Review::$rules);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+		$review = new Review();
+		$review->title = $request->get('title');
+		$review->content = $request->get('content');
+		$review->created_by = Auth::user()->id;
+		$review->beer_rating = $request->get('beer_rating');
+		// Will change based on view
+		$review->bar_id = $request->get('bar_id');
+		//
+		$review->timestamp();
+		$review->save();
+		session()->flash('success', 'Your post was created successfully!');
+		return redirect()->action('ReviewsController@index');
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+	public function show($id)
+	{
+		$review = Review::find($id);
+		if (!$review) {
+			abort(404);
+		}
+		$data = [
+			'review' => $review
+		];
+		return view('reviews.show', $data);
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	public function edit($id)
+	{
+		$review = Review::find($id);
+		if (!$review) {
+			abort(404);
+		}
+		$data = [
+			'review' => $review
+		];
+		return view('reviews.edit', $data);
+	}
+
+	public function update(Request $request, $id)
+	{
+		session()->flash('fail', 'Your review was NOT updated. Please fix errors.');
+		$this->validate($request, Review::$rules);
+
+		$review = Review::find($id);
+		if (!$review) {
+			abort(404);
+		}
+		$review->title = $request->get('title');
+		$review->date = $request->get('date');
+		$review->content = $request->get('content');
+		$review->review_pic = $request->get('review_pic');
+		$review->save();
+		session()->flash('success', 'Your was updated successfully!');
+		return redirect()->action('ReviewsController@show', $review->id);
+	}
+
+	public function destroy(Request $request, $id)
+	{
+		$review = Event::find($id);
+		if (!$review) {
+			abort(404);
+		}
+		$review->delete();
+		$request->session()->flash('success', 'Your review was deleted successfully!');
+		return redirect()->action('ReviewsController@index');
+	}
 }
