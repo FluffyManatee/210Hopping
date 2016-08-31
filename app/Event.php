@@ -8,6 +8,13 @@ class Event extends Model
 {
     protected $table = 'events';
 
+	public static $rules =
+		[
+			'title' => 'required|max:255',
+			'date' => 'required|max:10',
+			'content' => 'required|max:255'
+		];
+
     public function user(){
         return $this->belongsTo(User::class);
 
