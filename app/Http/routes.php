@@ -15,10 +15,11 @@ Route::get('/', function()
 {
     return view('index');
 });
-Route::get('/bars/create', function()
-{
-    return view('bars/create');
-});
+Route::resource('bars', 'BarsController');
+Route::resource('users', 'UserController');
+Route::resource('events', 'EventsController');
+Route::resource('specials', 'SpecialsController');
+Route::resource('reviews', 'ReviewsController');
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
