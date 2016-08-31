@@ -56,11 +56,17 @@
 					@foreach ($bar->reviews as $review)
 					<div class="row">
 						<div class="col-xs-3">
-						{{ $review->beerRating() }}
+						<img src="{{ $review->user->avatar }}" class="thumbnail responsive" height="60" width="60">
+						<h5>{{ $review->user->first_name }} {{ $review->user->last_name }}</h5>
+						<br>
+						user score
+						<br>
+						helpful?
 						</div>
 						<div class="col-xs-9">
 							<h4>{{ $review->title }} <small>posted {{ $review->created_at->diffForHumans() }}</small></h4>
-							{{ $review->content }}
+							<p>{{ $review->beerRating() }}</p>
+							<p>{{ $review->content }}</p>
 						</div>
 					</div>
 					@endforeach
