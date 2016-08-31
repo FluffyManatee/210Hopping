@@ -42,4 +42,18 @@ class Bar extends Model
 
     }
 
+    public function getDistance($userLat, $userLon, $barLat, $barLon) {
+//      earth radius in miles
+        $earth_radius = 3960;
+
+        $dLat = deg2rad($barLat - $userLat);
+        $dLon = deg2rad($barLon - $userLon);
+
+        $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($userLat)) * cos(deg2rad($barLat)) * sin($dLon/2) * sin($dLon/2);
+        $c = 2 * asin(sqrt($a));
+        $distance = $earth_radius * $c;
+
+        return $distance;
+    }
+
 }
