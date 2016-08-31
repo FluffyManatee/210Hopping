@@ -17,9 +17,9 @@ class CreateBarsTable extends Migration
 			$table->string('type');
 			$table->string('name')->unique();
 			$table->string('address');
-			$table->integer('phone')->nullable();;
-			$table->string('website')->nullable();;
-			$table->string('email')->nullable();;
+			$table->integer('phone')->nullable();
+			$table->string('website')->nullable();
+			$table->string('email')->nullable();
 			$table->boolean('owner')->default(0);
 			$table->integer('owner_id')->unsigned()->nullable();;
 			$table->foreign('owner_id')->references('id')->on('users');

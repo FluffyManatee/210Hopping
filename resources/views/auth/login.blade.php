@@ -17,7 +17,7 @@
 			<div class="form-group">
 				<a href="#">reset password</a>
 			</div>
-			<button type="submit" class ="btn btn-primary pull-right">log in</button>
+			<button type="submit" class ="btn btn-primary pull-right">LOG IN</button>
 		</form>
 	</div>
 </div>

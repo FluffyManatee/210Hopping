@@ -15,6 +15,10 @@ Route::get('/', function()
 {
     return view('index');
 });
+Route::get('/bars/create', function()
+{
+    return view('bars/create');
+});
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');

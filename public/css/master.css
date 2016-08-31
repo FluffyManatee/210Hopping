@@ -5,7 +5,7 @@
 }
 .navigation#bottom {
 	position: fixed;
-	bottom: 0;
+	bottom: 0px;
 	height: 10vh;
 }
 .nav-nearby.nav-search.nav-home.nav-activity.nav-more {
