@@ -18,6 +18,8 @@ class CreateBarsTable extends Migration
 			$table->string('area');
 			$table->string('name')->unique();
 			$table->string('address');
+			$table->double('latitude');
+			$table->double('longitude');
 			$table->integer('phone')->nullable();
 			$table->string('website')->nullable();
 			$table->string('email')->nullable();
