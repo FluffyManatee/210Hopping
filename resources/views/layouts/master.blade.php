@@ -43,7 +43,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="btn-group btn-group-justified navigation" id="bottom" role="group" aria-label="navigation">
-				<a href="" class="btn btn-default nav-nearby" role="group" aria-label="nearby">
+				<a href="" id="nearby" class="btn btn-default nav-nearby" role="group" aria-label="nearby">
 					<i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
 					<br>
 					Nearby
