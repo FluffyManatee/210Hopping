@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Geocoder\Provider\GoogleMaps;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Bar;
+use Ivory\HttpAdapter\Guzzle6HttpAdapter;
 
 class BarsController extends Controller
 {
@@ -29,15 +32,15 @@ class BarsController extends Controller
 	{
 		session()->flash('fail', 'Your post was NOT created. Please fix errors.');
 		$this->validate($request, Bar::$rules);
+        $adapter  = new Guzzle6HttpAdapter();
+        $geocoder = new GoogleMaps($adapter);
 
-        $adapter  = new \Http\Adapter\Guzzle6\Client();
-        $geocoder = new \Geocoder\Provider\GoogleMaps($adapter);
 		$bar = new Bar();
 		$bar->type = $request->get('type');
 		$bar->name = $request->get('name');
 		$bar->address = $request->get('address');
-        $latlong = $geocoder->geocode($bar->address);
-        dd($latlong->getLatitude(), $latlong->getLongitude());
+        $latlong = $geocoder->geocode($bar->address)->first();
+        //dd($latlong->getLatitude(), $latlong->getLongitude());
         $bar->latitude = $latlong->getLatitude();
         $bar->longitude = $latlong->getLongitude();
 		$bar->phone = $request->get('phone');
@@ -45,7 +48,7 @@ class BarsController extends Controller
 		$bar->email = $request->get('email');
 		$bar->save();
 		session()->flash('success', 'Your post was created successfully!');
-		return redirect()->action('BarsController@index');
+		return redirect()->action('BarsController@show', $bar->id);
 	}
 
 	public function show($id)
