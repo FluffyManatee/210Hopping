@@ -4,6 +4,8 @@
 <div class="container content">
 	<div class="row">
 		<h1>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%A') }}  <small>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%B %d, %Y') }}</small></h1>
+		<textarea type="text" id="startLat"></textarea>
+		<textarea type="text" id="startLon"></textarea>
 	</div>
 </div>
 <script>
@@ -11,7 +13,7 @@
 		var startPos;
 		var lat;
 		var lon;
-		var latLongObject;
+//		var latLongObject;
 		var geoOptions = {
 			timeout: 10 * 1000,
 			maximumAge: 5 * 60 * 1000
@@ -22,7 +24,9 @@
 			document.getElementById('startLon').innerHTML = startPos.coords.longitude;
 			lat = startPos.coords.latitude;
 			lon = startPos.coords.longitude;
-			latLongObject = new google.maps.LatLng(lat,lon);
+			console.log(lat, lon);
+			$('#nearby').attr('href', '/nearby/' + lat + '/' + lon);
+//			latLongObject = new google.maps.LatLng(lat,lon);
 		};
 
 		var geoError = function(error) {
