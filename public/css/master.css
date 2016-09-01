@@ -25,6 +25,9 @@
 body {
 	padding-top: 70px;
 }
+#dropzone {
+	display: none;
+}
 
 /****** Style Star Rating Widget *****/
 .rating { 
@@ -33,7 +36,9 @@ body {
   padding-bottom: 10px;
 }
 
-.rating > input { display: none; } 
+.rating > input { 
+	display: none; 
+} 
 .rating > label:before { 
   margin: 5px;
   font-size: 1.25em;
@@ -51,7 +56,6 @@ body {
   color: #ddd; 
  float: right; 
 }
-
 /***** CSS Magic to Highlight Stars on Hover *****/
 
 .rating > input:checked ~ label, /* show gold star when clicked */

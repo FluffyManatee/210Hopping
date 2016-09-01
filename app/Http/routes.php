@@ -21,6 +21,8 @@ Route::resource('events', 'EventsController');
 Route::resource('specials', 'SpecialsController');
 Route::resource('reviews', 'ReviewsController');
 
+Route::post('picture/upload/{bar_id}', 'PicturesController@store');
+
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
