@@ -17,7 +17,7 @@ class PicturesController extends Controller
      */
     public function index()
     {
-        //
+        return view('bars.show');
     }
 
     /**
@@ -27,7 +27,7 @@ class PicturesController extends Controller
      */
     public function create()
     {
-        //
+        return view('pictures.create', ['id' => $request->get('bar_id')]);
     }
 
     /**
@@ -36,9 +36,18 @@ class PicturesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $picture = new Picture;
+        
+        $imagePath = 'img/';
+        $imageExtension = $request->file('file')->getClientOriginalExtension();
+        $imageName = uniqid() . '.' . $imageExtension;
+        $request->file('file')->move($imagePath, $imageName);
+        $picture->pic_url = '/img/' . $imageName;
+        
+        $picture->bar_id = $id;
+        $picture->save();
     }
 
     /**

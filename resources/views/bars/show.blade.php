@@ -19,21 +19,21 @@
 			<div id="carousel" class="carousel slide" data-ride="carousel">
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
-					<li data-target="#carousel" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel" data-slide-to="1"></li>
-					<li data-target="#carousel" data-slide-to="2"></li>
+					@foreach ($bar->pictures as $picture)
+					<li data-target="#carousel" data-slide-to="0" class=""></li>
+					@endforeach
 				</ol>
 				<!-- Wrapper for slides -->
-				@foreach ($bar->pictures as $picture)
 				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<img src="{{ $picture->pic_url }}" alt="...">
+					@foreach ($bar->pictures as $index => $picture)
+					<div class="item @if($index == 0) {{ 'active' }} @endif">
+						<img style="width: 90%; height: 40vh;" src="{{ $picture->pic_url }}" alt="...">
 						<div class="carousel-caption">
 							<!-- maybe add captions to pictures table? -->
 						</div>
 					</div>
+					@endforeach
 				</div>
-				@endforeach
 				<!-- Controls -->
 				<a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
 					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -50,7 +50,13 @@
 	<!-- bottom portion -->
 	@if (Auth::check())
 	<a class="btn btn-default" href="/reviews/create?bar_id={{ $bar->id }}">Write a Review</a>
+	<button id="image-upload" type="button" class="btn btn-default">Upload an image</button>
 	@endif
+	<div id="dropzone">
+		<form action="{{ action('PicturesController@store', $bar->id) }}" method="POST" enctype="multipart/form-data" class="dropzone">
+			{{ csrf_field() }}
+		</form>
+	</div>
 	<div class="row" id="bar-reviews">
 		<div class="col-xs-12">
 			<!-- Nav tabs -->
@@ -100,6 +106,9 @@
 	$('#myTabs a:first').tab('show');
 	$('.carousel').carousel({
 		interval: 2000
+	});
+	$('#image-upload').click(function() {
+		$('#dropzone').slideToggle('slow');
 	});
 </script>
 @stop

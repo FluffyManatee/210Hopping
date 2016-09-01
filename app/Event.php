@@ -20,7 +20,7 @@ class Event extends Model
 
 	public static $rules =
 		[
-			'title' => 'required|max:255',
+			'title' => 'required|max:50',
 			'date' => 'required|max:10',
 			'content' => 'required|max:255'
 		];
