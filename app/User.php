@@ -16,6 +16,26 @@ class User extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
+	public static $rules =
+		[
+			'first_name' => 'required|max:255',
+			'last_name' => 'required|max:255',
+			'email' => 'required|email|max:244|unique:users',
+			'password' => 'required|min:6'
+		];
+	public static $updateRules = [
+		'first_name' => 'required|max:255',
+		'last_name' => 'required|max:255',
+		'email' => 'required|email|max:244'
+	];
+
+	public static $passwordRules = [
+		'password' => 'required|min:6'
+	];
+
+	public static function isEmailDuplicate($email) {
+		return User::where('email', $email)->count()>0;
+	}
     /**
      * The database table used by the model.
      *
@@ -28,7 +48,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -36,4 +56,24 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function reviews(){
+        return $this->hasMany(Review::class, 'created_by');
+
+    }
+
+    public function bars(){
+        return $this->hasMany(Bar::class, 'owner_id');
+
+    }
+
+    public function events(){
+        return $this->hasMany(Event::class, 'created_by');
+
+    }
+
+    public function votes(){
+        return $this->hasMany(Vote::class, 'user_id');
+
+    }
 }
