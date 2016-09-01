@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Review;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewsController extends Controller
 {
@@ -20,16 +21,15 @@ class ReviewsController extends Controller
 		return view ('reviews.index', $data);
 	}
 
-	public function create()
+	public function create(Request $request)
 	{
-		return view('reviews.create');
+		return view('reviews.create', ['id' => $request->get('bar_id')]);
 	}
 
 	public function store(Request $request)
 	{
 		session()->flash('fail', 'Your post was NOT created. Please fix errors.');
 		$this->validate($request, Review::$rules);
-
 		$review = new Review();
 		$review->title = $request->get('title');
 		$review->content = $request->get('content');
@@ -38,10 +38,9 @@ class ReviewsController extends Controller
 		// Will change based on view
 		$review->bar_id = $request->get('bar_id');
 		//
-		$review->timestamp();
 		$review->save();
-		session()->flash('success', 'Your post was created successfully!');
-		return redirect()->action('ReviewsController@index');
+		session()->flash('success', 'Your review was created successfully!');
+		return redirect()->action('BarsController@show', $review->bar_id);
 	}
 
 	public function show($id)
