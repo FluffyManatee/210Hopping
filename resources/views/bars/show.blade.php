@@ -9,8 +9,11 @@
 			<br>
 			avg price here
 			<br>
-			<div class="feature-box">
-			</div>
+			{{ $bar->address }}
+			<br>
+			{{ $bar->phone }}
+			<br>
+			<a href="{{ $bar->website }}">Website</a>
 		</div>
 		<div class="col-xs-6" id="photos">
 			<div id="carousel" class="carousel slide" data-ride="carousel">
@@ -45,13 +48,16 @@
 	</div>
 	<hr>
 	<!-- bottom portion -->
+	@if (Auth::check())
+	<a class="btn btn-default" href="/reviews/create?bar_id={{ $bar->id }}">Write a Review</a>
+	@endif
 	<div class="row" id="bar-reviews">
 		<div class="col-xs-12">
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs" id="myTabs" role="tablist">
 				<li role="presentation" class="active"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
 				<li role="presentation" class=""><a href="#specials" aria-controls="specials" role="tab" data-toggle="tab">Specials</a></li>
-				<li role="presentation" class=""><a href="#popular-drinks" aria-controls="popular-drinks" role="tab" data-toggle="tab">Popular Drinks</a></li>
+				<li role="presentation" class=""><a href="#bar-features" aria-controls="bar-features" role="tab" data-toggle="tab">Features</a></li>
 			</ul>
 			<!-- Tab panes -->
 			<div class="tab-content">
@@ -75,7 +81,11 @@
 					@endforeach
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="specials">test</div>
-				<div role="tabpanel" class="tab-pane fade" id="popular-drinks">...</div>
+				<div role="tabpanel" class="tab-pane fade" id="bar-features">
+					@foreach ($bar->features as $feature)
+					{!! $feature->featureIcons() !!}
+					@endforeach
+				</div>
 			</div>
 		</div>
 	</div>

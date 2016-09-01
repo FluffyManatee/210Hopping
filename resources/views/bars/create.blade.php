@@ -4,7 +4,7 @@
 <div class="row">
 	<div class="col-xs-8 col-xs-offset-2">
 		<h4 class="modal-title">create a bar</h4>
-		<form method="POST" action="{{ action('Auth\AuthController@postLogin') }}">
+		<form method="POST" action="{{ action('BarsController@store') }}">
 			{{ csrf_field() }}
 			<div class="form-group">
 				<input type="text" class="form-control" name="name" id="name" placeholder="bar name">
