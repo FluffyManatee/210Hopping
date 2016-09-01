@@ -29,8 +29,6 @@ class BarsController extends Controller
 	{
 		session()->flash('fail', 'Your post was NOT created. Please fix errors.');
 		$this->validate($request, Bar::$rules);
-
-
 		$bar = new Bar();
 		$bar->type = $request->get('type');
 		$bar->name = $request->get('name');
@@ -40,7 +38,7 @@ class BarsController extends Controller
 		$bar->email = $request->get('email');
 		$bar->save();
 		session()->flash('success', 'Your post was created successfully!');
-		return redirect()->action('BarsController@index');
+		return redirect()->action('BarsController@show', $bar->id);
 	}
 
 	public function show($id)
