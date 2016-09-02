@@ -5,7 +5,7 @@
 	<div class="row" id="bar-info">
 		<div class="col-xs-6" id="details">
 			<h3>{{ $bar->name }}</h3>
-			avg rating here
+			{{ $bar->averageBarRating() }}
 			<br>
 			avg price here
 			<br>
@@ -24,10 +24,10 @@
 					@endforeach
 				</ol>
 				<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox">
+				<div class="carousel-inner carousel-image-container" role="listbox">
 					@foreach ($bar->pictures as $index => $picture)
 					<div class="item @if($index == 0) {{ 'active' }} @endif">
-						<img style="width: 90%; height: 40vh;" src="{{ $picture->pic_url }}" alt="...">
+						<img class="cover" src="{{ $picture->pic_url }}" alt="...">
 						<div class="carousel-caption">
 							<!-- maybe add captions to pictures table? -->
 						</div>
@@ -105,7 +105,7 @@
 	});
 	$('#myTabs a:first').tab('show');
 	$('.carousel').carousel({
-		interval: 2000
+		interval: 4000
 	});
 	$('#image-upload').click(function() {
 		$('#dropzone').slideToggle('slow');

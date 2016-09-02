@@ -8,14 +8,14 @@ class Bar extends Model
 {
     protected $table = 'bars';
 
-	public static $rules =
-		[
-			'name' => 'required|max:50',
-			'type' => 'required|max:255',
-			'address' => 'required|max:255',
-			'email' => 'email|max:244|unique:users',
-            'phone' => 'min:7|max:10',
-		];
+    public static $rules =
+    [
+    'name' => 'required|max:50',
+    'type' => 'required|max:255',
+    'address' => 'required|max:255',
+    'email' => 'email|max:244|unique:users',
+    'phone' => 'min:7|max:10',
+    ];
 
     public function events(){
         return $this->hasMany(Event::class, 'bar_id');
@@ -56,4 +56,14 @@ class Bar extends Model
         return $distance;
     }
 
+    public function averageBarRating() 
+    {
+        $addedRatings = 0;
+        $averageRating = 0;
+        foreach ($this->reviews as $review) {
+            $addedRatings += $review->attributes['beer_rating'];
+        }
+        $averageRating = ($addedRatings / count($this->reviews));
+        return round($averageRating);
+    }
 }

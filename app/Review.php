@@ -24,7 +24,7 @@ class Review extends Model
 
     }
     public function bar(){
-        return $this->belongsTo(Bar::class);
+        return $this->belongsTo(Bar::class, 'bar_id');
 
     }
     public function beerRating()

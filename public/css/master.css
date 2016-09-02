@@ -19,6 +19,19 @@
 	border-radius: 3px;
 	padding: 5px;
 }
+.carousel-image-container {
+	height: 20vh;
+}
+@media only screen and (min-width: 768px) {
+	.carousel-image-container {
+		height: 45vh;
+	}
+}
+.carousel img {
+	margin: 0 auto;
+	object-position: 50% 50%;
+	object-fit: cover;
+}
 .bottom-nav-spacer {
 	min-height: 20vh;
 }
@@ -31,30 +44,30 @@ body {
 
 /****** Style Star Rating Widget *****/
 .rating { 
-  border: none;
-  float: left;
-  padding-bottom: 10px;
+	border: none;
+	float: left;
+	padding-bottom: 10px;
 }
 
 .rating > input { 
 	display: none; 
 } 
 .rating > label:before { 
-  margin: 5px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
+	margin: 5px;
+	font-size: 1.25em;
+	font-family: FontAwesome;
+	display: inline-block;
+	content: "\f005";
 }
 
 .rating > .half:before { 
-  content: "\f089";
-  position: absolute;
+	content: "\f089";
+	position: absolute;
 }
 
 .rating > label { 
-  color: #ddd; 
- float: right; 
+	color: #ddd; 
+	float: right; 
 }
 /***** CSS Magic to Highlight Stars on Hover *****/
 
