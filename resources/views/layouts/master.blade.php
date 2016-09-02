@@ -73,7 +73,21 @@
 		$('.search').click(function(e){
 			e.preventDefault();
 			$('.search-form').slideToggle('slow');
-		})
-	</script>
-</body>
-</html>
+		});
+		$('.filter').click(function(){
+			$('.features-select').slideToggle('slow').removeClass('hidden');
+		});
+		$("#form").submit(function (e) {
+
+			var features = [];
+
+			$('input[type="checkbox"]:checked').each(function (index, element) {
+				// removed the space ^
+				features.push($(element).val());
+			});
+			alert(features);
+				e.preventDefault(); // you will probably need to remove this so form can submit, i'm not sure
+			});
+		</script>
+	</body>
+	</html>
