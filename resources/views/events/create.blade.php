@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
             <h4 class="modal-title">Add an event</h4>
-            <form method="POST" action="{{ action('EventsController@store') }}">
+            <form method="POST" action="{{ action('EventsController@store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <input type="text" class="form-control" name="title" id="title" placeholder="Event Name">
@@ -18,11 +18,9 @@
                     <textarea class="form-control" name="content" id="content" placeholder="Description"></textarea>
                     @include('forms.error', ['field' => 'content'])
                 </div>
-                <button id="image-upload" type="button" class="btn btn-default">Upload an image</button>
-                <div id="dropzone">
-                    <form action="{{ action('PicturesController@store') }}" method="POST" enctype="multipart/form-data" class="dropzone">
-                        {{ csrf_field() }}
-                    </form>
+                <div class="form-group">
+                    <label for="image">Add an Image</label>
+                    <input type="file" id="image" name="image" placeholder="Image">
                 </div>
                 <button type="submit" class ="btn btn-primary pull-right">Create Event</button>
             </form>
@@ -30,10 +28,3 @@
     </div>
 @stop
 
-@section('scripts')
-    <script>
-        $('#image-upload').click(function() {
-            $('#dropzone').slideToggle('slow');
-        });
-    </script>
-@stop
