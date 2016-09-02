@@ -61,7 +61,8 @@ class Bar extends Model
     {
         $query = static::join('bar_features', 'bar_features.bar_id', '=', 'bars.id')->where('bars.name', 'LIKE', "%$searchTerm%")
             ->orWhere('bars.address', 'LIKE', "%$searchTerm%");
-        if(sizeof($features)>0){
+
+        if($features[0] != ''){
             foreach($features as $feature){
                 $query->where("bar_features.$feature", '=', 1);
             }
@@ -71,13 +72,7 @@ class Bar extends Model
 
     public static function mostRecent()
     {
-        $query = static::join('events', 'events.bar_id', '=', 'bars.id')->join('specials', 'specials.bar_id', '=', 'bars.id')
-            ->where('bars.created_at', 'LIKE', "%$searchTerm%")
-            ->where('specials.created_at', 'LIKE', "%$searchTerm%")
-            ->where('events.created_at', 'LIKE', "%$searchTerm%");
-
-        return $query;
-
+        return DB::table('bars', 'specials', 'events');
     }
 
     public function averageBarRating() 

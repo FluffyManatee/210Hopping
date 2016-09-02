@@ -108,12 +108,30 @@ class BarsController extends Controller
 		return view('bars.index', $data);
 	}
 
+
 	public function search(Request $request)
 	{
 		$searchTerm = $request->input('searchTerm');
 		$features = $request->input('features');
-		$data = Bar::searchBy($searchTerm, $features);
-		$data->orderBy('name', 'asc');
+		$features = explode(',', $features);
+//        dd($features);
+		$bars = Bar::searchBy($searchTerm, $features);
+		$bars = $bars->orderBy('name', 'asc')->get();
+//        dd($bars);
+		$data = [
+		'bars' => $bars
+		];
+		return view('bars.index', $data);
+	}
+
+	public function recent()
+	{
+		$recent = Bar::mostRecent();
+		$recent = $recent->orderBy('created_at', 'desc')->get();
+		$data = [
+		'recent' => $recent
+		];
 		return view('bars.index', $data);
 	}
 }
+
