@@ -71,7 +71,7 @@ class BarsController extends Controller
 		$data = [
 		'bar' => $bar
 		];
-		return view('bars.edit')->with('data', $data);
+		return view('bars.edit', $data);
 	}
 
 	public function update(Request $request, $id)
@@ -119,7 +119,7 @@ class BarsController extends Controller
             }
 
         }
-        return view('bars.index')->with('data', $data);
+        return view('bars.index', $data);
     }
 
     public function search(Request $request)
@@ -128,6 +128,6 @@ class BarsController extends Controller
         $features = $request->input('features');
         $data = Bar::searchBy($searchTerm, $features);
         $data->orderBy('name', 'asc');
-        return view('bars.index')->with('data', $data);
+        return view('bars.index', $data);
     }
 }
