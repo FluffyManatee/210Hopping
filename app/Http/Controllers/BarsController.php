@@ -1,33 +1,26 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Geocoder\Provider\GoogleMaps;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Bar;
 use Ivory\HttpAdapter\Guzzle6HttpAdapter;
-
 class BarsController extends Controller
 {
-
 	public function index()
 	{
-		$bars = Bar::orderBy('name', 'desc')->paginate(10);
+		$bars = Bar::orderDesc(10);
 		$data = [
 		'bars' => $bars
 		];
-		return view ('bars.index')->with('data', $data);
+		return view ('bars.index', $data);
 	}
-
 	public function create()
 	{
 		return view('bars.create');
 	}
-
 	public function store(Request $request)
 	{
 		session()->flash('fail', 'Your post was NOT created. Please fix errors.');
@@ -49,7 +42,6 @@ class BarsController extends Controller
 		session()->flash('success', 'Your post was created successfully!');
 		return redirect()->action('BarsController@show', $bar->id);
 	}
-
 	public function show($id)
 	{
 		$bar = Bar::find($id);
@@ -59,9 +51,8 @@ class BarsController extends Controller
 		$data = [
 		'bar' => $bar
 		];
-		return view('bars.show')->with('data', $data);
+		return view('bars.show', $data);
 	}
-
 	public function edit($id)
 	{
 		$bar = Bar::find($id);
@@ -71,14 +62,12 @@ class BarsController extends Controller
 		$data = [
 		'bar' => $bar
 		];
-		return view('bars.edit')->with('data', $data);
+		return view('bars.edit', $data);
 	}
-
 	public function update(Request $request, $id)
 	{
 		session()->flash('fail', $bar->name . ' was NOT updated. Please fix errors.');
 		$this->validate($request, Bar::$rules);
-
 		$bar = Bar::find($id);
 		if (!$bar) {
 			abort(404);
@@ -93,7 +82,6 @@ class BarsController extends Controller
 		session()->flash('success', $bar->name . ' was updated successfully!');
 		return redirect()->action('BarsController@show', $bar->id);
 	}
-
 	public function destroy(Request $request, $id)
 	{
 		$bar = Bar::find($id);
@@ -104,7 +92,6 @@ class BarsController extends Controller
 		$request->session()->flash('success', $bar->name . ' was deleted successfully!');
 		return redirect()->action('BarsController@index');
 	}
-
 	public function nearby($latitude, $longitude)
     {
 	    $bars = Bar::all();
@@ -117,17 +104,7 @@ class BarsController extends Controller
                 var_dump($distance);
                 $data[] = $bar;
             }
-
         }
-        return view('bars.index')->with('data', $data);
-    }
-
-    public function search(Request $request)
-    {
-        $searchTerm = $request->input('searchTerm');
-        $features = $request->input('features');
-        $data = Bar::searchBy($searchTerm, $features);
-        $data->orderBy('name', 'asc');
         return view('bars.index')->with('data', $data);
     }
 }
