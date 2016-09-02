@@ -76,4 +76,12 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany(Vote::class, 'user_id');
 
     }
+
+    public static function searchBy($searchTerm)
+    {
+        $query = static::where('users.first_name', 'LIKE', "%$searchTerm%")
+            ->orWhere('users.last_name', 'LIKE', "%$searchTerm%");
+
+        return $query;
+    }
 }
