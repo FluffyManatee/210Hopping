@@ -32,23 +32,24 @@ class Review extends Model
         $rating = $this->beer_rating;
         $starRating = '';
         switch ($rating) {
+            // cant decide to use unicode characters with css styling or stick to <i> tags
             case 0:
             $starRating = '';
             break;
             case 1:
-            $starRating = '*';
+            $starRating = '<i class="fa fa-star" aria-hidden="true"></i>';
             break;
             case 2:
-            $starRating = '**';
+            $starRating = '&#xf005;&#xf005;';
             break;
             case 3:
-            $starRating = '***';
+            $starRating = '&#xf005;&#xf005;&#xf005;';
             break;
             case 4:
-            $starRating = '****';
+            $starRating = '&#xf005;&#xf005;&#xf005;&#xf005;';
             break;
             case 5:
-            $starRating = '*****';
+            $starRating = '&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;';
             break;
         }
         return $starRating;

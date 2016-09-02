@@ -5,11 +5,11 @@
 	<div class="row" id="bar-info">
 		<div class="col-xs-6" id="details">
 			<h3>{{ $bar->name }}</h3>
-			{{ $bar->averageBarRating() }}
+			<p class="beer-rating">{{ $bar->averageBarRating() }}</p>
 			<br>
 			avg price here
 			<br>
-			{{ $bar->address }}
+			<a href="http://maps.apple.com/?q={{ $bar->address }}">{{ $bar->address }}</a>
 			<br>
 			<a href="tel:{{$bar->phone}}">{{ $bar->formatPhoneNumber() }}</a>
 			<br>
@@ -73,17 +73,17 @@
 						<div class="col-xs-3">
 							<img src="{{ $review->user->avatar }}" class="thumbnail responsive" height="60" width="60">
 							<h5>{{ $review->user->first_name }} {{ $review->user->last_name }}</h5>
-							<br>
 							user score
 							<br>
 							helpful?
 						</div>
 						<div class="col-xs-9">
-							<h4>{{ $review->title }} <small>posted {{ $review->created_at->diffForHumans() }}</small></h4>
-							<p><h4>{{ $review->beerRating() }}</h4></p>
+							<h4>{{ $review->title }} <br><small>posted {{ $review->created_at->diffForHumans() }}</small></h4>
+							<p class="beer-rating">{!! $review->beerRating() !!}</p>
 							<p>{{ $review->content }}</p>
 						</div>
 					</div>
+					<hr>
 					@endforeach
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="specials">test</div>

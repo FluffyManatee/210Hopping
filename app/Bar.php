@@ -68,7 +68,29 @@ class Bar extends Model
         }
         // finally some simple math :)
         $averageRating = ($addedRatings / count($this->reviews));
-        return round($averageRating);
+        $averageRating = round($averageRating);
+        switch ($averageRating) {
+            // cant decide to use unicode characters with css styling or stick to <i> tags
+            case 0:
+            $starRating = '';
+            break;
+            case 1:
+            $starRating = '<i class="fa fa-star" aria-hidden="true"></i>';
+            break;
+            case 2:
+            $starRating = '&#xf005;&#xf005;';
+            break;
+            case 3:
+            $starRating = '&#xf005;&#xf005;&#xf005;';
+            break;
+            case 4:
+            $starRating = '&#xf005;&#xf005;&#xf005;&#xf005;';
+            break;
+            case 5:
+            $starRating = '&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;';
+            break;
+        }
+        return $starRating;
     }
 
     public function formatPhoneNumber() 
