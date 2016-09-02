@@ -15,13 +15,7 @@
 <body>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Header -->
-	<div class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid navigation" id="top">
-			<div class="row">
-				210hopping
-			</div>
-		</div>
-	</div>
+	@include('partials.header')
 	<!-- end Header -->
 	@if (session()->has('SUCCESS_MESSAGE'))
 	<div class="alert alert-success alert-dismissible" role="alert">
@@ -48,7 +42,7 @@
 					<br>
 					Nearby
 				</a>
-				<a href="" class="btn btn-default nav-search" role="group" aria-label="search">
+				<a href="" class="btn btn-default nav-search search" role="group" aria-label="search">
 					<i class="fa fa-search fa-2x" aria-hidden="true"></i>
 					<br>
 					Search
@@ -75,5 +69,11 @@
 	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	@yield('scripts')
+	<script type="text/javascript">
+		$('.search').click(function(e){
+			e.preventDefault();
+			$('.search-form').slideToggle('slow');
+		})
+	</script>
 </body>
 </html>
