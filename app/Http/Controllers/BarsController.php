@@ -16,11 +16,11 @@ class BarsController extends Controller
 
 	public function index()
 	{
-		$bars = Bar::orderDesc(10);
+		$bars = Bar::orderBy('name', 'desc')->paginate(10);
 		$data = [
 		'bars' => $bars
 		];
-		return view ('bars.index', $data);
+		return view ('bars.index')->with('data', $data);
 	}
 
 	public function create()
@@ -59,7 +59,7 @@ class BarsController extends Controller
 		$data = [
 		'bar' => $bar
 		];
-		return view('bars.show', $data);
+		return view('bars.show')->with('data', $data);
 	}
 
 	public function edit($id)
@@ -71,7 +71,7 @@ class BarsController extends Controller
 		$data = [
 		'bar' => $bar
 		];
-		return view('bars.edit', $data);
+		return view('bars.edit')->with('data', $data);
 	}
 
 	public function update(Request $request, $id)
@@ -119,6 +119,15 @@ class BarsController extends Controller
             }
 
         }
+        return view('bars.index')->with('data', $data);
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('searchTerm');
+        $features = $request->input('features');
+        $data = Bar::searchBy($searchTerm, $features);
+        $data->orderBy('name', 'asc');
         return view('bars.index')->with('data', $data);
     }
 }
