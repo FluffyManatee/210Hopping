@@ -18,7 +18,7 @@
                     <textarea class="form-control" name="content" id="content" placeholder="Description"></textarea>
                     @include('forms.error', ['field' => 'content'])
                 </div>
-                <button type="submit" class ="btn btn-primary pull-right">CREATE</button>
+                <button type="submit" class ="btn btn-primary pull-right">Create Event</button>
             </form>
         </div>
     </div>
