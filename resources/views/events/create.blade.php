@@ -18,6 +18,12 @@
                     <textarea class="form-control" name="content" id="content" placeholder="Description"></textarea>
                     @include('forms.error', ['field' => 'content'])
                 </div>
+                <button id="image-upload" type="button" class="btn btn-default">Upload an image</button>
+                <div id="dropzone">
+                    <form action="{{ action('PicturesController@store') }}" method="POST" enctype="multipart/form-data" class="dropzone">
+                        {{ csrf_field() }}
+                    </form>
+                </div>
                 <button type="submit" class ="btn btn-primary pull-right">Create Event</button>
             </form>
         </div>
@@ -26,8 +32,8 @@
 
 @section('scripts')
     <script>
-        $(function() {
-            $( "#datepicker" ).datepicker();
+        $('#image-upload').click(function() {
+            $('#dropzone').slideToggle('slow');
         });
     </script>
 @stop

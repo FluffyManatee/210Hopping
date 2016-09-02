@@ -20,7 +20,7 @@ class BarsController extends Controller
 		$data = [
 		'bars' => $bars
 		];
-		return view ('bars.index')->with('data', $data);
+		return view ('bars.index', $data);
 	}
 
 	public function create()
@@ -59,7 +59,7 @@ class BarsController extends Controller
 		$data = [
 		'bar' => $bar
 		];
-		return view('bars.show')->with('data', $data);
+		return view('bars.show', $data);
 	}
 
 	public function edit($id)
