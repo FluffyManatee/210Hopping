@@ -64,6 +64,7 @@
 				<li role="presentation" class="active"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Reviews</a></li>
 				<li role="presentation" class=""><a href="#specials" aria-controls="specials" role="tab" data-toggle="tab">Specials</a></li>
 				<li role="presentation" class=""><a href="#bar-features" aria-controls="bar-features" role="tab" data-toggle="tab">Features</a></li>
+				<li role="presentation" class=""><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>
 			</ul>
 			<!-- Tab panes -->
 			<div class="tab-content">
@@ -92,6 +93,7 @@
 					{!! $feature->featureIcons() !!}
 					@endforeach
 				</div>
+				<div role="tabpanel" class="tab-pane fade" id="events"></div>
 			</div>
 		</div>
 	</div>
