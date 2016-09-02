@@ -69,6 +69,17 @@ class Bar extends Model
         return $query;
     }
 
+    public static function mostRecent()
+    {
+        $query = static::join('events', 'events.bar_id', '=', 'bars.id')->join('specials', 'specials.bar_id', '=', 'bars.id')
+            ->where('bars.created_at', 'LIKE', "%$searchTerm%")
+            ->where('specials.created_at', 'LIKE', "%$searchTerm%")
+            ->where('events.created_at', 'LIKE', "%$searchTerm%");
+
+        return $query;
+
+    }
+
     public function averageBarRating() 
     {
         $addedRatings = 0;
