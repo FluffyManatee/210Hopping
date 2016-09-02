@@ -25,16 +25,16 @@ class BarsController extends Controller
 	{
 		session()->flash('fail', 'Your post was NOT created. Please fix errors.');
 		$this->validate($request, Bar::$rules);
-        $adapter  = new Guzzle6HttpAdapter();
-        $geocoder = new GoogleMaps($adapter);
+		$adapter  = new Guzzle6HttpAdapter();
+		$geocoder = new GoogleMaps($adapter);
 		$bar = new Bar();
 		$bar->type = $request->get('type');
 		$bar->name = $request->get('name');
 		$bar->address = $request->get('address');
-        $latlong = $geocoder->geocode($bar->address)->first();
+		$latlong = $geocoder->geocode($bar->address)->first();
         //dd($latlong->getLatitude(), $latlong->getLongitude());
-        $bar->latitude = $latlong->getLatitude();
-        $bar->longitude = $latlong->getLongitude();
+		$bar->latitude = $latlong->getLatitude();
+		$bar->longitude = $latlong->getLongitude();
 		$bar->phone = $request->get('phone');
 		$bar->website = $request->get('website');
 		$bar->email = $request->get('email');
@@ -93,18 +93,27 @@ class BarsController extends Controller
 		return redirect()->action('BarsController@index');
 	}
 	public function nearby($latitude, $longitude)
-    {
-	    $bars = Bar::all();
-        $data = [];
-        foreach($bars as $bar)
-        {
-            $distance = $bar->getDistance($latitude, $longitude, $bar->latitude, $bar->longitude);
+	{
+		$bars = Bar::all();
+		$data = [];
+		foreach($bars as $bar)
+		{
+			$distance = $bar->getDistance($latitude, $longitude, $bar->latitude, $bar->longitude);
 //            dd($distance);
-            if($distance<15){
-                var_dump($distance);
-                $data[] = $bar;
-            }
-        }
-        return view('bars.index')->with('data', $data);
-    }
+			if($distance<15){
+				var_dump($distance);
+				$data[] = $bar;
+			}
+		}
+		return view('bars.index', $data);
+	}
+
+	public function search(Request $request)
+	{
+		$searchTerm = $request->input('searchTerm');
+		$features = $request->input('features');
+		$data = Bar::searchBy($searchTerm, $features);
+		$data->orderBy('name', 'asc');
+		return view('bars.index', $data);
+	}
 }

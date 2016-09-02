@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Bar;
+use Illuminate\Support\Facades\Auth;
 use App\Event;
 
 class EventsController extends Controller
@@ -32,7 +34,7 @@ class EventsController extends Controller
 
 		$event = new Event();
 		// Will change based on view
-		$event->bar_id = $request->get('bar_id');
+		$event->bar_id = '1';
 		//
 		$event->title = $request->get('title');
 		$event->date = $request->get('date');
