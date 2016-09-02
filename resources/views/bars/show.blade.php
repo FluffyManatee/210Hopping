@@ -5,13 +5,13 @@
 	<div class="row" id="bar-info">
 		<div class="col-xs-6" id="details">
 			<h3>{{ $bar->name }}</h3>
-			avg rating here
+			<p class="beer-rating">{{ $bar->averageBarRating() }}</p>
 			<br>
 			avg price here
 			<br>
-			{{ $bar->address }}
+			<a href="http://maps.apple.com/?q={{ $bar->address }}">{{ $bar->address }}</a>
 			<br>
-			{{ $bar->phone }}
+			<a href="tel:{{$bar->phone}}">{{ $bar->formatPhoneNumber() }}</a>
 			<br>
 			<a href="{{ $bar->website }}">Website</a>
 		</div>
@@ -24,10 +24,10 @@
 					@endforeach
 				</ol>
 				<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox">
+				<div class="carousel-inner carousel-image-container" role="listbox">
 					@foreach ($bar->pictures as $index => $picture)
 					<div class="item @if($index == 0) {{ 'active' }} @endif">
-						<img style="width: 90%; height: 40vh;" src="{{ $picture->pic_url }}" alt="...">
+						<img class="cover" src="{{ $picture->pic_url }}" alt="...">
 						<div class="carousel-caption">
 							<!-- maybe add captions to pictures table? -->
 						</div>
@@ -73,17 +73,17 @@
 						<div class="col-xs-3">
 							<img src="{{ $review->user->avatar }}" class="thumbnail responsive" height="60" width="60">
 							<h5>{{ $review->user->first_name }} {{ $review->user->last_name }}</h5>
-							<br>
 							user score
 							<br>
 							helpful?
 						</div>
 						<div class="col-xs-9">
-							<h4>{{ $review->title }} <small>posted {{ $review->created_at->diffForHumans() }}</small></h4>
-							<p><h4>{{ $review->beerRating() }}</h4></p>
+							<h4>{{ $review->title }} <br><small>posted {{ $review->created_at->diffForHumans() }}</small></h4>
+							<p class="beer-rating">{!! $review->beerRating() !!}</p>
 							<p>{{ $review->content }}</p>
 						</div>
 					</div>
+					<hr>
 					@endforeach
 				</div>
 				<div role="tabpanel" class="tab-pane fade" id="specials">test</div>
@@ -105,7 +105,7 @@
 	});
 	$('#myTabs a:first').tab('show');
 	$('.carousel').carousel({
-		interval: 2000
+		interval: 4000
 	});
 	$('#image-upload').click(function() {
 		$('#dropzone').slideToggle('slow');
