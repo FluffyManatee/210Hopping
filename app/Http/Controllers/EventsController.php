@@ -39,7 +39,13 @@ class EventsController extends Controller
 		$event->title = $request->get('title');
 		$event->date = $request->get('date');
 		$event->content = $request->get('content');
-		$event->event_pic = $request->get('event_pic');
+
+		$imagePath = 'img/';
+		$imageExtension = $request->file('image')->getClientOriginalExtension();
+		$imageName = uniqid() . '.' . $imageExtension;
+		$request->file('image')->move($imagePath, $imageName);
+		$event->event_pic = '/img/' . $imageName;
+
 		$event->created_by = Auth::user()->id;
 		$event->save();
 		session()->flash('success', 'Your event was created successfully!');
