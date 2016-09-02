@@ -2,12 +2,10 @@
 		<div class="container-fluid navigation" id="top">
 			<div class="row">
 				<div id="form" class="search-form col-xs-6 col-xs-offset-3">
-					<form class="navbar-form form-inline">
+					<form method="get" action="/search" class="navbar-form form-inline">
 						<div class="form-group">
-							<input type="radio" name="search-for" value="bars"><label for="bars"> Bars</label>
-							<input type="radio" name="search-for" value="events"><label for="events"> Events</label>
 							<button type="button" class="filter btn btn-default">Filter</button>
-							<input type="hidden" class="filters">
+							<input type="hidden" name="features" id="features" class="filters">
 							<div class="checkbox features-select hidden">
 								<label>
 									<input type="checkbox" class="filter-value" value="smoking"> Smoking Allowed
@@ -46,7 +44,7 @@
 									<input type="checkbox" class="filter-value" value="darts"> Darts
 								</label>
 							</div>
-							<input type="text" class="form-control searchTerm" placeholder="Search">
+							<input type="text" class="form-control" name="searchTerm" placeholder="Search">
 						</div>
 						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
