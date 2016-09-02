@@ -104,4 +104,14 @@ class UserController extends Controller
 		session()->flash('success', 'Your account was deleted successfully!');
 		return redirect()->action('BarsController@index');
     }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('searchTerm');
+        $data = User::searchBy($searchTerm);
+        $data->orderBy('name', 'asc');
+        return view('users.index')->with('data', $data);
+//        need a users index plz and ty
+
+    }
 }
