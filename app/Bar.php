@@ -42,7 +42,8 @@ class Bar extends Model
 
     }
 
-    public function getDistance($userLat, $userLon, $barLat, $barLon) {
+    public function getDistance($userLat, $userLon, $barLat, $barLon) 
+    {
 //      earth radius in miles
         $earth_radius = 3960;
 
@@ -60,10 +61,24 @@ class Bar extends Model
     {
         $addedRatings = 0;
         $averageRating = 0;
+        // need to foreach through all bar's reviews
         foreach ($this->reviews as $review) {
+            // call on the attributes array in the review object to get beer rating and add them
             $addedRatings += $review->attributes['beer_rating'];
         }
+        // finally some simple math :)
         $averageRating = ($addedRatings / count($this->reviews));
         return round($averageRating);
+    }
+
+    public function formatPhoneNumber() 
+    {
+        $formatNumber = '';
+        if(strlen($this->phone) == 7) {
+            $formatNumber = substr($this->phone, 0, 3) . '-' . substr($this->phone, 3);
+        } elseif(strlen($this->phone) == 10) {
+            $formatNumber = '(' . substr($this->phone, 0, 3) . ') ' . substr($this->phone, 3, 3) . '-' . substr(($this->phone), 6);
+        }
+        return $formatNumber;
     }
 }
