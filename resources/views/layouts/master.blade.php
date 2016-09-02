@@ -78,15 +78,26 @@
 			$('.features-select').slideToggle('slow').removeClass('hidden');
 		});
 		$("#form").submit(function (e) {
-
 			var features = [];
+//			var featureString = '';
+			var featuresInput = $('#features');
 
 			$('input[type="checkbox"]:checked').each(function (index, element) {
-				// removed the space ^
 				features.push($(element).val());
 			});
-			alert(features);
-				e.preventDefault(); // you will probably need to remove this so form can submit, i'm not sure
+//			features.forEach(function(e, i){
+//				if(i==0) {
+//					featureString += '[' + e + ',';
+//				} else if(i == features.length -1){
+//					featureString += e + ']';
+//				} else{
+//					featureString += e + ',';
+//				}
+//			});
+			featuresInput.val(features);
+//			alert(featuresInput.val());
+//				e.preventDefault();
+			// you will probably need to remove this so form can submit, i'm not sure
 			});
 		</script>
 	</body>
