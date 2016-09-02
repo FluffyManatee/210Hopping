@@ -57,6 +57,18 @@ class Bar extends Model
         return $distance;
     }
 
+    public static function searchBy($searchTerm, $features)
+    {
+        $query = static::join('bar_features', 'bar_features.bar_id', '=', 'bars.id')->where('bars.name', 'LIKE', "%$searchTerm%")
+            ->orWhere('bars.address', 'LIKE', "%$searchTerm%");
+        if(sizeof($features)>0){
+            foreach($features as $feature){
+                $query->where("bar_features.$feature", '=', 1);
+            }
+        }
+        return $query;
+    }
+
     public function averageBarRating() 
     {
         $addedRatings = 0;
