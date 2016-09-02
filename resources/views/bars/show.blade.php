@@ -11,7 +11,7 @@
 			<br>
 			{{ $bar->address }}
 			<br>
-			{{ $bar->formatPhoneNumber() }}
+			<a href="tel:{{$bar->phone}}">{{ $bar->formatPhoneNumber() }}</a>
 			<br>
 			<a href="{{ $bar->website }}">Website</a>
 		</div>
