@@ -41,6 +41,12 @@ body {
 #dropzone {
 	display: none;
 }
+.search-form {
+	display: none;
+}
+.features-select {
+	display: none;
+}
 .beer-rating {
 	padding: 0;
 	font-size: 1.25em;
