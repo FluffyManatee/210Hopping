@@ -11,16 +11,19 @@ class BarsController extends Controller
 {
 	public function index()
 	{
-		$bars = Bar::orderDesc(10);
-		$data = [
+		$bars = Bar::orderBy('bars.beer_rating', 'desc')->get();
+        $data = [
 		'bars' => $bars
 		];
-		return view ('bars.index', $data);
-	}
+//        dd($data);
+        return view ('bars.index', $data);
+    }
+
 	public function create()
 	{
 		return view('bars.create');
 	}
+
 	public function store(Request $request)
 	{
 		session()->flash('fail', 'Your post was NOT created. Please fix errors.');
@@ -31,11 +34,12 @@ class BarsController extends Controller
 		$bar->type = $request->get('type');
 		$bar->name = $request->get('name');
 		$bar->address = $request->get('address');
-		$latlong = $geocoder->geocode($bar->address)->first();
+        ///latlong stuff
+        $latlong = $geocoder->geocode($bar->address)->first();
+        $bar->latitude = $latlong->getLatitude();
+        $bar->longitude = $latlong->getLongitude();
         //dd($latlong->getLatitude(), $latlong->getLongitude());
-		$bar->latitude = $latlong->getLatitude();
-		$bar->longitude = $latlong->getLongitude();
-		$bar->phone = $request->get('phone');
+        $bar->phone = $request->get('phone');
 		$bar->website = $request->get('website');
 		$bar->email = $request->get('email');
 		$bar->save();
@@ -44,6 +48,7 @@ class BarsController extends Controller
 	}
 	public function show($id)
 	{
+
 		$bar = Bar::find($id);
 		if (!$bar) {
 			abort(404);
@@ -53,6 +58,7 @@ class BarsController extends Controller
 		];
 		return view('bars.show', $data);
 	}
+
 	public function edit($id)
 	{
 		$bar = Bar::find($id);
@@ -64,6 +70,7 @@ class BarsController extends Controller
 		];
 		return view('bars.edit', $data);
 	}
+
 	public function update(Request $request, $id)
 	{
 		session()->flash('fail', $bar->name . ' was NOT updated. Please fix errors.');
@@ -82,6 +89,7 @@ class BarsController extends Controller
 		session()->flash('success', $bar->name . ' was updated successfully!');
 		return redirect()->action('BarsController@show', $bar->id);
 	}
+
 	public function destroy(Request $request, $id)
 	{
 		$bar = Bar::find($id);
@@ -92,6 +100,7 @@ class BarsController extends Controller
 		$request->session()->flash('success', $bar->name . ' was deleted successfully!');
 		return redirect()->action('BarsController@index');
 	}
+
 	public function nearby($latitude, $longitude)
 	{
 		$bars = Bar::all();
@@ -101,37 +110,38 @@ class BarsController extends Controller
 			$distance = $bar->getDistance($latitude, $longitude, $bar->latitude, $bar->longitude);
 //            dd($distance);
 			if($distance<15){
-				var_dump($distance);
+//				var_dump($distance);
 				$data[] = $bar;
 			}
 		}
-		return view('bars.index', $data);
+        $data = [
+            'bars' => $data
+        ];
+//		dd($data);
+		return view('bars.results', $data);
 	}
-
 
 	public function search(Request $request)
 	{
 		$searchTerm = $request->input('searchTerm');
 		$features = $request->input('features');
 		$features = explode(',', $features);
-//        dd($features);
 		$bars = Bar::searchBy($searchTerm, $features);
-		$bars = $bars->orderBy('name', 'asc')->get();
+		$bars = $bars->orderBy('bars.beer_rating', 'desc')->get();
 //        dd($bars);
 		$data = [
 		'bars' => $bars
 		];
-		return view('bars.index', $data);
+		return view('bars.results', $data);
 	}
 
 	public function recent()
 	{
-		$recent = Bar::mostRecent();
-		$recent = $recent->orderBy('created_at', 'desc')->get();
-		$data = [
+		$recent = Bar::recentBarsSpecialsEvents();
+        $data = [
 		'recent' => $recent
 		];
-		return view('bars.index', $data);
+		return view('bars.recent', $data);
 	}
 }
 

@@ -33,7 +33,7 @@ $factory->define(App\Bar::class, function (Faker\Generator $faker) {
         'phone' => $faker->randomNumber(7),
         'website' => $faker->url,
         'email' => $faker->freeEmail,
-        'owner' => 0,
+        'beer_rating' => mt_rand(1,5),
     ];
 });
 
