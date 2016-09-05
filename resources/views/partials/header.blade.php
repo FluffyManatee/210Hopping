@@ -4,7 +4,7 @@
 				<div id="form" class="search-form col-xs-6 col-xs-offset-3">
 					<form method="get" action="/search" class="navbar-form form-inline">
 						<div class="form-group">
-							<button type="button" class="filter btn btn-default">Filter</button>
+
 							<input type="hidden" name="features" id="features" class="filters">
 							<div class="checkbox features-select hidden">
 								<label>
@@ -45,8 +45,9 @@
 								</label>
 							</div>
 							<input type="text" class="form-control" name="searchTerm" placeholder="Search">
+							<button type="button" class="filter btn btn-default">Filter</button>
+							<button type="submit" class="btn btn-default">Submit</button>
 						</div>
-						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
 				</div>
 			</div>
