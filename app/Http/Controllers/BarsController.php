@@ -28,16 +28,16 @@ class BarsController extends Controller
 	{
 		session()->flash('fail', 'Your post was NOT created. Please fix errors.');
 		$this->validate($request, Bar::$rules);
-		$adapter  = new Guzzle6HttpAdapter();
-		$geocoder = new GoogleMaps($adapter);
+		// $adapter  = new Guzzle6HttpAdapter();
+		// $geocoder = new GoogleMaps($adapter);
 		$bar = new Bar();
 		$bar->type = $request->get('type');
 		$bar->name = $request->get('name');
 		$bar->address = $request->get('address');
         ///latlong stuff
-        $latlong = $geocoder->geocode($bar->address)->first();
-        $bar->latitude = $latlong->getLatitude();
-        $bar->longitude = $latlong->getLongitude();
+        // $latlong = $geocoder->geocode($bar->address)->first();
+        // $bar->latitude = $latlong->getLatitude();
+        // $bar->longitude = $latlong->getLongitude();
         //dd($latlong->getLatitude(), $latlong->getLongitude());
         $bar->phone = $request->get('phone');
 		$bar->website = $request->get('website');

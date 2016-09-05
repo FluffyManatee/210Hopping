@@ -15,6 +15,10 @@ Route::get('/', function()
 {
     return view('index');
 });
+Route::get('/more', function()
+{
+    return view('more.index');
+});
 Route::resource('bars', 'BarsController');
 Route::resource('users', 'UserController');
 Route::resource('events', 'EventsController');
