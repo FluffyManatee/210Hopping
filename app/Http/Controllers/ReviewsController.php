@@ -37,8 +37,10 @@ class ReviewsController extends Controller
 		$review->beer_rating = $request->get('beer_rating');
 		// Will change based on view
 		$review->bar_id = $request->get('bar_id');
-		//
 		$review->save();
+        $bar = $review->bar;
+        $bar->beer_rating = round($bar->beerRating());
+        $bar->save();
 		session()->flash('success', 'Your review was created successfully!');
 		return redirect()->action('BarsController@show', $review->bar_id);
 	}

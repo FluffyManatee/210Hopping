@@ -52,7 +52,7 @@
 					<br>
 					Home
 				</a>
-				<a href="" class="btn btn-default nav-activity" role="group" aria-label="activity">
+				<a href="/recent" class="btn btn-default nav-activity" role="group" aria-label="activity">
 					<i class="fa fa-bolt fa-2x" aria-hidden="true"></i>
 					<br>
 					Activity
@@ -79,25 +79,11 @@
 		});
 		$("#form").submit(function (e) {
 			var features = [];
-//			var featureString = '';
 			var featuresInput = $('#features');
-
 			$('input[type="checkbox"]:checked').each(function (index, element) {
 				features.push($(element).val());
 			});
-//			features.forEach(function(e, i){
-//				if(i==0) {
-//					featureString += '[' + e + ',';
-//				} else if(i == features.length -1){
-//					featureString += e + ']';
-//				} else{
-//					featureString += e + ',';
-//				}
-//			});
 			featuresInput.val(features);
-//			alert(featuresInput.val());
-//				e.preventDefault();
-			// you will probably need to remove this so form can submit, i'm not sure
 			});
 		</script>
 	</body>

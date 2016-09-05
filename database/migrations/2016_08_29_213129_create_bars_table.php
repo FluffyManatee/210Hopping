@@ -17,10 +17,11 @@ class CreateBarsTable extends Migration
 			$table->string('type');
 			$table->string('area');
 			$table->string('name')->unique();
-			$table->string('address');
-			$table->double('latitude');
-			$table->double('longitude');
-			$table->integer('phone')->nullable();
+            $table->string('address');
+            $table->double('latitude');
+            $table->double('longitude');
+            $table->integer('beer_rating')->default(0);
+            $table->integer('phone')->nullable();
 			$table->string('website')->nullable();
 			$table->string('email')->nullable();
 			$table->boolean('owner')->default(0);
