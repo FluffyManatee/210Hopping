@@ -96,6 +96,6 @@ $factory->define(App\Feature::class, function (Faker\Generator $faker) {
 $factory->define(App\Picture::class, function (Faker\Generator $faker) {
     return [
         'bar_id' => App\Bar::all()->random()->id,
-        'pic_url' => $faker->imageUrl('cats'),
+        'pic_url' => 'http://placekitten.com/200/200',
     ];
 });

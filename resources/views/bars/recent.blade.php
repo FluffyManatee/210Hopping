@@ -15,7 +15,7 @@
                         @foreach($recent['bars'] as $bar)
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <img src="{{ $bar->pictures->first() }}" class="thumbnail responsive" height="60"
+                                    <img src="{{ $bar->pictures()->first()->pic_url}}" class="thumbnail responsive" height="60"
                                          width="60">
                                     <h3>{{ $bar->name }}</h3>
                                     <h5>{{ $bar->address }}</h5>
