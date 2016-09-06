@@ -11,31 +11,32 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract
+AuthorizableContract,
+CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
-	public static $rules =
-		[
-			'first_name' => 'required|max:255',
-			'last_name' => 'required|max:255',
-			'email' => 'required|email|max:244|unique:users',
-			'password' => 'required|min:6'
-		];
-	public static $updateRules = [
-		'first_name' => 'required|max:255',
-		'last_name' => 'required|max:255',
-		'email' => 'required|email|max:244'
-	];
+    public static $rules =
+    [
+    'first_name' => 'required|max:255',
+    'last_name' => 'required|max:255',
+    'email' => 'required|email|max:244|unique:users',
+    'password' => 'required|min:6'
+    ];
+    public static $updateRules = 
+    [
+    'first_name' => 'required|max:255',
+    'last_name' => 'required|max:255',
+    'email' => 'required|email|max:244'
+    ];
 
-	public static $passwordRules = [
-		'password' => 'required|min:6'
-	];
+    public static $passwordRules = [
+    'password' => 'required|min:6'
+    ];
 
-	public static function isEmailDuplicate($email) {
-		return User::where('email', $email)->count()>0;
-	}
+    public static function isEmailDuplicate($email) {
+      return User::where('email', $email)->count()>0;
+  }
     /**
      * The database table used by the model.
      *
@@ -80,8 +81,21 @@ class User extends Model implements AuthenticatableContract,
     public static function searchBy($searchTerm)
     {
         $query = static::where('users.first_name', 'LIKE', "%$searchTerm%")
-            ->orWhere('users.last_name', 'LIKE', "%$searchTerm%");
+        ->orWhere('users.last_name', 'LIKE', "%$searchTerm%");
 
         return $query;
+    }
+    public function formatLastName()
+    {
+        $formattedLastName = substr($this->last_name, 0, 1);
+        return $formattedLastName;
+    }
+    public function totalUserVotes()
+    {
+        $totalVotes = 0;
+        foreach($this->reviews as $reviews) {
+            $totalVotes += $reviews->totalVotes();
+        }
+        return $totalVotes;
     }
 }
