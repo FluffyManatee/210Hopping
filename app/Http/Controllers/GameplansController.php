@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Gameplan;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,7 @@ class GameplansController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -37,7 +38,20 @@ class GameplansController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        session()->flash('fail', 'Your gameplan was NOT created. Please fix errors.');
+//        $this->validate($request, Gameplan::$rules);
+        // gameplan features //
+        $gameplan = new Gameplan();
+        $gameplan->author_id = Auth::id();
+        $gameplan->date = $request->get('date');
+        foreach($request->get('bars') as $key => $bar){
+            $column = "bar$key";
+            $gameplan->$column = $bar;
+        }
+        $gameplan->save();
+
+        session()->flash('success', 'Your gameplan was created successfully!');
+        return redirect()->action('GameplansController@show', $gameplan->id);
     }
 
     /**
@@ -48,7 +62,14 @@ class GameplansController extends Controller
      */
     public function show($id)
     {
-        //
+        $gameplan = Gameplan::find($id);
+        if (!$gameplan) {
+            abort(404);
+        }
+        $data = [
+            'gameplan' => $gameplan
+        ];
+        return view('gameplans.show', $data);
     }
 
     /**
@@ -59,7 +80,14 @@ class GameplansController extends Controller
      */
     public function edit($id)
     {
-        //
+        $gameplan = Gameplan::find($id);
+        if (!$gameplan) {
+            abort(404);
+        }
+        $data = [
+            'gameplan' => $gameplan
+        ];
+        return view('gameplans.edit', $data);
     }
 
     /**
@@ -71,7 +99,20 @@ class GameplansController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        session()->flash('fail', 'Gameplan ' . $id . ' was NOT updated. Please fix errors.');
+//        $this->validate($request, Gameplan::$rules);
+        $gameplan = Gameplan::find($id);
+        if (!$gameplan) {
+            abort(404);
+        }
+        $gameplan->date = $request->get('date');
+        foreach($request->get('bars') as $key => $bar){
+            $column = "bar$key";
+            $gameplan->$column = $bar;
+        }
+        $gameplan->save();
+        session()->flash('success','Gameplan ' . $id . ' was updated successfully!');
+        return redirect()->action('GameplansController@show', $gameplan->id);
     }
 
     /**
