@@ -25,6 +25,7 @@ Route::resource('events', 'EventsController');
 Route::resource('specials', 'SpecialsController');
 Route::resource('reviews', 'ReviewsController');
 Route::resource('votes', 'VotesController');
+Route::resource('gameplans', 'GameplansController');
 
 Route::post('picture/upload/{bar_id}', 'PicturesController@store');
 
