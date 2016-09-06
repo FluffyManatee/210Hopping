@@ -4,7 +4,7 @@
     @foreach ($bars as $bar)
         <div class="row">
             <div class="col-xs-3">
-                <img src="{{ $bar->pictures->first() }}" class="thumbnail responsive" height="60" width="60">
+                <img src="{{ $bar->pictures()->first()->pic_url }}" class="thumbnail responsive" height="60" width="60">
                 <h2>{{ $bar->name}}</h2>
                 <h5>{{ $bar->address}}</h5>
                 {{--                    <h5>{{ $bar->}}</h5>--}}
