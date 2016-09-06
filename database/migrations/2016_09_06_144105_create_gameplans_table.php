@@ -14,9 +14,7 @@ class CreateGameplansTable extends Migration
     {
         Schema::create('gameplans', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('gameplan_id')->unsigned();
             $table->integer('author_id')->unsigned();
-            $table->integer('hopper_id')->unsigned();
             $table->date('date');
             $table->integer('bar1_id')->unsigned();
             $table->integer('bar2_id')->unsigned()->nullable();
@@ -25,7 +23,6 @@ class CreateGameplansTable extends Migration
             $table->integer('bar5_id')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('author_id')->references('id')->on('users');
-            $table->foreign('hopper_id')->references('id')->on('users');
             $table->foreign('bar1_id')->references('id')->on('bars');
             $table->foreign('bar2_id')->references('id')->on('bars');
             $table->foreign('bar3_id')->references('id')->on('bars');
