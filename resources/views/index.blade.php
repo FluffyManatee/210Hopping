@@ -5,8 +5,10 @@
 	<div class="row">
 		<h1>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%A') }}  <small>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%B %d, %Y') }}</small></h1>
 	</div>
+	<hr>
 	<div class="row">
 		<div class="col-xs-12" id="photos">
+		<h2>Upcoming Events</h2>
 			<div id="carousel" class="carousel slide" data-ride="carousel">
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
@@ -50,8 +52,8 @@
 	$('.carousel').carousel({
 		interval: 4000
 	});
-	$('.events-slider').click(function (e) {
-		var $eventId = $('.item').data('value');
+	$('.item').click(function (e) {
+		var $eventId = $(this).data('value');
 		$(location).attr('href', '/events/' + $eventId);
 	});
 </script>
