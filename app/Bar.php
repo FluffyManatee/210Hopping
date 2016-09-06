@@ -10,13 +10,13 @@ class Bar extends Model
     protected $table = 'bars';
 
     public static $rules =
-        [
-            'name' => 'required|max:50',
-            'type' => 'required|max:255',
-            'address' => 'required|max:255',
-            'email' => 'email|max:244|unique:users',
-            'phone' => 'min:7|max:10',
-        ];
+    [
+    'name' => 'required|max:50',
+    'type' => 'required|max:255',
+    'address' => 'required|max:255',
+    'email' => 'email|max:244|unique:users',
+    'phone' => 'min:7|max:10',
+    ];
 
     public function events()
     {
@@ -90,45 +90,28 @@ class Bar extends Model
 
     public function averageBarRating()
     {
-//        $addedRatings = 0;
-//        $averageRating = 0;
-        // need to foreach through all bar's reviews
-//        dd($this->reviews);
-//        if (sizeof($this->reviews) > 0) {
-            // added so bar page doesnt break on creation because of division by 0
-//            foreach ($this->reviews as $review) {
-//                // call on the attributes array in the review object to get beer rating and add them
-//                $addedRatings += $review->attributes['beer_rating'];
-//            }
-//            // finally some simple math :)
-//            $averageRating = ($addedRatings / count($this->reviews));
-            $averageRating = round($this->beerRating());
-//        }
-        // i think this is the same
-        // $this->reviews->avg('beer_rating');
-        // not sure how to test
-        // it works
-        // made function for beer rating
+        $averageRating = round($this->beerRating());
+
         switch ($averageRating) {
             // cant decide to use unicode characters with css styling or stick to <i> tags
             case 0:
-                $starRating = '';
-                break;
+            $starRating = '';
+            break;
             case 1:
-                $starRating = '<i class="fa fa-star" aria-hidden="true"></i>';
-                break;
+            $starRating = '&#xf005;';
+            break;
             case 2:
-                $starRating = '&#xf005;&#xf005;';
-                break;
+            $starRating = '&#xf005;&#xf005;';
+            break;
             case 3:
-                $starRating = '&#xf005;&#xf005;&#xf005;';
-                break;
+            $starRating = '&#xf005;&#xf005;&#xf005;';
+            break;
             case 4:
-                $starRating = '&#xf005;&#xf005;&#xf005;&#xf005;';
-                break;
+            $starRating = '&#xf005;&#xf005;&#xf005;&#xf005;';
+            break;
             case 5:
-                $starRating = '&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;';
-                break;
+            $starRating = '&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;';
+            break;
         }
         return $starRating;
     }
@@ -150,6 +133,6 @@ class Bar extends Model
     }
     public static function highestRated()
     {
-        return static::orderBy('beer_rating', 'desc');
+        return static::orderBy('beer_rating', 'desc')->take(5);
     }
 }

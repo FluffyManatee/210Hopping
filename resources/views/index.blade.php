@@ -36,22 +36,41 @@
 	</div>
 	<hr>
 	<div class="row">
+		<h2>Highest Rated Bars</h2>
+		@foreach ($highestRated as $sortedBar)
+		<div class="row">
+			<div class="col-xs-2">
+				<img src="" class="thumbnail responsive" height="100" width="100">
+			</div>
+			<div class="col-xs-9">
+				<h2>{{ $sortedBar->name}}</h2>
+				<p><a href="http://maps.apple.com/?q={{ $sortedBar->address }}"><strong>{{ $sortedBar->address}}</strong></a>
+					| <a href="tel:{{ $sortedBar->phone }}">{{ $sortedBar->formatPhoneNumber() }}</a></p>
+					@if ($sortedBar->averageBarRating() != null)
+					<p class="beer-rating">{!! $sortedBar->averageBarRating() !!}</p> &nbsp; {{ count($sortedBar->reviews) }} reviews
+					@else
+					no ratings yet
+					@endif
+				</div>
+			</div>
+			<hr>
+			@endforeach
+		</div>
 	</div>
-</div>
-@stop
-@section('scripts')
-<script>
-	$('#myTabs a').click(function (e) {
-		e.preventDefault()
-		$(this).tab('show')
-	});
-	$('#myTabs a:first').tab('show');
-	$('.carousel').carousel({
-		interval: 4000
-	});
-	$('.item').click(function (e) {
-		var $eventId = $(this).data('value');
-		$(location).attr('href', '/events/' + $eventId);
-	});
-</script>
-@stop
+	@stop
+	@section('scripts')
+	<script>
+		$('#myTabs a').click(function (e) {
+			e.preventDefault()
+			$(this).tab('show')
+		});
+		$('#myTabs a:first').tab('show');
+		$('.carousel').carousel({
+			interval: 4000
+		});
+		$('.item').click(function (e) {
+			var $eventId = $(this).data('value');
+			$(location).attr('href', '/events/' + $eventId);
+		});
+	</script>
+	@stop

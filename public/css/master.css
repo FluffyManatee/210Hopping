@@ -54,6 +54,12 @@ h2, p, strong {
 	object-position: 50% 50%;
 	object-fit: cover;
 }
+
+.carousel-caption {
+    top: 0;
+    bottom: auto;
+}
+
 .events-slider {
 	cursor: pointer;
 }
