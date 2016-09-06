@@ -155,6 +155,9 @@
 			$('#more-select').slideToggle('slow').addClass('hidden');
 		});
 
+	</script>
+	<script>
+		{{--add features for search to hidden input--}}
 		$("#form").submit(function (e) {
 			var features = [];
 			var featuresInput = $('#features');
@@ -165,5 +168,17 @@
 		});
 
 	</script>
-</body>
-</html>
+	<script>
+		{{--add bars for gameplans to hidden input--}}
+	$("#gameplanForm").submit(function (e) {
+			var bars = [];
+			var barsInput = $('#hidden-bar-input');
+			$('.barSelect').each(function (index, element) {
+				bars.push($(element).val());
+			});
+			barsInput.val(bars);
+		});
+
+	</script>
+	</body>
+	</html>

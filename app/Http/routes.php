@@ -23,6 +23,7 @@ Route::resource('events', 'EventsController');
 Route::resource('specials', 'SpecialsController');
 Route::resource('reviews', 'ReviewsController');
 Route::resource('votes', 'VotesController');
+Route::resource('gameplans', 'GameplansController');
 
 Route::post('picture/upload/{bar_id}', 'PicturesController@store');
 
@@ -36,5 +37,6 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('/nearby/{latitude}/{longitude}', 'BarsController@nearby');
 Route::get('/search', 'BarsController@search');
 Route::get('/recent', 'BarsController@recent');
+Route::get('gameplans/addHopper/{gameplanid}', 'GameplansController@addHopper');
 
 Route::post('/votes/create', 'VotesController@vote');
