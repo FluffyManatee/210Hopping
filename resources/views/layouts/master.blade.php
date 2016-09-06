@@ -40,27 +40,27 @@
 				<a href="" id="nearby" class="btn btn-default nav-nearby" role="group" aria-label="nearby">
 					<i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
 					<br>
-					Nearby
+					<span id="nav-text">Nearby</span>
 				</a>
 				<a href="" class="btn btn-default nav-search search" role="group" aria-label="search">
 					<i class="fa fa-search fa-2x" aria-hidden="true"></i>
 					<br>
-					Search
+					<span id="nav-text">Search</span>
 				</a>
 				<a href="/" class="btn btn-default nav-home" role="group" aria-label="home">
 					<i class="fa fa-home fa-4x" aria-hidden="true"></i>
 					<br>
-					Home
+					<span id="nav-text">Home</span>
 				</a>
 				<a href="/recent" class="btn btn-default nav-activity" role="group" aria-label="activity">
 					<i class="fa fa-bolt fa-2x" aria-hidden="true"></i>
 					<br>
-					Activity
+					<span id="nav-text">Activity</span>
 				</a>
 				<a href="" id="more" class="btn btn-default nav-more" role="group" aria-label="more">
 					<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
 					<br>
-					More
+					<span id="nav-text">More</span>
 				</a>
 			</div>
 
