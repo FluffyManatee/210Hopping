@@ -1,3 +1,21 @@
+@font-face {
+	font-family: DenseRegular;
+	src: url('../font/Dense-Regular.otf');
+}
+
+body {
+    font-family: DenseRegular, sans-serif;
+    padding-top: 70px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2, p, strong {
+    font-size: 36px;
+}
+
 .navigation#top {
 	position: relative;
 	top: 0;
@@ -11,6 +29,10 @@
 .nav-nearby.nav-search.nav-home.nav-activity.nav-more {
 	height: 100%;
 	text-align: center;
+}
+
+#nav-text {
+    font-size: larger;
 }
 .feature-box {
 	height: 15vh;
@@ -44,9 +66,7 @@
 .bottom-nav-spacer {
 	min-height: 20vh;
 }
-body {
-	padding-top: 70px;
-}
+
 #dropzone {
 	display: none;
 }
