@@ -16,6 +16,8 @@ class CreateSpecialsTable extends Migration
 			$table->increments('id');
 			$table->integer('bar_id')->unsigned();
 			$table->foreign('bar_id')->references('id')->on('bars');
+			$table->integer('created_by')->unsigned();
+			$table->foreign('created_by')->references('id')->on('users');
 			$table->string('title');
 			$table->string('content');
 			$table->timestamps();

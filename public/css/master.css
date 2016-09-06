@@ -19,18 +19,21 @@
 	border-radius: 3px;
 	padding: 5px;
 }
-.carousel-image-container {
+.carousel-image-container, .carousel-caption, {
 	height: 20vh;
 }
 @media only screen and (min-width: 768px) {
-	.carousel-image-container {
+	.carousel-image-container, .carousel-caption {
 		height: 45vh;
 	}
 }
-.carousel img {
+.carousel img, .carousel-caption {
 	margin: 0 auto;
 	object-position: 50% 50%;
 	object-fit: cover;
+}
+.events-slider {
+	cursor: pointer;
 }
 .bottom-nav-spacer {
 	min-height: 20vh;

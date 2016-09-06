@@ -22,9 +22,9 @@ class EventsController extends Controller
 		return view ('events.index', $data);
     }
 
-    public function create()
+    public function create(Request $request)
     {
-		return view('events.create');
+		return view('events.create', ['id' => $request->get('bar_id')]);
     }
 
     public function store(Request $request)
@@ -33,9 +33,7 @@ class EventsController extends Controller
 		$this->validate($request, Event::$rules);
 
 		$event = new Event();
-		// Will change based on view
-		$event->bar_id = '1';
-		//
+		$event->bar_id = $request->get('bar_id');
 		$event->title = $request->get('title');
 		$event->date = $request->get('date');
 		$event->content = $request->get('content');
