@@ -19,14 +19,41 @@ class Review extends Model
         return $this->hasMany(Vote::class, 'review_id');
 
     }
+    public function upvotes() 
+    {
+        return $this->votes()->where('vote', 1)->count();
+    }
+
+    public function downvotes() 
+    {
+        return $this->votes()->where('vote', 0)->count();
+    }
+
+    public function totalVotes() 
+    {
+        return $this->upvotes() - $this->downvotes();
+    }
+
+    public function hasBeenUpvoted()
+    {
+        return Auth::check() && !is_null($this->userVote(Auth::user())) && $this->userVote(Auth::user())->vote;
+    }
+
+    public function hasBeenDownvoted()
+    {
+        return Auth::check() && !is_null($this->userVote(Auth::user())) && !$this->userVote(Auth::user())->vote;
+    }
+
     public function user(){
         return $this->belongsTo(User::class, 'created_by');
 
     }
+
     public function bar(){
         return $this->belongsTo(Bar::class, 'bar_id');
 
     }
+
     public function beerRating()
     {
         $rating = $this->beer_rating;

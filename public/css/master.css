@@ -55,6 +55,9 @@ body {
 	content: "\f005";
 	color: #FFD700;
 }
+.user-page-review-info{
+	font-size: small;
+}
 /****** Style Star Rating Widget *****/
 .rating { 
 	border: none;

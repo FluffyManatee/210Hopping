@@ -99,6 +99,7 @@
 	</div>
 </div>
 @stop
+@include('partials.vote-ajax')
 @section('scripts')
 <script>
 	$('#myTabs a').click(function (e) {
