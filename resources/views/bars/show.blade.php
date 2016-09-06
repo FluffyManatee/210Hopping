@@ -17,12 +17,6 @@
 		</div>
 		<div class="col-xs-6" id="photos">
 			<div id="carousel" class="carousel slide" data-ride="carousel">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					@foreach ($bar->pictures as $picture)
-					<li data-target="#carousel" data-slide-to="0" class=""></li>
-					@endforeach
-				</ol>
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner carousel-image-container" role="listbox">
 					@foreach ($bar->pictures as $index => $picture)

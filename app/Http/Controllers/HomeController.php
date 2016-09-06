@@ -27,7 +27,8 @@ class HomeController extends Controller
         $data['bar'] = Bar::with('pictures', 'reviews', 'specials', 'features', 'events')->get();
         $data['review'] = Review::with('votes', 'user', 'bar')->get();
         $data['event'] = Event::with('bar')->get();
-        $data['upcomingEvents'] = Event::upcomingEvents();
+        $data['upcomingEvents'] = Event::upcomingEvents()->get();
+        $data['highestRated'] = Bar::highestRated()->get();
         return view('index', $data);
 
     }

@@ -8,14 +8,8 @@
 	<hr>
 	<div class="row">
 		<div class="col-xs-12" id="photos">
-		<h2>Upcoming Events</h2>
+			<h2>Upcoming Events</h2>
 			<div id="carousel" class="carousel slide" data-ride="carousel">
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					@foreach ($upcomingEvents as $event)
-					<li data-target="#carousel" data-slide-to="0" class=""></li>
-					@endforeach
-				</ol>
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner carousel-image-container events-slider" role="listbox">
 					@foreach ($upcomingEvents as $index => $event)
@@ -39,6 +33,9 @@
 				</a>
 			</div>
 		</div>
+	</div>
+	<hr>
+	<div class="row">
 	</div>
 </div>
 @stop

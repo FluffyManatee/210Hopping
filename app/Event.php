@@ -38,6 +38,6 @@ class Event extends Model
     public static function upcomingEvents()
     {
     	$currentDate = Carbon::now();
-    	return Event::where('date', '>', $currentDate)->get();
+    	return Event::where('date', '>', $currentDate);
     }
 }
