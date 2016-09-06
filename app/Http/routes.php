@@ -37,5 +37,6 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('/nearby/{latitude}/{longitude}', 'BarsController@nearby');
 Route::get('/search', 'BarsController@search');
 Route::get('/recent', 'BarsController@recent');
+Route::get('gameplans/addHopper/{gameplanid}', 'GameplansController@addHopper');
 
 Route::post('/votes/create', 'VotesController@vote');
