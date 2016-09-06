@@ -57,6 +57,7 @@
 			{{ csrf_field() }}
 		</form>
 	</div>
+	<a class="btn btn-default" href="/events/create?bar_id={{ $bar->id }}">Create an event</a>
 	<div class="row" id="bar-reviews">
 		<div class="col-xs-12">
 			<!-- Nav tabs -->

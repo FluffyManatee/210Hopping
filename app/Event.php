@@ -10,7 +10,7 @@ class Event extends Model
     protected $table = 'events';
 
 	public static function orderDesc($item) {
-		return  Event::with('user')->orderBy('created_at', 'desc')->paginate($item);
+		return Event::with('user')->orderBy('created_at', 'desc')->paginate($item);
 	}
 
 	public function getDateAttribute($value) {
@@ -33,5 +33,11 @@ class Event extends Model
     public function bar(){
         return $this->belongsTo(Bar::class, 'bar_id');
 
+    }
+
+    public static function upcomingEvents()
+    {
+    	$currentDate = Carbon::now();
+    	return Event::where('date', '>', $currentDate)->get();
     }
 }

@@ -6,22 +6,23 @@
 		<h1>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%A') }}  <small>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%B %d, %Y') }}</small></h1>
 	</div>
 	<div class="row">
-		<div class="col-xs-6" id="photos">
+		<div class="col-xs-12" id="photos">
 			<div id="carousel" class="carousel slide" data-ride="carousel">
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
-					@foreach ($bar->pictures as $picture)
+					@foreach ($upcomingEvents as $event)
 					<li data-target="#carousel" data-slide-to="0" class=""></li>
 					@endforeach
 				</ol>
 				<!-- Wrapper for slides -->
-				<div class="carousel-inner carousel-image-container" role="listbox">
-					@foreach ($bar->pictures as $index => $picture)
-					<div class="item @if($index == 0) {{ 'active' }} @endif">
-						<img class="cover" src="{{ $picture->pic_url }}" alt="...">
+				<div class="carousel-inner carousel-image-container events-slider" role="listbox">
+					@foreach ($upcomingEvents as $index => $event)
+					<div data-value="{{ $event->id }}" class="item @if($index == 0) {{ 'active' }} @endif">
 						<div class="carousel-caption">
-							<!-- maybe add captions to pictures table? -->
+							<h2>{{ $event->title }}</h2>
+							<p> </p>
 						</div>
+						<img class="cover" src="{{ $event->event_pic }}" alt="{{ $event->title }}">
 					</div>
 					@endforeach
 				</div>
@@ -39,7 +40,6 @@
 	</div>
 </div>
 @stop
-@include('partials.vote-ajax')
 @section('scripts')
 <script>
 	$('#myTabs a').click(function (e) {
@@ -50,8 +50,9 @@
 	$('.carousel').carousel({
 		interval: 4000
 	});
-	$('#image-upload').click(function() {
-		$('#dropzone').slideToggle('slow');
+	$('.events-slider').click(function (e) {
+		var $eventId = $('.item').data('value');
+		$(location).attr('href', '/events/' + $eventId);
 	});
 </script>
 @stop
