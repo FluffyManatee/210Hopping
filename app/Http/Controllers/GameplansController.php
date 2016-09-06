@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Gameplan;
+use App\GameplanBar;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Bar;
 
 class GameplansController extends Controller
 {
@@ -27,7 +30,14 @@ class GameplansController extends Controller
      */
     public function create()
     {
-        return view('gameplans.create');
+        $bars = Bar::all();
+        $bars = $bars->pluck('name', 'id');
+        $bars = $bars->all();
+//        dd($bars);
+        $data = [
+            'bars' => $bars
+        ];
+        return view('gameplans.create', $data);
     }
 
     /**
@@ -39,16 +49,25 @@ class GameplansController extends Controller
     public function store(Request $request)
     {
         session()->flash('fail', 'Your gameplan was NOT created. Please fix errors.');
+//        dd($request);
 //        $this->validate($request, Gameplan::$rules);
         // gameplan features //
         $gameplan = new Gameplan();
         $gameplan->author_id = Auth::id();
         $gameplan->date = $request->get('date');
-        foreach($request->get('bars') as $key => $bar){
-            $column = "bar$key";
-            $gameplan->$column = $bar;
-        }
+//        dd(Auth::id());
         $gameplan->save();
+        $bars = explode(',', $request->get('hidden-bar-input'));
+//        dd($gameplan->id);
+        foreach($bars as $key => $bar){
+            $gpbar = new GameplanBar();
+            if($bar == ''){
+                break;
+            }
+            $gpbar->gameplan_id = $gameplan->id;
+            $gpbar->bar_id = $bar;
+            $gpbar->save();
+        }
 
         session()->flash('success', 'Your gameplan was created successfully!');
         return redirect()->action('GameplansController@show', $gameplan->id);
