@@ -77,7 +77,12 @@ CanResetPasswordContract
         return $this->hasMany(Vote::class, 'user_id');
 
     }
+////////////////
+    public function gameplans(){
+        return $this->hasMany(Gameplan::class, 'author_id');
 
+    }
+///////////////
     public static function searchBy($searchTerm)
     {
         $query = static::where('users.first_name', 'LIKE', "%$searchTerm%")

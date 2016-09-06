@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGameplansTable extends Migration
+class CreateGameplanbarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,13 @@ class CreateGameplansTable extends Migration
      */
     public function up()
     {
-        Schema::create('gameplans', function (Blueprint $table) {
+        Schema::create('gameplanbars', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('author_id')->unsigned();
-            $table->date('date');
+            $table->integer('gameplan_id')->unsigned();
+            $table->integer('bar_id')->unsigned();
             $table->timestamps();
-            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('gameplan_id')->references('id')->on('gameplans');
+            $table->foreign('bar_id')->references('id')->on('bars');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateGameplansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('gameplans');
+        Schema::drop('gameplanbars');
     }
 }
