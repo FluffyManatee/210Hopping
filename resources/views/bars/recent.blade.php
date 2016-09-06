@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+    {{--{{dd($recent)}}--}}
         <div class="row" id="bar-reviews">
             <div class="col-xs-12">
                 <!-- Nav tabs -->
@@ -15,7 +16,8 @@
                         @foreach($recent['bars'] as $bar)
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <img src="{{ $bar->pictures()->first()->pic_url}}" class="thumbnail responsive" height="60"
+{{--                                    {{ dd($bar->pictures()->first()) }}--}}
+                                    <img src="{{ $bar->pictures()->first()->pic_url }}" class="thumbnail responsive" height="60"
                                          width="60">
                                     <h3>{{ $bar->name }}</h3>
                                     <h5>{{ $bar->address }}</h5>
@@ -37,18 +39,6 @@
                             <div class="row">
                                 <h2>{{ $event->title }}</h2>
                                 <a href="/events/{{ $event->id }}">eventpage</a>
-                                {{--<div class="col-xs-3">--}}
-                                {{--<img src="{{ $review->user->avatar }}" class="thumbnail responsive" height="60" width="60">--}}
-                                {{--<h5>{{ $review->user->first_name }} {{ $review->user->last_name }}</h5>--}}
-                                {{--user score--}}
-                                {{--<br>--}}
-                                {{--helpful?--}}
-                                {{--</div>--}}
-                                {{--<div class="col-xs-9">--}}
-                                {{--<h4>{{ $review->title }} <br><small>posted {{ $review->created_at->diffForHumans() }}</small></h4>--}}
-                                {{--<p class="beer-rating">{!! $review->beerRating() !!}</p>--}}
-                                {{--<p>{{ $review->content }}</p>--}}
-                                {{--</div>--}}
                             </div>
                             <hr>
                         @endforeach
@@ -59,16 +49,6 @@
                                 <div class="col-xs-3">
                                     <h1>{{$special->title}}</h1>
                                     <a href="/specials/{{ $special->id }}">specialpage</a>
-                                    {{--<img src="{{ $review->user->avatar }}" class="thumbnail responsive" height="60" width="60">--}}
-                                    {{--<h5>{{ $review->user->first_name }} {{ $review->user->last_name }}</h5>--}}
-                                    {{--user score--}}
-                                    {{--<br>--}}
-                                    {{--helpful?--}}
-                                    {{--</div>--}}
-                                    {{--<div class="col-xs-9">--}}
-                                    {{--<h4>{{ $review->title }} <br><small>posted {{ $review->created_at->diffForHumans() }}</small></h4>--}}
-                                    {{--<p class="beer-rating">{!! $review->beerRating() !!}</p>--}}
-                                    {{--<p>{{ $review->content }}</p>--}}
                                 </div>
                             </div>
                             <hr>
