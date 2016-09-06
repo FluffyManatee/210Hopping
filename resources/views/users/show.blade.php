@@ -16,7 +16,7 @@
 		<div class="col-xs-3">
 			{{ $user->totalUserVotes() }}
 		</div>
-		<div class="col-xs-6">
+		<div class="col-xs-9">
 			<h3>Reviews</h3>
 			<hr>
 			@foreach ($user->reviews as $review)
@@ -24,7 +24,7 @@
 				<div class="col-xs-2">
 					<img src="" class="thumbnail responsive" height="65" width="65">
 				</div>
-				<div class="col-xs-6">
+				<div class="col-xs-10">
 					<a href="/bars/{{ $review->bar_id }}"><strong>{{ $review->bar->name }}</strong></a>
 					<div class="user-page-review-info">avg price | {{ $review->bar->type }}</div>
 					<div class="user-page-review-info">{{ $review->bar->address }}</div>
@@ -35,7 +35,7 @@
 				{{ $review->content }}
 			</div>
 			Was this review helpful?
-			<a href="" class="upvote">Yes</a> / <a href="" class="downvote">No</a> {{ $review->totalVotes() }}
+			<div data-value="{{ $review->id }}" class="upvote">Yes</div> / <div data-value="{{ $review->id }}" class="downvote">No</div> {{ $review->totalVotes() }}
 			<hr>
 			@endforeach
 		</div>
@@ -51,7 +51,7 @@
 			type: "POST",
 			data: {
 				vote: 1,
-				post: $(this).data('value'),
+				review: $(this).data('value'),
 				_token: "{{ csrf_token() }}"
 			}
 		}).fail(function(e) {
@@ -72,7 +72,7 @@
 			type: "POST",
 			data: {
 				vote: 0,
-				post: $(this).data('value'),
+				review: $(this).data('value'),
 			  _token: "{{ csrf_token() }}"
 			} 
 		}).done(function(response) {
