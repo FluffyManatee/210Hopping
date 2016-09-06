@@ -148,4 +148,8 @@ class Bar extends Model
         }
         return $formatNumber;
     }
+    public static function highestRated()
+    {
+        return static::orderBy('beer_rating', 'desc');
+    }
 }

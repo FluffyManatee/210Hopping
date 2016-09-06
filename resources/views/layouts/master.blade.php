@@ -102,24 +102,24 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	@yield('scripts')
 	<script>
+
 		window.onload = function() {
 			var startPos;
 			var lat;
 			var lon;
-//		var latLongObject;
 			var geoOptions = {
 				timeout: 10 * 1000,
 				maximumAge: 5 * 60 * 1000
 			}
 			var geoSuccess = function(position) {
 				startPos = position;
-//				document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-//				document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+				// document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+				// document.getElementById('startLon').innerHTML = startPos.coords.longitude;
 				lat = startPos.coords.latitude;
 				lon = startPos.coords.longitude;
 				console.log(lat, lon);
 				$('#nearby').attr('href', '/nearby/' + lat + '/' + lon);
-//			latLongObject = new google.maps.LatLng(lat,lon);
+				// latLongObject = new google.maps.LatLng(lat,lon);
 			};
 
 			var geoError = function(error) {
@@ -132,8 +132,7 @@
 			};
 			navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 		};
-	</script>
-	<script type="text/javascript">
+
 		{{-- search button toggle--}}
 		$('.search').click(function(e){
 			e.preventDefault();
@@ -145,23 +144,18 @@
 		});
 
 
-	</script>
-	<script type="text/javascript">
 		{{-- more button toggle--}}
 		$('#more').click(function(e){
 			e.preventDefault();
 			$('#more-select').slideToggle('slow').removeClass('hidden');
 		});
 		{{-- exit button toggle--}}
-        $('#exit').click(function(e){
+		$('#exit').click(function(e){
 			e.preventDefault();
 			$('#more-select').slideToggle('slow').addClass('hidden');
 		});
 
-	</script>
-	<script>
-
-	$("#form").submit(function (e) {
+		$("#form").submit(function (e) {
 			var features = [];
 			var featuresInput = $('#features');
 			$('input[type="checkbox"]:checked').each(function (index, element) {
@@ -171,5 +165,5 @@
 		});
 
 	</script>
-	</body>
-	</html>
+</body>
+</html>
