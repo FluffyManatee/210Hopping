@@ -9,7 +9,7 @@
 	height: 10vh;
 }
 .nav-nearby.nav-search.nav-home.nav-activity.nav-more {
-	height: 100% !important;
+	height: 100%;
 	text-align: center;
 }
 .feature-box {
