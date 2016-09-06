@@ -52,6 +52,7 @@ $factory->define(App\Special::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence(),
         'content' => $faker->paragraph(),
+		'created_by' => App\User::all()->random()->id,
         'bar_id' => App\Bar::all()->random()->id,
     ];
 });

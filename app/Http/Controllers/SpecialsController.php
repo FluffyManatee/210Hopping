@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Special;
+use Illuminate\Support\Facades\Auth;
 
 class SpecialsController extends Controller
 {
@@ -32,11 +33,11 @@ class SpecialsController extends Controller
 
 		$special = new Special();
 		// Will change based on view
-		$special->bar_id = $request->get('bar_id');
+		$special->bar_id = '1';
 		//
 		$special->title = $request->get('title');
 		$special->content = $request->get('content');
-		$special->timestamp();
+		$special->created_by = Auth::user()->id;
 		$special->save();
 		session()->flash('success', 'Your post was created successfully!');
 		return redirect()->action('SpecialsController@index');
@@ -56,7 +57,7 @@ class SpecialsController extends Controller
 
 	public function edit($id)
 	{
-		$special = Sepcial::find($id);
+		$special = Special::find($id);
 		if (!$special) {
 			abort(404);
 		}
