@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Bar;
+use App\Hopper;
 
 class GameplansController extends Controller
 {
@@ -71,6 +72,17 @@ class GameplansController extends Controller
 
         session()->flash('success', 'Your gameplan was created successfully!');
         return redirect()->action('GameplansController@show', $gameplan->id);
+    }
+
+    public function addHopper($gameplanid)
+    {
+        session()->flash('fail', 'You did NOT join the Gameplan. Please fix errors.');
+        $hopper = new Hopper();
+        $hopper->gameplan_id = $gameplanid;
+        $hopper->hopper_id = Auth::id();
+        $hopper->save();
+        dd($hopper);
+
     }
 
     /**
