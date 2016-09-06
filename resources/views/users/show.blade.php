@@ -35,7 +35,8 @@
 				{{ $review->content }}
 			</div>
 			Was this review helpful?
-			<div data-value="{{ $review->id }}" class="upvote">Yes</div> / <div data-value="{{ $review->id }}" class="downvote">No</div> {{ $review->totalVotes() }}
+			<div role="button" data-value="{{ $review->id }}" class="upvote">Yes</div> / <div role="button" data-value="{{ $review->id }}" class="downvote">No</div> 
+			<div id="{{ $review->id }}">{{ $review->totalVotes() }}</div>
 			<hr>
 			@endforeach
 		</div>
@@ -47,7 +48,7 @@
 <script>
 	$('.upvote').click(function(){
 		console.log($(this).data('value'));
-		$.ajax('votes/create', {
+		$.ajax('/votes/create', {
 			type: "POST",
 			data: {
 				vote: 1,
@@ -68,7 +69,7 @@
 
 	$('.downvote').click(function(){
 		console.log($(this).data('value'));
-		$.ajax('votes/create', {
+		$.ajax('/votes/create', {
 			type: "POST",
 			data: {
 				vote: 0,

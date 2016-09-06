@@ -39,4 +39,4 @@ Route::get('/nearby/{latitude}/{longitude}', 'BarsController@nearby');
 Route::get('/search', 'BarsController@search');
 Route::get('/recent', 'BarsController@recent');
 
-Route::post('votes/create', 'VotesController@vote');
+Route::post('/votes/create', 'VotesController@vote');
