@@ -5,16 +5,22 @@
     <h1><a href="{{ action('BarsController@show', $event->bar->id) }}"> {{ $event->bar->name }}</a></h1>
     <h2>{{ $event->date->format('l, F jS Y') }}</h2>
     <h2>{{ $event->title }}</h2>
-    <h5><img src="{{$event->event_pic}}"></h5>
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <a href="{{ $event->event_pic }}" class="thumbnail">
+                <img src="{{$event->event_pic}}">
+            </a>
+        </div>
+    </div>
     {{ $event->content }}
     <h3>Submitted by:</h3>
     <h5>{{ $event->user->first_name }} {{ $event->user->last_name }}</h5>
 
-@if(Auth::user()->id == $event->created_by)
+@if((Auth::user()) && (Auth::user()->id == $event->created_by))
     <div>
-        <a class="btn btn-success" href="{{action('EventsController@edit', $event->id) }}">Edit Post</a>
+        <a class="btn btn-success" href="{{action('EventsController@edit', $event->id) }}">Edit Event</a>
         <form method="POST" action="{{action('EventsController@destroy', $event->id) }}">
-            <input type="submit" class="btn btn-danger" value="Delete">
+            <input type="submit" class="btn btn-danger" value="Delete Event">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
         </form>
