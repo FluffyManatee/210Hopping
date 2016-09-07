@@ -48,9 +48,7 @@
 					<span id="nav-text">Search</span>
 				</a>
 				<a href="/" class="btn btn-default nav-home" role="group" aria-label="home">
-					<i class="fa fa-home fa-4x" aria-hidden="true"></i>
-					<br>
-					<span id="nav-text">Home</span>
+					<img id="home-king" src="/img/210hopper-kangaroo.png">
 				</a>
 				<a href="/recent" class="btn btn-default nav-activity" role="group" aria-label="activity">
 					<i class="fa fa-bolt fa-2x" aria-hidden="true"></i>

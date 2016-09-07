@@ -1,126 +1,178 @@
-@font-face {
+/*@font-face {
 	font-family: DenseRegular;
 	src: url('../font/Dense-Regular.otf');
-}
+	}*/
 
-body {
-    font-family: DenseRegular, sans-serif;
-    padding-top: 70px;
-}
-
-h1 {
-    font-size: 50px;
-}
-
-h2, p, strong {
-    font-size: 36px;
-}
-
-.navigation#top {
-	position: relative;
-	top: 0;
-	height: 6vh;
-}
-.navigation#bottom {
-	position: fixed;
-	bottom: 0px;
-	height: 10vh;
-}
-.nav-nearby.nav-search.nav-home.nav-activity.nav-more {
-	height: 100%;
-	text-align: center;
-}
-
-#nav-text {
-    font-size: larger;
-}
-.feature-box {
-	height: 15vh;
-	width: 90%;
-	border: 1px solid black;
-	border-radius: 3px;
-	padding: 5px;
-}
-.carousel-image-container, .carousel-caption {
-	height: 20vh;
-}
-@media only screen and (min-width: 768px) {
-	.carousel-image-container, .carousel-caption {
-		height: 45vh;
+	body {
+		/*    font-family: DenseRegular, sans-serif;*/
+		padding-top: 70px;
+		background-color: #ECF0FB;
+		color: #353432;
 	}
-}
-.carousel img, .carousel-caption {
-	margin: 0 auto;
-	object-position: 50% 50%;
-	object-fit: cover;
-}
+	a {
+		color: #1496D2;
+	}
+	hr {
+		background-color: #818181;
+		border-top: solid 1px #B5B5B5;
+	}
+	.navigation#top {
+		position: relative;
+		top: 0;
+		min-height: 6vh;
+		background-color: #353432;
+		color: #EDEDED;
+	}
+	.navbar {
+		background-color: #353432;
+		border-color: #353432;
+	}
+	.navigation#bottom {
+		position: fixed;
+		bottom: 0px;
+		min-height: 10vh;
+		color: #000;
+		font-size: .9em;
+	}
+	.nav-nearby.nav-search.nav-home.nav-activity.nav-more {
+		height: 100%;
+		text-align: center;
+	}
+	.carousel-control {
+		background-image: none !important;
+	}
 
-.carousel-caption {
-    top: 0;
-    bottom: auto;
-}
+	#nav-text {
+		font-size: 1em;
+	}
+	.feature-box {
+		height: 15vh;
+		width: 90%;
+		border: 1px solid black;
+		border-radius: 3px;
+		padding: 5px;
+	}
+	.carousel-image-container, .carousel-caption {
+		height: 20vh;
+	}
+	#home-king {
+		height: 8vh;
+		position: relative;
+		margin: 0 auto;
+	}
+	@media only screen and (min-width: 768px) {
+		.carousel-image-container, .carousel-caption {
+			height: 45vh;
+		}
+		#home-king {
+			height: 15vh;
+		}
+		.navigation#bottom {
+			display: none;
+		}
+		hr {
+			background-color: #818181;
+			border-top: solid 1px #B5B5B5;
+		}
+	}
+	.carousel img, .carousel-caption {
+		margin: 0 auto;
+		object-position: 50% 50%;
+		object-fit: cover;
+	}
 
-.events-slider {
-	cursor: pointer;
-}
-.bottom-nav-spacer {
-	min-height: 20vh;
-}
+	.carousel-caption {
+		top: 0;
+		bottom: auto;
+	}
 
-#dropzone {
-	display: none;
-}
-.search-form {
-	display: none;
-}
-.features-select {
-	display: none;
-}
-.beer-rating {
-	padding: 0;
-	font-size: 1.25em;
-	font-family: FontAwesome;
-	display: inline-block;
-	content: "\f005";
-	color: #FFD700;
-}
-.user-page-review-info{
-	font-size: small;
-}
-/****** Style Star Rating Widget *****/
-.rating { 
-	border: none;
-	float: left;
-	padding-bottom: 10px;
-}
+	.events-slider {
+		cursor: pointer;
+	}
+	.bottom-nav-spacer {
+		min-height: 20vh;
+	}
 
-.rating > input { 
-	display: none; 
-} 
-.rating > label:before { 
-	margin: 5px;
-	font-size: 1.25em;
-	font-family: FontAwesome;
-	font-style: normal;
-	display: inline-block;
-	content: "\f005";
-}
-.rating > .half:before { 
-	content: "\f089";
-	position: absolute;
-}
+	#dropzone {
+		display: none;
+	}
+	.search-form {
+		display: none;
+	}
+	.features-select {
+		display: none;
+	}
+	.beer-rating {
+		padding: 0;
+		font-size: 1.25em;
+		font-family: FontAwesome;
+		display: inline-block;
+		content: "\f005";
+		color: #FFC100;
+	}
+	.user-page-review-info{
+		font-size: small;
+	}		
 
-.rating > label { 
-	color: #ddd; 
-	float: right; 
-}
-/***** CSS Magic to Highlight Stars on Hover *****/
+	/* overriding bs colors */
+	.btn-default {
+		background-color: #D4D8E1;
+	}
+	.btn-default:hover {
+		background-color: #B0B3BB;
+	}
+	.navigation#bottom.btn-default {
+		background-color: ;
+	}
+	.btn-primary {
+		background-color: #1496D2;
+		border-color: #1284B8;
+	}
+	.btn-primary:hover {
+		background-color: #1284B8;
+		border-color: #		border-color: #1284B8;;
+	}
+	.nav-tabs>li>a:hover {
+		background-color: #D4D8E1;
+	}
+	.nav-tabs>li>a:active {
+		background-color: #black;
+	}
 
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+	/****** Style Star Rating Widget *****/
+	.rating { 
+		border: none;
+		float: left;
+		padding-bottom: 10px;
+	}
 
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+	.rating > input { 
+		display: none; 
+	} 
+	.rating > label:before { 
+		margin: 5px;
+		font-size: 1.25em;
+		font-family: FontAwesome;
+		font-style: normal;
+		display: inline-block;
+		content: "\f005";
+	}
+	.rating > .half:before { 
+		content: "\f089";
+		position: absolute;
+	}
+
+	.rating > label { 
+		color: #ddd; 
+		float: right; 
+	}
+	/***** CSS Magic to Highlight Stars on Hover *****/
+
+	.rating > input:checked ~ label, /* show gold star when clicked */
+	.rating:not(:checked) > label:hover, /* hover current star */
+	.rating:not(:checked) > label:hover ~ label { color: #FFC100;  } /* hover previous stars in list */
+
+	.rating > input:checked + label:hover, /* hover current star when changing rating */
+	.rating > input:checked ~ label:hover,
+	.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+	.rating > input:checked ~ label:hover ~ label { color: #FFD44C;  }
