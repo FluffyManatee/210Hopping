@@ -110,7 +110,7 @@
 			var geoOptions = {
 				timeout: 10 * 1000,
 				maximumAge: 5 * 60 * 1000
-			}
+			};
 			var geoSuccess = function(position) {
 				startPos = position;
 				// document.getElementById('startLat').innerHTML = startPos.coords.latitude;
@@ -136,23 +136,23 @@
 		{{-- search button toggle--}}
 		$('.search').click(function(e){
 			e.preventDefault();
-			$('.search-form').slideToggle('slow');
+			$('.search-form').slideToggle('fast');
 		});
 		{{-- filter button toggle--}}
 		$('.filter').click(function(){
-			$('.features-select').slideToggle('slow').removeClass('hidden');
+			$('.features-select').slideToggle('fast').removeClass('hidden');
 		});
 
 
 		{{-- more button toggle--}}
 		$('#more').click(function(e){
 			e.preventDefault();
-			$('#more-select').slideToggle('slow').removeClass('hidden');
+			$('#more-select').slideToggle('fast').removeClass('hidden');
 		});
 		{{-- exit button toggle--}}
 		$('#exit').click(function(e){
 			e.preventDefault();
-			$('#more-select').slideToggle('slow').addClass('hidden');
+			$('#more-select').slideToggle('fast').addClass('hidden');
 		});
 
 	</script>

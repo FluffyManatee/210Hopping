@@ -9,7 +9,7 @@ class Hopper extends Model
     protected $table = 'hoppers';
 
     public function gameplan(){
-        return $this->belongsTo(Gameplan::class, 'id');
+        return $this->belongsTo(Gameplan::class, 'gameplan_id');
 
     }
 

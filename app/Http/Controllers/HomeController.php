@@ -33,6 +33,20 @@ class HomeController extends Controller
 
     }
 
+    public function recent()
+    {
+        $bars = Bar::limit(10)->orderBy('created_at', 'desc')->get();
+        $events = Event::limit(10)->orderBy('created_at', 'desc')->get();
+        $specials = Special::limit(10)->orderBy('created_at', 'desc')->get();
+        $recent['bars'] = $bars;
+        $recent['events'] = $events;
+        $recent['specials'] = $specials;
+//        $recent = Bar::recentBarsSpecialsEvents();
+        $data = [
+            'recent' => $recent
+        ];
+        return view('recent', $data);
+    }
     /**
      * Show the form for creating a new resource.
      *

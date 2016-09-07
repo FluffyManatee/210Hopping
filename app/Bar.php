@@ -48,6 +48,13 @@ class Bar extends Model
 
     }
 
+    public static function barOptions()
+    {
+        $bars = Bar::all();
+        $bars = $bars->pluck('name', 'id');
+        return $bars;
+    }
+
     public function getDistance($userLat, $userLon, $barLat, $barLon)
     {
 //      earth radius in miles
@@ -75,18 +82,18 @@ class Bar extends Model
     }
 
 
-    public static function recentBarsSpecialsEvents()
-    {
-        //change limit to increase results
-        // infinite scroll??
-        $bars = Bar::limit(10)->orderBy('created_at', 'desc')->get();
-        $events = Event::limit(10)->orderBy('created_at', 'desc')->get();
-        $specials = Special::limit(10)->orderBy('created_at', 'desc')->get();
-        $recent['bars'] = $bars;
-        $recent['events'] = $events;
-        $recent['specials'] = $specials;
-        return $recent;
-    }
+//    public static function recentBarsSpecialsEvents()
+//    {
+//        //change limit to increase results
+//        // infinite scroll??
+//        $bars = Bar::limit(10)->orderBy('created_at', 'desc')->get();
+//        $events = Event::limit(10)->orderBy('created_at', 'desc')->get();
+//        $specials = Special::limit(10)->orderBy('created_at', 'desc')->get();
+//        $recent['bars'] = $bars;
+//        $recent['events'] = $events;
+//        $recent['specials'] = $specials;
+//        return $recent;
+//    }
 
     public function averageBarRating()
     {
