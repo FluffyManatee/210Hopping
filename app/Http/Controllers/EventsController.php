@@ -47,7 +47,7 @@ class EventsController extends Controller
 		$event->created_by = Auth::user()->id;
 		$event->save();
 		session()->flash('success', 'Your event was created successfully!');
-		return redirect()->action('EventsController@index');
+		return redirect()->action('EventsController@show', $event->id);
     }
 
     public function show($id)

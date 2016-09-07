@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "jstayton/google-maps-geocoder": "^2.4",
-        "willdurand/geocoder": "^3.3"
+        "willdurand/geocoder": "^3.3",
+        "php-http/guzzle6-adapter": "^1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

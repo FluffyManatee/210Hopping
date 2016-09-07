@@ -6,6 +6,7 @@
             <h4 class="modal-title">Add an event</h4>
             <form method="POST" action="{{ action('SpecialsController@store') }}">
                 {{ csrf_field() }}
+                <input hidden name="bar_id" value="{{ $id }}">
                 <div class="form-group">
                     <input type="text" class="form-control" name="title" id="title" placeholder="Title">
                     @include('forms.error', ['field' => 'title'])
