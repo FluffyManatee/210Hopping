@@ -4,9 +4,10 @@
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
             <h4 class="modal-title">create a gameplan</h4>
-            <form method="POST" action="{{ action('GameplansController@update') }}" id="gameplanForm">
+            <form method="POST" action="{{ action('GameplansController@update', $gameplan->id) }}" id="gameplanForm">
                 <input type="hidden" name="hidden-bar-input" id="hidden-bar-input">
                 {{ csrf_field() }}
+                {{ method_field('PUT') }}
                 <div class="form-group">
                     <input type="text" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD" value="{{ $gameplan->date }}">
                     @include('forms.error', ['field' => 'date'])
@@ -55,7 +56,7 @@
                     </select>
                     @include('forms.error', ['field' => 'bar 5'])
                 </div>
-                {{--<button type="submit" class ="btn btn-primary pull-right">UPDATE</button>--}}
+                <button type="submit" class ="btn btn-primary pull-right">UPDATE</button>
             </form>
         </div>
     </div>

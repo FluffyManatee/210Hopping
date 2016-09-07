@@ -150,11 +150,8 @@ class GameplansController extends Controller
         }
         $gameplan->date = $request->get('date');
         $bars = explode(',', $request->get('hidden-bar-input'));
-
-//        ======================================================================================
-        //// need to go through and find all the bars associated with game plan and delete them /////////////
-//     ////  uncomment both save()'s when it works
-//        ======================================================================================
+        $barsCollection = GameplanBar::where('gameplan_id', '=', $gameplan->id);
+        $barsCollection->delete();
         foreach($bars as $key => $bar){
             $gpbar = new GameplanBar();
             if($bar == ''){
@@ -162,9 +159,9 @@ class GameplansController extends Controller
             }
             $gpbar->gameplan_id = $gameplan->id;
             $gpbar->bar_id = $bar;
-//            $gpbar->save();
+            $gpbar->save();
         }
-//        $gameplan->save();
+        $gameplan->save();
         session()->flash('success','Gameplan ' . $id . ' was updated successfully!');
         return redirect()->action('GameplansController@show', $gameplan->id);
     }
@@ -177,6 +174,19 @@ class GameplansController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gameplan = Gameplan::find($id);
+        if(!$gameplan){
+            Log::info("Post with ID $id cannot be found.");
+            abort(404);
+        }
+        // must destroy all hoppers and bars if you want to delete a gameplan
+        $hoppers = Hopper::where('gameplan_id', '=', $id);
+        $gpbars = GameplanBar::where('gameplan_id', '=', $id);
+        $hoppers->delete();
+        $gpbars->delete();
+        $gameplan->delete();
+        session()->flash('message', 'Deletion Successful.');
+        // figure out a good place to redirect
+        return redirect()->action('HomeController@index');
     }
 }
