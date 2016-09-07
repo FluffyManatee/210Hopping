@@ -134,14 +134,14 @@ class BarsController extends Controller
 		];
 		return view('bars.results', $data);
 	}
-
-	public function recent()
-	{
-		$recent = Bar::recentBarsSpecialsEvents();
-        $data = [
-		'recent' => $recent
-		];
-		return view('bars.recent', $data);
-	}
+//
+//	public function recent()
+//	{
+//		$recent = Bar::recentBarsSpecialsEvents();
+//        $data = [
+//		'recent' => $recent
+//		];
+//		return view('recent', $data);
+//	}
 }
 
