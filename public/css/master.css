@@ -12,7 +12,10 @@
 	a {
 		color: #1496D2;
 	}
-
+	hr {
+		background-color: #818181;
+		border-top: solid 1px #B5B5B5;
+	}
 	.navigation#top {
 		position: relative;
 		top: 0;
@@ -29,6 +32,7 @@
 		bottom: 0px;
 		min-height: 10vh;
 		color: #000;
+		font-size: .9em;
 	}
 	.nav-nearby.nav-search.nav-home.nav-activity.nav-more {
 		height: 100%;
@@ -39,7 +43,7 @@
 	}
 
 	#nav-text {
-		font-size: larger;
+		font-size: 1em;
 	}
 	.feature-box {
 		height: 15vh;
@@ -65,6 +69,10 @@
 		}
 		.navigation#bottom {
 			display: none;
+		}
+		hr {
+			background-color: #818181;
+			border-top: solid 1px #B5B5B5;
 		}
 	}
 	.carousel img, .carousel-caption {
@@ -126,6 +134,9 @@
 	}
 	.nav-tabs>li>a:hover {
 		background-color: #D4D8E1;
+	}
+	.nav-tabs>li>a:active {
+		background-color: #black;
 	}
 
 	/****** Style Star Rating Widget *****/
