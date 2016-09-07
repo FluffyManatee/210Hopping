@@ -102,11 +102,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	@yield('scripts')
 	<script>
-
-		window.onload = function() {
+		{{--asks for location on nearby button click and then sends user to nearby page--}}
+		$('#nearby').click(function(e) {
+			e.preventDefault();
 			var startPos;
 			var lat;
 			var lon;
+			var windowLocation = 'http://210hopping.dev/nearby/';
 			var geoOptions = {
 				timeout: 10 * 1000,
 				maximumAge: 5 * 60 * 1000
@@ -118,7 +120,10 @@
 				lat = startPos.coords.latitude;
 				lon = startPos.coords.longitude;
 				console.log(lat, lon);
-				$('#nearby').attr('href', '/nearby/' + lat + '/' + lon);
+				windowLocation = windowLocation + lat + '/' + lon;
+				window.location.href = windowLocation;
+//				$('#nearby').attr('href', '/nearby/' + lat + '/' + lon);
+
 				// latLongObject = new google.maps.LatLng(lat,lon);
 			};
 
@@ -131,7 +136,7 @@
 				//   3: timed out
 			};
 			navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-		};
+		});
 
 		{{-- search button toggle--}}
 		$('.search').click(function(e){
