@@ -50,4 +50,6 @@
 	</div>
 </div>
 @stop
+@section('scripts')
 @include('partials.vote-ajax')
+@stop

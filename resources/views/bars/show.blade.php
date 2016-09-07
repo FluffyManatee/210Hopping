@@ -110,7 +110,6 @@
 	</div>
 </div>
 @stop
-@include('partials.vote-ajax')
 @section('scripts')
 <script>
 	$('#myTabs a').click(function (e) {
@@ -125,4 +124,5 @@
 		$('#dropzone').slideToggle('slow');
 	});
 </script>
+@include('partials.vote-ajax')
 @stop
