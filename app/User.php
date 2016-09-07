@@ -83,6 +83,8 @@ CanResetPasswordContract
 
     }
 ///////////////
+
+
     public static function searchBy($searchTerm)
     {
         $query = static::where('users.first_name', 'LIKE', "%$searchTerm%")

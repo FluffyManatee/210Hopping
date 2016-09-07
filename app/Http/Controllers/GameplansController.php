@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gameplan;
 use App\GameplanBar;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -18,7 +19,11 @@ class GameplansController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     *
      */
+
+
     public function index()
     {
 
@@ -31,12 +36,13 @@ class GameplansController extends Controller
      */
     public function create()
     {
-        $bars = Bar::all();
-        $bars = $bars->pluck('name', 'id');
-        $bars = $bars->all();
+//        $bars = Bar::all();
+//        $bars = $bars->pluck('name', 'id');
+//        $bars = $bars->all();
 //        dd($bars);
+        $bars = Bar::barOptions();
         $data = [
-            'bars' => $bars
+            'bars' =>  $bars
         ];
         return view('gameplans.create', $data);
     }
@@ -56,10 +62,12 @@ class GameplansController extends Controller
         $gameplan = new Gameplan();
         $gameplan->author_id = Auth::id();
         $gameplan->date = $request->get('date');
-//        dd(Auth::id());
         $gameplan->save();
+        $hopper = new Hopper();
+        $hopper->hopper_id = Auth::id();
+        $hopper->gameplan_id = $gameplan->id;
+        $hopper->save();
         $bars = explode(',', $request->get('hidden-bar-input'));
-//        dd($gameplan->id);
         foreach($bars as $key => $bar){
             $gpbar = new GameplanBar();
             if($bar == ''){
@@ -77,12 +85,14 @@ class GameplansController extends Controller
     public function addHopper($gameplanid)
     {
         session()->flash('fail', 'You did NOT join the Gameplan. Please fix errors.');
-        $hopper = new Hopper();
-        $hopper->gameplan_id = $gameplanid;
-        $hopper->hopper_id = Auth::id();
+        Model::unguard();
+        $hopper = Hopper::firstOrCreate([
+            'gameplan_id' => $gameplanid,
+            'hopper_id' => Auth::id(),
+        ]);
         $hopper->save();
-        dd($hopper);
-
+        Model::reguard();
+        return redirect()->action('GameplansController@show', $gameplanid);
     }
 
     /**
@@ -112,11 +122,13 @@ class GameplansController extends Controller
     public function edit($id)
     {
         $gameplan = Gameplan::find($id);
+        $bars = Bar::barOptions();
         if (!$gameplan) {
             abort(404);
         }
         $data = [
-            'gameplan' => $gameplan
+            'gameplan' => $gameplan,
+            'bars' => $bars
         ];
         return view('gameplans.edit', $data);
     }
@@ -137,9 +149,17 @@ class GameplansController extends Controller
             abort(404);
         }
         $gameplan->date = $request->get('date');
-        foreach($request->get('bars') as $key => $bar){
-            $column = "bar$key";
-            $gameplan->$column = $bar;
+        $bars = explode(',', $request->get('hidden-bar-input'));
+        $barsCollection = GameplanBar::where('gameplan_id', '=', $gameplan->id);
+        $barsCollection->delete();
+        foreach($bars as $key => $bar){
+            $gpbar = new GameplanBar();
+            if($bar == ''){
+                break;
+            }
+            $gpbar->gameplan_id = $gameplan->id;
+            $gpbar->bar_id = $bar;
+            $gpbar->save();
         }
         $gameplan->save();
         session()->flash('success','Gameplan ' . $id . ' was updated successfully!');
@@ -154,6 +174,19 @@ class GameplansController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $gameplan = Gameplan::find($id);
+        if(!$gameplan){
+            Log::info("Post with ID $id cannot be found.");
+            abort(404);
+        }
+        // must destroy all hoppers and bars if you want to delete a gameplan
+        $hoppers = Hopper::where('gameplan_id', '=', $id);
+        $gpbars = GameplanBar::where('gameplan_id', '=', $id);
+        $hoppers->delete();
+        $gpbars->delete();
+        $gameplan->delete();
+        session()->flash('message', 'Deletion Successful.');
+        // figure out a good place to redirect
+        return redirect()->action('HomeController@index');
     }
 }
