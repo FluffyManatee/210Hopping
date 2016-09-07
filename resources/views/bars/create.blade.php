@@ -3,31 +3,31 @@
 @section('content')
 <div class="row">
 	<div class="col-xs-8 col-xs-offset-2">
-		<h4 class="modal-title">create a bar</h4>
+		<h4 class="modal-title">Create a bar</h4>
 		<form method="POST" action="{{ action('BarsController@store') }}">
 			{{ csrf_field() }}
 			<div class="form-group">
-				<input type="text" class="form-control" name="name" id="name" placeholder="bar name">
+				<input type="text" class="form-control" name="name" id="name" placeholder="Bar name">
 				@include('forms.error', ['field' => 'name'])
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control" name="address" id="address" placeholder="bar address">
+				<input type="text" class="form-control" name="address" id="address" placeholder="Bar address">
 				@include('forms.error', ['field' => 'address'])
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control" name="phone" id="phone" placeholder="phone number">
+				<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone number">
 				@include('forms.error', ['field' => 'phone'])
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control" name="website" id="website" placeholder="bar website">
+				<input type="text" class="form-control" name="website" id="website" placeholder="Bar website">
 				@include('forms.error', ['field' => 'website'])
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control" name="email" id="email" placeholder="bar email">
+				<input type="text" class="form-control" name="email" id="email" placeholder="Bar email">
 				@include('forms.error', ['field' => 'email'])
 			</div>
 			<select name="type" id="type">
-				<option value="">bar type...</option>
+				<option value="">Bar type...</option>
 				<option value="pub">Pub</option>
 				<option value="dive">Dive</option>
 				<option value="club">Club</option>
@@ -38,6 +38,7 @@
 				<option value="taproom">Taproom</option>
 				<option value="cocktail">Cocktail</option>
 			</select>
+			@include('forms.error', ['field' => 'type'])
 			<button type="submit" class ="btn btn-primary pull-right">CREATE</button>
 		</form>
 	</div>

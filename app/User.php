@@ -21,7 +21,7 @@ CanResetPasswordContract
     'first_name' => 'required|max:255',
     'last_name' => 'required|max:255',
     'email' => 'required|email|max:244|unique:users',
-    'password' => 'required|min:6'
+    'password' => 'required|between:6,60|confirmed'
     ];
     public static $updateRules = 
     [
@@ -31,7 +31,7 @@ CanResetPasswordContract
     ];
 
     public static $passwordRules = [
-    'password' => 'required|min:6'
+    'password' => 'required|between:6,60|confirmed'
     ];
 
     public static function isEmailDuplicate($email) {

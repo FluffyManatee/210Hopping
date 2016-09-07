@@ -73,12 +73,12 @@ class BarsController extends Controller
 
 	public function update(Request $request, $id)
 	{
-		session()->flash('fail', $bar->name . ' was NOT updated. Please fix errors.');
-		$this->validate($request, Bar::$rules);
 		$bar = Bar::find($id);
 		if (!$bar) {
 			abort(404);
 		}
+		session()->flash('fail', $bar->name . ' was NOT updated. Please fix errors.');
+		$this->validate($request, Bar::$rules);
 		$bar->type = $request->get('type');
 		$bar->name = $request->get('name');
 		$bar->address = $request->get('address');

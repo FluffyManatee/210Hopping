@@ -45,13 +45,14 @@
 	@if (Auth::check())
 	<a class="btn btn-default" href="/reviews/create?bar_id={{ $bar->id }}">Write a Review</a>
 	<button id="image-upload" type="button" class="btn btn-default">Upload an image</button>
-	@endif
 	<div id="dropzone">
 		<form action="{{ action('PicturesController@store', $bar->id) }}" method="POST" enctype="multipart/form-data" class="dropzone">
 			{{ csrf_field() }}
 		</form>
 	</div>
 	<a class="btn btn-default" href="/events/create?bar_id={{ $bar->id }}">Create an event</a>
+		<a class="btn btn-default" href="{{ action('BarsController@edit', $bar->id) }}">Edit bar info</a>
+	@endif
 	<div class="row" id="bar-reviews">
 		<div class="col-xs-12">
 			<!-- Nav tabs -->
@@ -68,7 +69,7 @@
 					<div class="row">
 						<div class="col-xs-3">
 							<img src="{{ $review->user->avatar }}" class="thumbnail responsive" height="60" width="60">
-							<h5>{{ $review->user->first_name }} {{ $review->user->last_name }}</h5>
+							<h5><a href="{{ action('UserController@show', $review->user->id) }}">{{ $review->user->first_name }} {{ $review->user->last_name }}</a></h5>
 							user score
 							<br>
 							helpful?
@@ -82,7 +83,22 @@
 					<hr>
 					@endforeach
 				</div>
-				<div role="tabpanel" class="tab-pane fade" id="specials">test</div>
+				<div role="tabpanel" class="tab-pane fade" id="specials">
+					@foreach ($bar->specials as $special)
+						<div class="row">
+							<div class="col-xs-3">
+								<h5><a href="{{ action('SpecialsController@show', $special->id) }}">{{ $special->title }}</a></h5>
+							</div>
+							<div class="col-xs-9">
+								<p>{{ $special->content }}</p>
+							</div>
+						</div>
+						<hr>
+					@endforeach
+					@if(Auth::user())
+						<a href="/specials/create?bar_id={{ $bar->id }}">Add a special...</a>
+					@endif
+				</div>
 				<div role="tabpanel" class="tab-pane fade" id="bar-features">
 					@foreach ($bar->features as $feature)
 					{!! $feature->featureIcons() !!}
