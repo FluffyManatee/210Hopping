@@ -26,6 +26,6 @@
         </form>
     </div>
 @endif
-    <small><a class="btn btn-info" href="{{ action('EventsController@index') }}">Return to events</a></small>
+    <small><a class="btn btn-info" href="{{ action('EventsController@index') }}">Go to events</a></small>
 </div>
 @stop

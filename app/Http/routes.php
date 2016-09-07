@@ -33,6 +33,8 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::get('users/password/{id}', 'UserController@editPassword');
+Route::put('users/password/{id}', 'UserController@updatePassword');
 
 Route::get('/nearby/{latitude}/{longitude}', 'BarsController@nearby');
 Route::get('/search', 'BarsController@search');

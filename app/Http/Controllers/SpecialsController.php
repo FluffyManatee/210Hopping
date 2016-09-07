@@ -21,9 +21,9 @@ class SpecialsController extends Controller
 		return view ('specials.index', $data);
 	}
 
-	public function create()
+	public function create(Request $request)
 	{
-		return view('specials.create');
+		return view('specials.create', ['id' => $request->get('bar_id')]);
 	}
 
 	public function store(Request $request)
@@ -33,7 +33,7 @@ class SpecialsController extends Controller
 
 		$special = new Special();
 		// Will change based on view
-		$special->bar_id = '1';
+		$special->bar_id = $request->get('bar_id');
 		//
 		$special->title = $request->get('title');
 		$special->content = $request->get('content');

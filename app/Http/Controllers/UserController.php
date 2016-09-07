@@ -8,9 +8,16 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Review;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
     public function index()
     {
@@ -60,12 +67,12 @@ class UserController extends Controller
 			abort(404);
 		}
 
-		$user->name = $request->input('first_name');
-		$user->name = $request->input('last_name');
+		$user->first_name = $request->input('first_name');
+		$user->last_name = $request->input('last_name');
 		$user->email = $request->input('email');
 		$user->save();
 		session()->flash('success', 'Your information was updated successfully!');
-		return redirect()->action('UserController@index', $user->id);
+		return redirect()->action('UserController@show', $user->id);
     }
 
 	public function editPassword($id)
@@ -73,12 +80,14 @@ class UserController extends Controller
 		$user = User::find($id);
 		if (!$user) {
 			abort(404);
+		} elseif ($user->id != \Auth::user()->id) {
+			return redirect()->action('BarsController@index');
 		}
 
 		$data = [
 			'user' => $user
 		];
-		return view('user.password', $data);
+		return view('users.password', $data);
 	}
 
 	public function updatePassword(Request $request, $id) {
@@ -91,7 +100,7 @@ class UserController extends Controller
 		$user->password = Hash::make($request->input('password'));
 		$user->save();
 		session()->flash('success', 'Your password was updated successfully!');
-		return redirect()->action('UserController@index', $user->id);
+		return redirect()->action('UserController@show', $user->id);
 	}
 
     public function destroy($id)
@@ -110,7 +119,7 @@ class UserController extends Controller
     {
         $searchTerm = $request->input('searchTerm');
         $data = User::searchBy($searchTerm);
-        $data->orderBy('name', 'asc');
+        $data->orderBy('first_name', 'asc');
         return view('users.index')->with('data', $data);
 //        need a users index plz and ty
 
