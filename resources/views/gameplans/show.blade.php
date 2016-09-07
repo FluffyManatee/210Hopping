@@ -7,10 +7,10 @@
         <h3>Gameplan for {{ $gameplan->date }}</h3>
         <h4>Head Hopper:</h4>
         <h5>{{ $gameplan->author->first_name . ' ' . $gameplan->author->formatLastName() }}</h5>
-        <a href="addHopper/{{ $gameplan->id }}"><h5>Join Gameplan</h5></a>
         {{--<h2>{{ $gameplan->date()->format('l, F jS Y') }}</h2>--}}
+        <h4>Hop-Stops:</h4>
         @foreach($gameplan->bars as $gpbar)
-        <h3>{{ $gpbar->bar->name }}</h3>
+        <a href="/bars/{{ $gpbar->bar->id }}"><h5>{{ $gpbar->bar->name }}</h5></a>
         <div class="row">
             <div class="col-xs-6 col-md-3">
                 <a href="{{ $gpbar->bar->pictures->first()->pic_url }}" class="thumbnail">
@@ -24,6 +24,9 @@
         @foreach($gameplan->hoppers as $hopper)
             <h5>{{ $hopper->user->first_name . ' ' . $hopper->user->formatLastName() }}</h5>
         @endforeach
+        <div>
+            <a class="btn btn-warning" href="addHopper/{{ $gameplan->id }}">Join Gameplan</a>
+        </div>
         @if((Auth::user()) && (Auth::user()->id == $gameplan->author_id))
             <div>
                 <a class="btn btn-success" href="{{action('GameplansController@edit', $gameplan->id) }}">Edit Gameplan</a>
