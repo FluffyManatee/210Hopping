@@ -4,7 +4,7 @@
 	}*/
 
 	body {
-/*		font-family: DenseRegular, sans-serif;*/
+		/*		font-family: DenseRegular, sans-serif;*/
 		padding-top: 70px;
 		background-color: #ECF0FB;
 		color: #353432;
@@ -35,12 +35,10 @@
 		font-size: .9em;
 	}
 	@media only screen and (max-width: 768px) {
-		#header-logo {
-			display: none;
-		}
-		#desktop-nav {
-			display: none;
-		}
+		#header-logo,
+		.more-menu,
+		#desktop-nav,
+		.sidenav-content { display: none; }
 	}
 	.nav-nearby.nav-search.nav-home.nav-activity.nav-more {
 		height: 100%;
@@ -88,17 +86,53 @@
 		#desktop-nav .more-options {
 			margin-top: 1vh;
 		}
-		.more-options>a,
 		.more-options>.more-button { float: right; margin-top: -2vh; }
 		.more-button>i { margin: 3vh; }
 		.more-button:hover {
 			background-color: #262626;
 			background-clip: initial;
+			cursor: pointer;
 		}
 		#header-logo {
 			padding: .5vh;
 			margin-left: -5px;
 		}
+		.side-nav {
+			height: 100vh;
+			margin-top: 55px;
+			width: 0; /* 0 width - change this with JavaScript */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Stay on top */
+			top: 0;
+			right: 0;
+			background-color: rgba(15, 15, 15, .9); /* Black*/
+			overflow-x: hidden; /* Disable horizontal scroll */
+			padding-top: 60px; /* Place content 60px from the top */
+			/*transition: 0.5s;  0.5 second transition effect to slide in the sidenav */
+			padding: 0;
+		}
+		.side-nav li {
+			padding: 8px 8px 8px 32px;
+			text-decoration: none;
+			font-size: 20px;
+			color: #818181;
+			display: block;
+			transition: 0.3s;
+			cursor: pointer;
+		}
+		.sidenav-content{ padding-top: 20px }
+		.side-nav li:hover, 
+		.side-nav li:active, 
+		.offcanvas li:focus,
+		.side-nav li.active{ color: #f1f1f1; box-shadow: 0px 3px 5px #000; }
+		#more-bars,
+		#more-events,
+		#more-specials,
+		#more-gameplans { display:none; }
+		#more-bars>li,
+		#more-events>li,
+		#more-specials>li,
+		#more-gameplans>li { font-size: 15px; box-shadow: 0 0 0; }
 	}
 	.carousel img, .carousel-caption {
 		margin: 0 auto;

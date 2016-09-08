@@ -38,7 +38,7 @@
 				<option value="taproom">Taproom</option>
 				<option value="cocktail">Cocktail</option>
 			</select>
-			<div role="tabpanel" class="tab-pane fade in active form-group" id="filter">
+			<div class="" >
 				<input type="hidden" name="features" class="filters features">
 				<label>
 					<input type="checkbox" class="filter-value" value="smoking"> Smoking
@@ -47,7 +47,7 @@
 					<input type="checkbox" class="filter-value" value="food"> Kitchen
 				</label>
 				<label>
-					<input type="checkbox" class="filter-value" value="pet_friendly"> Pets
+					<input type="checkbox" class="filter-value" value="pet_friendly"> Pets Allowed
 				</label>
 				<label>
 					<input type="checkbox" class="filter-value" value="bikes"> Bike Racks
@@ -56,7 +56,7 @@
 					<input type="checkbox" class="filter-value" value="live_music"> Live Music
 				</label>
 				<label>
-					<input type="checkbox" class="filter-value" value="reservations"> Reservations
+					<input type="checkbox" class="filter-value" value="reservations"> Reservations Needed
 				</label>
 				<label>
 					<input type="checkbox" class="filter-value" value="tvs"> TVs
@@ -65,10 +65,10 @@
 					<input type="checkbox" class="filter-value" value="18+"> 18+
 				</label>
 				<label>
-					<input type="checkbox" class="filter-value" value="kids"> Kids
+					<input type="checkbox" class="filter-value" value="kids"> Kids Allowed
 				</label>
 				<label>
-					<input type="checkbox" class="filter-value" value="patio"> Patio
+					<input type="checkbox" class="filter-value" value="patio"> Outdoor Seating
 				</label>
 				<label>
 					<input type="checkbox" class="filter-value" value="pool"> Pool Tables
