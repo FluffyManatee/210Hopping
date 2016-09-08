@@ -29,12 +29,20 @@
 		{{ session('ERROR_MESSAGE') }}
 	</div>
 	@endif
+	<!-- side nav -->
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-3 more-menu pull-right" style="height: 100vh;margin-top: -15px;">
+			<div class="col-xs-3 side-nav pull-right" id="side-nav">
+				<div class="sidenav-content">
+					<a href="#">About</a>
+					<a href="#">Services</a>
+					<a href="#">Clients</a>
+					<a href="#">Contact</a>
+				</div>
 			</div>
 		</div>
 	</div>
+	<!-- end side nav -->
 	<!-- views will appear here --> 
 	@yield('content')
 	<!-- bottom navigation -->
@@ -174,9 +182,47 @@ $('.search-form').slideToggle('fast');
 			e.preventDefault();
 			$('#more-select').slideToggle('fast');
 		});
-		// desktop more toggle
-		$('.more-options').click(function(){
 
+		// desktop side-nav
+		var animating = false;
+		var opened = false;
+		$('.more-options').click(function() {
+			if (!animating && !opened) {
+				animating = true;
+				$('#side-nav').animate({
+					'width' : '250px'
+				}, 500, function() {
+					animating = false;
+					opened = true;
+				});
+			} else {
+				animating = true;
+				$('#side-nav').animate({
+					'width' : '0'
+				}, 500, function() {
+					animating = false;
+					opened = false;
+				});
+			}
+		})
+		// $('.more-options').click(function() {
+		// 	var side_nav = document.getElementById("side-nav");
+		// 	console.log(side_nav.style.width);
+		// 	if (side_nav.style.width == "0px" || side_nav.style.width == "") {
+		// 		console.log('if');
+		// 		side_nav.style.width = "250px";
+		// 		document.getElementById("main").style.marginLeft = "250px";
+		// 	} else {
+		// 		console.log('else');
+		// 		side_nav.style.width = "0";
+		// 		document.getElementById("main").style.marginLeft = "0";
+		// 	}
+		// 	});
+
+		/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+		$('.close-more').click(function() {
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("main").style.marginLeft = "0";
 		});
 
 	</script>
