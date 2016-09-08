@@ -6,15 +6,15 @@
         {{--code above is awesome this is the wrong place for it--}}
         <h3>Gameplan for {{ $gameplan->date }}</h3>
         <h4>Head Hopper:</h4>
-        <h5>{{ $gameplan->author->first_name . ' ' . $gameplan->author->formatLastName() }}</h5>
+        <h5>{{ $gameplan->author->first_name . ' ' . $gameplan->author->last_name }}</h5>
         {{--<h2>{{ $gameplan->date()->format('l, F jS Y') }}</h2>--}}
         <h4>Hop-Stops:</h4>
         @foreach($gameplan->bars as $gpbar)
         <a href="/bars/{{ $gpbar->bar->id }}"><h5>{{ $gpbar->bar->name }}</h5></a>
         <div class="row">
             <div class="col-xs-6 col-md-3">
-                <a href="{{ $gpbar->bar->pictures->first()->pic_url }}" class="thumbnail">
-                    <img src="{{ $gpbar->bar->pictures->first()->pic_url }}">
+                <a href="{{ $gpbar->bar->pictures->first()->pic_url or '' }}" class="thumbnail">
+                    <img src="{{ $gpbar->bar->pictures->first()->pic_url or '' }}">
                 </a>
             </div>
         </div>
