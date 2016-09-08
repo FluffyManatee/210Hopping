@@ -35,10 +35,28 @@
 		<div class="row">
 			<div class="col-xs-3 side-nav pull-right" id="side-nav">
 				<div class="sidenav-content">
-				<li>Bars</li>
-				<li>Events</li>
-				<li>Specials</li>
-				<li>Gameplans</li>
+					<li id="sidenav-bars">Bars</li>
+					<ul id="more-bars">
+						<li><a href="" class="nearby">Nearby</a></li>
+						<li><a href="/bars">Discover</a></li>
+						<li><a href="/bars">Top Rated</a></li>
+						<li><a href="/bars/create">List a Bar</a></li>
+					</ul>
+					<li id="sidenav-events">Events</li>
+					<ul id="more-events">
+						<li><a href="/events">All Events</a></li>
+						<li><a href="/events/create">Create an Event</a></li>
+					</ul>
+					<li id="sidenav-specials">Specials</li>
+					<ul id="more-specials">
+						<li><a href="/specials">All Specials</a></li>
+						<li><a href="/specials/create">List a Special</a></li>
+					</ul>
+					<li id="sidenav-gameplans">Gameplans</li>
+					<ul id="more-gameplans">
+						<li><a href="/gameplans">My Gameplans</a></li>
+						<li><a href="/gameplans/create">Create a Gameplan</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -52,7 +70,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="btn-group btn-group-justified navigation" id="bottom" role="group" aria-label="navigation">
-				<a href="" id="nearby" class="btn btn-default nav-nearby" role="group" aria-label="nearby">
+				<a href=""  class="nearby btn btn-default nav-nearby" role="group" aria-label="nearby">
 					<i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
 					<br>
 					<span id="nav-text">Nearby</span>
@@ -114,7 +132,7 @@
 	@yield('scripts')
 	<script>
 		{{--asks for location on nearby button click and then sends user to nearby page--}}
-		$('#nearby').click(function(e) {
+		$('.nearby').click(function(e) {
 			e.preventDefault();
 			var startPos;
 			var lat;
@@ -162,6 +180,7 @@ $('.search-form').slideToggle('fast');
 	$('.search-form').slideToggle('fast');
 }
 });
+
 		{{-- search tab search bar toggle--}}
 		$('#search').click(function(e){
 			$('#search').removeClass('hidden');
@@ -205,7 +224,23 @@ $('.search-form').slideToggle('fast');
 					opened = false;
 				});
 			}
-		})
+		});
+		$('#sidenav-bars').click(function() {
+			$('#more-bars').slideToggle();
+			$('#sidenav-bars').toggleClass('active')
+		});
+		$('#sidenav-events').click(function() {
+			$('#more-events').slideToggle();
+			$('#sidenav-events').toggleClass('active')
+		});
+		$('#sidenav-specials').click(function() {
+			$('#more-specials').slideToggle();
+			$('#sidenav-specials').toggleClass('active')
+		});
+		$('#sidenav-gameplans').click(function() {
+			$('#more-gameplans').slideToggle();
+			$('#sidenav-gameplans').toggleClass('active')
+		});
 		// $('.more-options').click(function() {
 		// 	var side_nav = document.getElementById("side-nav");
 		// 	console.log(side_nav.style.width);

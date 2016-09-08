@@ -123,8 +123,16 @@
 		.sidenav-content{ padding-top: 20px }
 		.side-nav li:hover, 
 		.side-nav li:active, 
-		.offcanvas li:focus{ color: #f1f1f1;box-shadow: 0px 3px 5px #000; }
-
+		.offcanvas li:focus,
+		.side-nav li.active{ color: #f1f1f1; box-shadow: 0px 3px 5px #000; }
+		#more-bars,
+		#more-events,
+		#more-specials,
+		#more-gameplans { display:none; }
+		#more-bars>li,
+		#more-events>li,
+		#more-specials>li,
+		#more-gameplans>li { font-size: 15px; box-shadow: 0 0 0; }
 	}
 	.carousel img, .carousel-caption {
 		margin: 0 auto;
