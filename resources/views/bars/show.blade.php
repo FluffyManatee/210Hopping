@@ -14,6 +14,11 @@
                 <a href="tel:{{$bar->phone}}">{{ $bar->formatPhoneNumber() }}</a>
                 <br>
                 <a href="{{ $bar->website }}">Website</a>
+                <br>
+                @if(Auth::check())
+                    <a class="btn btn-default" href="{{ action('BarsController@edit', $bar->id) }}">Edit bar info</a>
+                    <button style="margin-left: auto; margin-right: auto" id="image-upload" type="button" class="btn btn-default">Upload an image</button>
+                @endif
             </div>
             <div class="col-xs-6" id="photos">
                 <div id="carousel" class="carousel slide" data-ride="carousel">
@@ -28,7 +33,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <!-- Controls -->
+                <!-- Controls -->
                     <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
@@ -38,21 +43,22 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+
             </div>
         </div>
         <hr>
         <!-- bottom portion -->
         @if (Auth::check())
             <a class="btn btn-default" href="/reviews/create?bar_id={{ $bar->id }}">Write a Review</a>
-            <button id="image-upload" type="button" class="btn btn-default">Upload an image</button>
+
             <div id="dropzone">
                 <form action="{{ action('PicturesController@store', $bar->id) }}" method="POST"
                       enctype="multipart/form-data" class="dropzone">
                     {{ csrf_field() }}
                 </form>
             </div>
-            <a class="btn btn-default" href="/events/create?bar_id={{ $bar->id }}">Create an event</a>
-            <a class="btn btn-default" href="{{ action('BarsController@edit', $bar->id) }}">Edit bar info</a>
+            <a class="btn btn-default" href="/specials/create?bar_id={{ $bar->id }}">Add a special</a>
+            <a class="btn btn-default" href="/events/create?bar_id={{ $bar->id }}">Add an event</a>
         @endif
         <div class="row" id="bar-reviews">
             <div class="col-xs-12">

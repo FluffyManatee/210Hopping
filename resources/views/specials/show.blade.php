@@ -18,7 +18,7 @@
             @endif
         </div>
         <div class="row">
-        <small><a class="btn btn-info" href="{{ action('SpecialsController@index') }}">Return to specials</a></small>
+        <small><a class="btn btn-info" href="{{ action('SpecialsController@index') }}">Go to specials</a></small>
         </div>
     </div>
 @stop
