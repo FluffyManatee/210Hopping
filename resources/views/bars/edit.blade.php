@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
             <h4 class="modal-title">Update bar information</h4>
-            <form method="POST" action="{{ action('BarsController@update', $bar->id) }}">
+            <form class="form" method="POST" action="{{ action('BarsController@update', $bar->id) }}">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -39,6 +39,45 @@
                     <option value="taproom">Taproom</option>
                     <option value="cocktail">Cocktail</option>
                 </select>
+                <div role="tabpanel" class="tab-pane fade in active form-group" id="filter">
+                    <input type="hidden" name="features" class="filters features">
+                    <label>
+                        <input type="checkbox" class="filter-value" value="smoking"> Smoking
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="food"> Kitchen
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="pet_friendly"> Pets
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="bikes"> Bike Racks
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="live_music"> Live Music
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="reservations"> Reservations
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="tvs"> TVs
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="18+"> 18+
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="kids"> Kids
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="patio"> Patio
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="pool"> Pool Tables
+                    </label>
+                    <label>
+                        <input type="checkbox" class="filter-value" value="darts"> Darts
+                    </label>
+                </div>
                 @include('forms.error', ['field' => 'type'])
                 <button type="submit" class ="btn btn-primary pull-right">Update</button>
             </form>
