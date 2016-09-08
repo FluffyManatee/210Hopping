@@ -38,7 +38,7 @@
 	<div class="row">
 		<h2>Highest Rated Bars</h2>
 		@foreach ($highestRated as $sortedBar)
-		<div class="row">
+		<div data-value="{{ $sortedBar->id }}" class="row thisBar">
 			<div class="col-xs-2">
 				<img src="" class="thumbnail responsive" height="100" width="100">
 			</div>
@@ -71,6 +71,9 @@
 		$('.item').click(function (e) {
 			var $eventId = $(this).data('value');
 			$(location).attr('href', '/events/' + $eventId);
+		});
+		$('.thisBar').click(function () {
+			$(location).attr('href', '/bars/' + $(this).data('value'));
 		});
 	</script>
 	@stop
