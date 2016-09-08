@@ -34,10 +34,10 @@
 		<div class="row">
 			<div class="col-xs-3 side-nav pull-right" id="side-nav">
 				<div class="sidenav-content">
-					<a href="#">About</a>
-					<a href="#">Services</a>
-					<a href="#">Clients</a>
-					<a href="#">Contact</a>
+				<li>Bars</li>
+				<li>Events</li>
+				<li>Specials</li>
+				<li>Gameplans</li>
 				</div>
 			</div>
 		</div>

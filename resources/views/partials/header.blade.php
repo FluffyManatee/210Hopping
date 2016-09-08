@@ -9,6 +9,7 @@
             </div>
             <div class="col-xs-3 more-options navbar-right">
                 @if (Auth::check())
+                Welcome <a href="/users/{{ Auth::user()->id }}">{{ Auth::user()->first_name }}</a>!
                 <div class="more-button" id="more-options"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></div>
                 @elseif (!Auth::check())
                 <a href="/auth/register/" class="btn btn-default">Register</a>

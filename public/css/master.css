@@ -86,7 +86,6 @@
 		#desktop-nav .more-options {
 			margin-top: 1vh;
 		}
-		.more-options>a,
 		.more-options>.more-button { float: right; margin-top: -2vh; }
 		.more-button>i { margin: 3vh; }
 		.more-button:hover {
@@ -112,16 +111,19 @@
 			/*transition: 0.5s;  0.5 second transition effect to slide in the sidenav */
 			padding: 0;
 		}
-		.side-nav a {
+		.side-nav li {
 			padding: 8px 8px 8px 32px;
 			text-decoration: none;
 			font-size: 20px;
 			color: #818181;
 			display: block;
-			transition: 0.3s
+			transition: 0.3s;
+			cursor: pointer;
 		}
 		.sidenav-content{ padding-top: 20px }
-		.side-nav a:hover, .offcanvas a:focus{ color: #f1f1f1;box-shadow: 0px 3px 5px #000; }
+		.side-nav li:hover, 
+		.side-nav li:active, 
+		.offcanvas li:focus{ color: #f1f1f1;box-shadow: 0px 3px 5px #000; }
 
 	}
 	.carousel img, .carousel-caption {
