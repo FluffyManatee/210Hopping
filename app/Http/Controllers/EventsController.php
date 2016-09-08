@@ -37,6 +37,7 @@ class EventsController extends Controller
 		$event->title = $request->get('title');
 		$event->date = $request->get('date');
 		$event->content = $request->get('content');
+		//Alan Likes this upload image if statement!! good job
 		if ($request->file('image')) {
 			$imagePath = 'img/';
 			$imageExtension = $request->file('image')->getClientOriginalExtension();

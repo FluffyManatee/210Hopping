@@ -40,7 +40,7 @@ class SpecialsController extends Controller
 		$special->created_by = Auth::user()->id;
 		$special->save();
 		session()->flash('success', 'Your post was created successfully!');
-		return redirect()->action('SpecialsController@index');
+		return redirect()->action('SpecialsController@show', $special->id);
 	}
 
 	public function show($id)

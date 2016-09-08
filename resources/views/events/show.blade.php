@@ -14,7 +14,7 @@
     </div>
     {{ $event->content }}
     <h3>Submitted by:</h3>
-    <h5>{{ $event->user->first_name }} {{ $event->user->last_name }}</h5>
+    <h5><a href="{{ action('UserController@show', $event->user->id) }}"> {{ $event->user->first_name }} {{ $event->user->last_name }}</a></h5>
 
 @if((Auth::user()) && (Auth::user()->id == $event->created_by))
     <div>
