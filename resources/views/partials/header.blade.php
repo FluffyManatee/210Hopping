@@ -7,9 +7,9 @@
             </div>
             <div class="col-xs-6">
             </div>
-            <div class="col-xs-3 more-options">
+            <div class="col-xs-3 more-options navbar-right">
                 @if (Auth::check())
-                <button role="button" class="btn btn-default" id="more-options"><i class="fa fa-bars fa-1x" aria-hidden="true"></i></button>
+                <div class="more-button" id="more-options"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></div>
                 @elseif (!Auth::check())
                 <a href="/auth/register/" class="btn btn-default">Register</a>
                 <a href="/auth/login/" class="btn btn-default">Login</a>
