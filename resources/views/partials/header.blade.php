@@ -5,11 +5,11 @@
                 <li role="presentation" class="active"><a href="#search" aria-controls="reviews" role="tab" data-toggle="tab">Search</a></li>
                 <li role="presentation" class=""><a href="#filter" aria-controls="reviews" role="tab" data-toggle="tab" id="filter-tab">Filters</a></li>
             </ul>
-            <div id="form" class="col-xs-11">
+            <div class="form" class="col-xs-11">
                 <form method="get" action="/search" class="search-form navbar-form form-inline">
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active form-group hidden" id="filter">
-                            <input type="hidden" name="features" id="features" class="filters">
+                            <input type="hidden" name="features" class="filters features">
                             <label>
                                 <input type="checkbox" class="filter-value" value="smoking"> Smoking
                             </label>

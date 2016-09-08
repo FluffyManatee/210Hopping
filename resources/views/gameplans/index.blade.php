@@ -22,7 +22,7 @@
                             {{--<h2>{{ $gameplan->date()->format('l, F jS Y') }}</h2>--}}
                             <h4>Hop-Stops:</h4>
                             <div class="row">
-                                <div class="col-xs-12" id="photos">
+                                <div class="col-xs-8 col-xs-offset-2" id="photos">
                                     <div id="carousel" class="carousel slide" data-ride="carousel">
                                         <!-- Wrapper for slides -->
                                         <div class="carousel-inner carousel-image-container events-slider" role="listbox">

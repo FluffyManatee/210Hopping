@@ -65,7 +65,7 @@
 
 		</div>
 		<div class="row">
-			<div style="height: 90px; margin-bottom: 90px; background-color: papayawhip;" role="group" class="hidden navbar-fixed-bottom btn-group btn-group-justified navigation" id="more-select">
+			<div style="height: 90px; margin-bottom: 60px; background-color: papayawhip;" role="group" class="hidden navbar-fixed-bottom btn-group btn-group-justified navigation" id="more-select">
 				<a href="" id="nearby" class="btn btn-default nav-nearby" role="group" aria-label="nearby">
 					<i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
 					<br>
@@ -174,14 +174,43 @@
 	</script>
 	<script>
 		{{--add features for search to hidden input--}}
-		$("#form").submit(function (e) {
+		$(".form").submit(function (e) {
 			var features = [];
-			var featuresInput = $('#features');
+			var featuresInput = $('.features');
 			$('input[type="checkbox"]:checked').each(function (index, element) {
 				features.push($(element).val());
 			});
 			featuresInput.val(features);
 		});
+
+//		$("#searchform").submit(function (e) {
+//			var features = [];
+//			var featuresInput = $('#searchfeatures');
+//			$('input[type="checkbox"]:checked').each(function (index, element) {
+//				features.push($(element).val());
+//			});
+//			featuresInput.val(features);
+//		});
+
+        {{--same thing for create a bar--}}
+//		$("#barform").submit(function (e) {
+//            var features = [];
+//            var featuresInput = $('#barfeatures');
+//            $('input[type="checkbox"]:checked').each(function (index, element) {
+//                features.push($(element).val());
+//            });
+//            featuresInput.val(features);
+//        });
+
+		{{--and for edit a bar....--}}
+//		$("#bareditform").submit(function (e) {
+//			var features = [];
+//			var featuresInput = $('#baredit');
+//			$('input[type="checkbox"]:checked').each(function (index, element) {
+//				features.push($(element).val());
+//			});
+//			featuresInput.val(features);
+//		});
 
 	</script>
 	<script>
