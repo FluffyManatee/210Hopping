@@ -31,7 +31,7 @@
 	@endif
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-3 more-menu pull-right" style="height: 100vh;padding-top: -60px;">
+			<div class="col-xs-3 more-menu pull-right" style="height: 100vh;margin-top: -15px;">
 			</div>
 		</div>
 	</div>

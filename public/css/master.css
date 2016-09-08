@@ -35,12 +35,9 @@
 		font-size: .9em;
 	}
 	@media only screen and (max-width: 768px) {
-		#header-logo {
-			display: none;
-		}
-		#desktop-nav {
-			display: none;
-		}
+		#header-logo,
+		.more-menu,
+		#desktop-nav { display: none; }
 	}
 	.nav-nearby.nav-search.nav-home.nav-activity.nav-more {
 		height: 100%;
