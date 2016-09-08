@@ -37,6 +37,7 @@
 	<hr>
 	<div class="row">
 		<h2>Highest Rated Bars</h2>
+	</div>
 		@foreach ($highestRated as $sortedBar)
 		<div data-value="{{ $sortedBar->id }}" class="row thisBar">
 			<div class="col-xs-2">
@@ -56,7 +57,6 @@
 			<hr>
 			@endforeach
 		</div>
-	</div>
 	@stop
 	@section('scripts')
 	<script>

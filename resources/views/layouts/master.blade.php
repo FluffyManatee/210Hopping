@@ -71,26 +71,24 @@
 
 		</div>
 		<div class="row">
-			<div style="height: 90px; margin-bottom: 60px; background-color: papayawhip;" role="group" class="hidden navbar-fixed-bottom btn-group btn-group-justified navigation" id="more-select">
+			<div style="height: 70px; margin-bottom: 0; background-color: papayawhip;" role="group" class="hidden navbar-fixed-bottom btn-group btn-group-justified navigation" id="more-select">
 				<a href="" id="nearby" class="btn btn-default nav-nearby" role="group" aria-label="nearby">
 					<i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
 					<br>
-					User
+					<span id="nav-text">Nearby</span>
 				</a>
 				<a href="" class="btn btn-default nav-search search" role="group" aria-label="search">
 					<i class="fa fa-search fa-2x" aria-hidden="true"></i>
 					<br>
-					Search
+					<span id="nav-text">Search</span>
 				</a>
 				<a href="/" class="btn btn-default nav-home" role="group" aria-label="home">
-					<i class="fa fa-home fa-4x" aria-hidden="true"></i>
-					<br>
-					Home
+					<img id="home-king" src="/img/210hopper-kangaroo.png">
 				</a>
 				<a href="/recent" class="btn btn-default nav-activity" role="group" aria-label="activity">
 					<i class="fa fa-bolt fa-2x" aria-hidden="true"></i>
 					<br>
-					Activity
+					<span id="nav-text">Activity</span>
 				</a>
 				<a href="" id="exit" class="btn btn-default nav-more" role="group" aria-label="more">
 					<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
@@ -112,7 +110,7 @@
 			var startPos;
 			var lat;
 			var lon;
-			var windowLocation = 'http://210hopping.dev/nearby/';
+			var windowLocation = 'http://210hopper.com/nearby/';
 			var geoOptions = {
 				timeout: 10 * 1000,
 				maximumAge: 5 * 60 * 1000
@@ -174,7 +172,7 @@ $('.search-form').slideToggle('fast');
 		{{-- exit button toggle--}}
 		$('#exit').click(function(e){
 			e.preventDefault();
-			$('#more-select').slideToggle('fast').addClass('hidden');
+			$('#more-select').slideToggle('fast');
 		});
 		// desktop more toggle
 		$('.more-options').click(function(){

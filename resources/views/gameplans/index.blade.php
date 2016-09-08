@@ -32,7 +32,7 @@
                                                         <h2>{{ $gpbar->bar->name }}</h2>
                                                         <p>{{ $index+1 }}</p>
                                                     </div>
-                                                    <img class="cover" src="{{ $gpbar->bar->pictures->first()->pic_url }}" alt="{{ $gpbar->bar->name }}">
+                                                    <img class="cover" src="{{ $gpbar->bar->pictures->first()->pic_url or '' }}" alt="{{ $gpbar->bar->name }}">
                                                 </div>
                                 {{--<a href="/bars/{{ $gpbar->bar->id }}"><h5>{{ $gpbar->bar->name }}</h5></a>--}}
                                 {{--<div class="row">--}}
