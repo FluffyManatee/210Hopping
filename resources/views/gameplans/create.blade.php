@@ -8,8 +8,12 @@
                 <input type="hidden" name="hidden-bar-input" id="hidden-bar-input">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <input type="date" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD">
+                    Date<input type="date" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD">
                     @include('forms.error', ['field' => 'date'])
+                </div>
+                <div class="form-group">
+                    Time<input type="time" class="form-control" name="time" id="time" placeholder="00:00">
+                    @include('forms.error', ['field' => 'time'])
                 </div>
                 <div class="form-group">
                     Bar1<select class="form-control barSelect" name="bar1" id="bar1">

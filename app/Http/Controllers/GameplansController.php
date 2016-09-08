@@ -68,6 +68,7 @@ class GameplansController extends Controller
         $gameplan = new Gameplan();
         $gameplan->author_id = Auth::id();
         $gameplan->date = $request->get('date');
+        $gameplan->time = $request->get('time');
         $gameplan->save();
         $hopper = new Hopper();
         $hopper->hopper_id = Auth::id();
