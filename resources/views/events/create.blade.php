@@ -12,7 +12,7 @@
                 @include('forms.error', ['field' => 'title'])
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" name="date" id="date" placeholder="Date (yyyy-mm-dd)">
+                <input type="date" class="form-control" name="date" id="date" placeholder="Date (yyyy-mm-dd)">
                 @include('forms.error', ['field' => 'date'])
             </div>
             <div class="form-group">
@@ -28,4 +28,5 @@
     </div>
 </div>
 @stop
+
 

@@ -8,7 +8,7 @@
                 <input type="hidden" name="hidden-bar-input" id="hidden-bar-input">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <input type="text" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD">
+                    <input type="date" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD">
                     @include('forms.error', ['field' => 'date'])
                 </div>
                 <div class="form-group">
