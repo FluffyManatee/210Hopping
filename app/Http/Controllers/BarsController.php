@@ -162,7 +162,6 @@ class BarsController extends Controller
 			$distance = $bar->getDistance($latitude, $longitude, $bar->latitude, $bar->longitude);
 //            dd($distance);
 			if($distance<15){
-//				var_dump($distance);
 				$data[] = $bar;
 			}
 		}
