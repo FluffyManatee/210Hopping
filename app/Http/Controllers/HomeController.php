@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Gameplan;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -38,9 +39,11 @@ class HomeController extends Controller
         $bars = Bar::limit(10)->orderBy('created_at', 'desc')->get();
         $events = Event::limit(10)->orderBy('created_at', 'desc')->get();
         $specials = Special::limit(10)->orderBy('created_at', 'desc')->get();
+        $gameplans = Gameplan::limit(10)->orderBy('created_at', 'desc')->get();
         $recent['bars'] = $bars;
         $recent['events'] = $events;
         $recent['specials'] = $specials;
+        $recent['gameplans'] = $gameplans;
 //        $recent = Bar::recentBarsSpecialsEvents();
         $data = [
             'recent' => $recent

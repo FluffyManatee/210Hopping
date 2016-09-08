@@ -8,27 +8,28 @@
 			<li role="presentation" class="active"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Bars</a></li>
 			<li role="presentation" class=""><a href="#events" aria-controls="specials" role="tab" data-toggle="tab">Events</a></li>
 			<li role="presentation" class=""><a href="#specials" aria-controls="events" role="tab" data-toggle="tab">Specials</a></li>
+			<li role="presentation" class=""><a href="#gameplans" aria-controls="events" role="tab" data-toggle="tab">Gameplans</a></li>
 		</ul>
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade in active" id="reviews">
-				@foreach($recent['bars'] as $bar)
-				<div class="row">
-					<div class="col-xs-3">
-						<img src="{{ $bar->pictures()->first()->pic_url or '' }}" class="thumbnail responsive" height="60" width="60">
-						<h3>{{ $bar->name }}</h3>
-						<h5>{{ $bar->address }}</h5>
-						<h5>{{ $bar->type }}</h5>
-						<a href="/bars/{{ $bar->id }}">barpage</a>
+				@foreach ($recent['bars'] as $bar)
+					<div data-value="{{ $bar->id }}" class="row thisBar">
+						<div class="col-xs-2">
+							<img src="" class="thumbnail responsive" height="100" width="100">
+						</div>
+						<div class="col-xs-9">
+							<h2>{{ $bar->name}}</h2>
+							<p><a href="http://maps.apple.com/?q={{ $bar->address }}"><strong>{{ $bar->address}}</strong></a>
+								| <a href="tel:{{ $bar->phone }}">{{ $bar->formatPhoneNumber() }}</a></p>
+							@if ($bar->averageBarRating() != null)
+								<p class="beer-rating">{!! $bar->averageBarRating() !!}</p> &nbsp; {{ count($bar->reviews) }} reviews
+							@else
+								no ratings yet
+							@endif
+						</div>
 					</div>
-					<div class="col-xs-9">
-						<h4>
-							<small>posted {{ $bar->created_at->diffForHumans() }}</small>
-						</h4>
-						<p class="beer-rating">{!! $bar->averageBarRating() !!}</p>
-					</div>
-				</div>
-				<hr>
+					<hr>
 				@endforeach
 			</div>
 			<div role="tabpanel" class="tab-pane fade" id="events">
@@ -49,6 +50,16 @@
 					</div>
 				</div>
 				<hr>
+				@endforeach
+			</div>
+			<div role="tabpanel" class="tab-pane fade" id="gameplans">
+				@foreach($recent['gameplans'] as $gameplan)
+					<div class="row">
+						<h2>{{ $gameplan->date }}</h2>
+						<h2>{{ $gameplan->time }}</h2>
+						<a href="/events/{{ $gameplan->id }}">gameplanpage</a>
+					</div>
+					<hr>
 				@endforeach
 			</div>
 		</div>
