@@ -5,8 +5,9 @@
         {{--<h1><a href="{{ action('GameplansController@show', $gameplan->id) }}">Gameplan #{{ $gameplan->id }}</a></h1>--}}
         {{--code above is awesome this is the wrong place for it--}}
         <h3>Gameplan for {{ $gameplan->date }}</h3>
-        <h4>Head Hopper:</h4>
-        <h5>{{ $gameplan->author->first_name . ' ' . $gameplan->author->last_name }}</h5>
+        <h4>When: {{ $gameplan->time }}</h4>
+        <h4>Head Hopper: {{ $gameplan->author->first_name . ' ' . $gameplan->author->last_name }}</h4>
+        {{--<h5></h5>--}}
         {{--<h2>{{ $gameplan->date()->format('l, F jS Y') }}</h2>--}}
         <h4>Hop-Stops:</h4>
         @foreach($gameplan->bars as $gpbar)
