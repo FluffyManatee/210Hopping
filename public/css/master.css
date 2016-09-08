@@ -83,15 +83,21 @@
 			border-top: solid 1px #B5B5B5;
 		}
 		.navigation#top {
-			height: 55px;
+			height: 50px;
 		}
 		#desktop-nav .more-options {
-			padding: 10px;
+			margin-top: 1vh;
 		}
 		.more-options>a,
-		.more-options>button { float: right; }
+		.more-options>.more-button { float: right; margin-top: -2vh; }
+		.more-button>i { margin: 3vh; }
+		.more-button:hover {
+			background-color: #262626;
+			background-clip: initial;
+		}
 		#header-logo {
-			padding: 2px;
+			padding: .5vh;
+			margin-left: -5px;
 		}
 	}
 	.carousel img, .carousel-caption {

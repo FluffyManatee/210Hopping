@@ -29,6 +29,12 @@
 		{{ session('ERROR_MESSAGE') }}
 	</div>
 	@endif
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-3 more-menu pull-right" style="height: 100vh;padding-top: -60px;">
+			</div>
+		</div>
+	</div>
 	<!-- views will appear here --> 
 	@yield('content')
 	<!-- bottom navigation -->
@@ -139,14 +145,14 @@
 			e.preventDefault();
 			if($('#myTabs').hasClass('hidden')){
 //
-			$('#myTabs').removeClass('hidden');
-			$('#search').removeClass('hidden');
-			$('.search-form').slideToggle('fast');
-			} else {
-				$('#myTabs').addClass('hidden');
-				$('.search-form').slideToggle('fast');
-			}
-		});
+$('#myTabs').removeClass('hidden');
+$('#search').removeClass('hidden');
+$('.search-form').slideToggle('fast');
+} else {
+	$('#myTabs').addClass('hidden');
+	$('.search-form').slideToggle('fast');
+}
+});
 		{{-- search tab search bar toggle--}}
 		$('#search').click(function(e){
 			$('#search').removeClass('hidden');
@@ -167,6 +173,10 @@
 		$('#exit').click(function(e){
 			e.preventDefault();
 			$('#more-select').slideToggle('fast');
+		});
+		// desktop more toggle
+		$('.more-options').click(function(){
+
 		});
 
 	</script>
@@ -190,7 +200,7 @@
 //			featuresInput.val(features);
 //		});
 
-        {{--same thing for create a bar--}}
+{{--same thing for create a bar--}}
 //		$("#barform").submit(function (e) {
 //            var features = [];
 //            var featuresInput = $('#barfeatures');
@@ -200,7 +210,7 @@
 //            featuresInput.val(features);
 //        });
 
-		{{--and for edit a bar....--}}
+{{--and for edit a bar....--}}
 //		$("#bareditform").submit(function (e) {
 //			var features = [];
 //			var featuresInput = $('#baredit');
@@ -210,25 +220,25 @@
 //			featuresInput.val(features);
 //		});
 
-	</script>
-	<script>
-		{{--add bars for gameplans to hidden input--}}
+</script>
+<script>
+	{{--add bars for gameplans to hidden input--}}
 	$("#gameplanForm").submit(function (e) {
-			var bars = [];
-			var barsInput = $('#hidden-bar-input');
-			$('.barSelect').each(function (index, element) {
-				bars.push($(element).val());
-			});
-			barsInput.val(bars);
+		var bars = [];
+		var barsInput = $('#hidden-bar-input');
+		$('.barSelect').each(function (index, element) {
+			bars.push($(element).val());
 		});
+		barsInput.val(bars);
+	});
 
-	</script>
-	<script>
-		$('#myTabs a').click(function (e) {
-			e.preventDefault()
-			$(this).tab('show')
-		});
-		$('#myTabs a:first').tab('show');
-	</script>
-	</body>
-	</html>
+</script>
+<script>
+	$('#myTabs a').click(function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	});
+	$('#myTabs a:first').tab('show');
+</script>
+</body>
+</html>
