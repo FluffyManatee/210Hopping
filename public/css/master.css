@@ -34,6 +34,14 @@
 		color: #000;
 		font-size: .9em;
 	}
+	@media only screen and (max-width: 768px) {
+		#header-logo {
+			display: none;
+		}
+		#desktop-nav {
+			display: none;
+		}
+	}
 	.nav-nearby.nav-search.nav-home.nav-activity.nav-more {
 		height: 100%;
 		text-align: center;
@@ -74,6 +82,17 @@
 			background-color: #818181;
 			border-top: solid 1px #B5B5B5;
 		}
+		.navigation#top {
+			height: 55px;
+		}
+		#desktop-nav .more-options {
+			padding: 10px;
+		}
+		.more-options>a,
+		.more-options>button { float: right; }
+		#header-logo {
+			padding: 2px;
+		}
 	}
 	.carousel img, .carousel-caption {
 		margin: 0 auto;
@@ -89,6 +108,11 @@
 	.events-slider {
 		cursor: pointer;
 	}
+
+	.thisBar {
+		cursor: pointer;
+	}
+
 	.bottom-nav-spacer {
 		min-height: 20vh;
 	}
