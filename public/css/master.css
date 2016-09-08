@@ -1,10 +1,10 @@
-	@font-face {
+/*	@font-face {
 	font-family: DenseRegular;
 	src: url('../font/Dense-Regular.otf');
-	}
+	}*/
 
 	body {
-		font-family: DenseRegular, sans-serif;
+/*		font-family: DenseRegular, sans-serif;*/
 		padding-top: 70px;
 		background-color: #ECF0FB;
 		color: #353432;
