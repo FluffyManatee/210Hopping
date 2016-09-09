@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+
 use App\Feature;
 use Geocoder\Provider\GoogleMaps;
 use GuzzleHttp\Client;
@@ -8,6 +9,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Bar;
 use Ivory\HttpAdapter\Guzzle6HttpAdapter;
+use Illuminate\Support\Facades\Auth;
+
 class BarsController extends Controller
 {
 	public function index()
@@ -22,6 +25,9 @@ class BarsController extends Controller
 
 	public function create()
 	{
+		if (!Auth::check()) {
+			return view('auth.login');
+		}
 		return view('bars.create');
 	}
 
@@ -84,6 +90,9 @@ class BarsController extends Controller
 
 	public function edit($id)
 	{
+		if (!Auth::check()) {
+			return view('auth.login');
+		}
 		$bar = Bar::find($id);
 		if (!$bar) {
 			abort(404);

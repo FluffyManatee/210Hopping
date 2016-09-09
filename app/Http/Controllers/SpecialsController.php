@@ -23,6 +23,9 @@ class SpecialsController extends Controller
 
 	public function create(Request $request)
 	{
+		if (!Auth::check()) {
+			return view('auth.login');
+		}
 		return view('specials.create', ['id' => $request->get('bar_id')]);
 	}
 
@@ -57,6 +60,9 @@ class SpecialsController extends Controller
 
 	public function edit($id)
 	{
+		if (!Auth::check()) {
+			return view('auth.login');
+		}
 		$special = Special::find($id);
 		if (!$special) {
 			abort(404);
