@@ -82,7 +82,7 @@
 											<img src="{{ $review->user->avatar }}" class="thumbnail responsive" height="60"
 											width="60">
 											<h5>
-												<a href="{{ action('UserController@show', $review->user->id) }}">{{ $review->user->first_name }} {{ $review->user->last_name }}</a>
+												<a href="{{ action('UserController@show', $review->user->id) }}">{{ $review->user->first_name }} {{ $review->user->formatLastName() }}.</a>
 											</h5>
 											user score
 											<br>

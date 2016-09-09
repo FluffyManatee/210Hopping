@@ -14,14 +14,14 @@ class Event extends Model
 	}
 
 	public function getDateAttribute($value) {
-		$utc = Carbon::createFromFormat("Y-m-d", $value);
-		return $utc->setTimezone('America/Chicago');
+		$utc = new Carbon($value);
+		return $utc;
 	}
 
 	public static $rules =
 		[
 			'title' => 'required|max:50',
-			'date' => 'required|max:10',
+			'date' => 'required',
 			'content' => 'required|max:255'
 		];
 
