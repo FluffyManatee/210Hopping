@@ -19,7 +19,7 @@
                             </div>
                             <td>
                                 <strong>Submitted By:</strong><br>
-                                <a href="{{ action('UserController@show', $event->user->id) }}"> {{ $event->user->first_name}} {{ $event->user->last_name}}</a><br>
+                                <a href="{{ action('UserController@show', $event->user->id) }}"> {{ $event->user->first_name}} {{ $event->user->formatLastName()}}.</a><br>
                                 <strong>On:</strong><br>
                                 {{ $event->created_at->format('d-m-Y g:ia')}}<br>
                                 @if($event->created_at != $event->updated_at)

@@ -12,7 +12,7 @@
                     @include('forms.error', ['field' => 'title'])
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="date" id="date" value="{{ $event->date->format('Y-m-d') }}">
+                    <input type="datetime-local" class="form-control" name="date" id="date" value="<?= str_replace(" ", "T", $event->date->format('Y-m-d H:i')) ?>">
                     @include('forms.error', ['field' => 'date'])
                 </div>
                 <div class="form-group">
