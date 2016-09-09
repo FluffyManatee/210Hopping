@@ -6,7 +6,7 @@
 	@endif
 <div class="row">
 	<div class="col-xs-6 col-xs-offset-3">
-		<h4 class="modal-title">log in</h4>
+		<h4 class="modal-title">Log in</h4>
 		<form method="POST" action="{{ action('Auth\AuthController@postLogin') }}">
 			{{ csrf_field() }}
 			<div class="form-group">

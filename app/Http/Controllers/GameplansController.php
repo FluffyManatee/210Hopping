@@ -46,6 +46,9 @@ class GameplansController extends Controller
 //        $bars = $bars->pluck('name', 'id');
 //        $bars = $bars->all();
 //        dd($bars);
+		if (!Auth::check()) {
+			return view('auth.login');
+		}
         $bars = Bar::barOptions();
         $data = [
             'bars' =>  $bars
@@ -128,6 +131,9 @@ class GameplansController extends Controller
      */
     public function edit($id)
     {
+		if (!Auth::check()) {
+			return view('auth.login');
+		}
         $gameplan = Gameplan::find($id);
         $bars = Bar::barOptions();
         if (!$gameplan) {
@@ -156,6 +162,7 @@ class GameplansController extends Controller
             abort(404);
         }
         $gameplan->date = $request->get('date');
+		$gameplan->time = $request->get('time');
         $bars = explode(',', $request->get('hidden-bar-input'));
         $barsCollection = GameplanBar::where('gameplan_id', '=', $gameplan->id);
         $barsCollection->delete();

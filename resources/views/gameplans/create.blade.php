@@ -3,7 +3,7 @@
     {{--{{dd($bars)}}--}}
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
-            <h4 class="modal-title">create a gameplan</h4>
+            <h4 class="modal-title">Create a gameplan</h4>
             <form method="POST" action="{{ action('GameplansController@store') }}" id="gameplanForm">
                 <input type="hidden" name="hidden-bar-input" id="hidden-bar-input">
                 {{ csrf_field() }}
@@ -17,6 +17,7 @@
                 </div>
                 <div class="form-group">
                     Bar1<select class="form-control barSelect" name="bar1" id="bar1">
+                        <option value="">Add Bar</option>
                         @foreach($bars as $key => $bar)
                         <option value="{{ $key }}">{{ $bar }}</option>
                         @endforeach
@@ -59,7 +60,7 @@
                     </select>
                     @include('forms.error', ['field' => 'bar 5'])
                 </div>
-                <button type="submit" class ="btn btn-primary pull-right">CREATE</button>
+                <button type="submit" class ="btn btn-primary pull-right">Create</button>
             </form>
         </div>
     </div>

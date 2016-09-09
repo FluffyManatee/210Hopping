@@ -3,10 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Gameplan extends Model
 {
     protected $table = 'gameplans';
+
+	public function getDateAttribute($value) {
+		$utc = new Carbon($value);
+		return $utc;
+	}
+
+	public function getTimeAttribute($value) {
+		$utc = new Carbon($value);
+		return $utc;
+	}
 
     public function hoppers(){
         return $this->hasMany(Hopper::class, 'gameplan_id');

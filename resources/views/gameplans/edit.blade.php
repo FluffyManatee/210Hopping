@@ -3,14 +3,18 @@
     {{--{{dd($bars)}}--}}
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
-            <h4 class="modal-title">create a gameplan</h4>
+            <h4 class="modal-title">Update your gameplan</h4>
             <form method="POST" action="{{ action('GameplansController@update', $gameplan->id) }}" id="gameplanForm">
                 <input type="hidden" name="hidden-bar-input" id="hidden-bar-input">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
                 <div class="form-group">
-                    <input type="text" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD" value="{{ $gameplan->date }}">
+                    Date<input type="date" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD" value="{{ $gameplan->date->format('Y-m-d') }}">
                     @include('forms.error', ['field' => 'date'])
+                </div>
+                <div class="form-group">
+                    Time<input type="time" class="form-control" name="time" id="time" placeholder="00:00" value="{{ $gameplan->time->format('H:i') }}">
+                    @include('forms.error', ['field' => 'time'])
                 </div>
                 <div class="form-group">
                     Bar1<select class="form-control barSelect" name="bar1" id="bar1">
@@ -56,7 +60,7 @@
                     </select>
                     @include('forms.error', ['field' => 'bar 5'])
                 </div>
-                <button type="submit" class ="btn btn-primary pull-right">UPDATE</button>
+                <button type="submit" class ="btn btn-primary pull-right">Update</button>
             </form>
         </div>
     </div>
