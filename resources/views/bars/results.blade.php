@@ -2,10 +2,11 @@
 
 @section('content')
 <div class="container">
+	<hr>
 	@foreach ($bars as $bar)
-	<div class="row">
+	<div data-value="{{ $bar->id }}" class="row thisBar">
 		<div class="col-xs-3">
-			<img src="" class="thumbnail responsive" height="100" width="100">
+			<img src="{{ $bar->pictures->first()->pic_url }}" class="thumbnail responsive" height="100" width="100">
 		</div>
 		<div class="col-xs-9">
 			<h2>{{ $bar->name }}</h2>
@@ -21,4 +22,11 @@
 		<hr>
 		@endforeach
 	</div>
+	@stop
+	@section('scripts')
+	<script type="text/javascript">
+		$('.thisBar').click(function () {
+			$(location).attr('href', '/bars/' + $(this).data('value'));
+		});
+	</script>
 	@stop

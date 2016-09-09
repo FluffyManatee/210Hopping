@@ -41,9 +41,9 @@
 		@foreach ($highestRated as $sortedBar)
 		<div data-value="{{ $sortedBar->id }}" class="row thisBar">
 			<div class="col-xs-2">
-				<img src="" class="thumbnail responsive" height="100" width="100">
+				<img src="{{ $sortedBar->pictures->first()->pic_url }}" class="thumbnail" height="100" width="100">
 			</div>
-			<div class="col-xs-9">
+			<div class="col-xs-10 top-bars">
 				<h2>{{ $sortedBar->name}}</h2>
 				<p><a href="http://maps.apple.com/?q={{ $sortedBar->address }}"><strong>{{ $sortedBar->address}}</strong></a>
 					| <a href="tel:{{ $sortedBar->phone }}">{{ $sortedBar->formatPhoneNumber() }}</a></p>
