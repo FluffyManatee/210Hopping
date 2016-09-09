@@ -42,108 +42,102 @@
 						<li><a href="/bars">Top Rated</a></li>
 						<li><a href="/bars/create">List a Bar</a></li>
 					</ul>
-					<li id="sidenav-events">Events</li>
-					<ul id="more-events">
-						<li><a href="/events">All Events</a></li>
-						<li><a href="/events/create">Create an Event</a></li>
-					</ul>
-					<li id="sidenav-specials">Specials</li>
-					<ul id="more-specials">
-						<li><a href="/specials">All Specials</a></li>
-						<li><a href="/specials/create">List a Special</a></li>
-					</ul>
 					<li id="sidenav-gameplans">Gameplans</li>
 					<ul id="more-gameplans">
-						<li><a href="/gameplans">My Gameplans</a></li>
+						<li><a href="/gameplans">View Gameplans</a></li>
 						<li><a href="/gameplans/create">Create a Gameplan</a></li>
 					</ul>
-				</div>
+					<li id="sidenav-events">Events</li>
+					<li id="sidenav-specials">Specials</li>
+					<li id="sidenav-recent">Recent Activity</li>
+				</ul>
 			</div>
 		</div>
 	</div>
-	<!-- end side nav -->
-	<!-- views will appear here --> 
-	@yield('content')
-	<!-- bottom navigation -->
-	<div class="bottom-nav-spacer">
-	</div>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="btn-group btn-group-justified navigation" id="bottom" role="group" aria-label="navigation">
-				<a href=""  class="nearby btn btn-default nav-nearby" role="group" aria-label="nearby">
-					<i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
-					<br>
-					<span id="nav-text">Nearby</span>
-				</a>
-				<a href="" class="btn btn-default nav-search search" role="group" aria-label="search">
-					<i class="fa fa-search fa-2x" aria-hidden="true"></i>
-					<br>
-					<span id="nav-text">Search</span>
-				</a>
-				<a href="/" class="btn btn-default nav-home" role="group" aria-label="home">
-					<img id="home-king" src="/img/210hopper-kangaroo.png">
-				</a>
-				<a href="/recent" class="btn btn-default nav-activity" role="group" aria-label="activity">
-					<i class="fa fa-bolt fa-2x" aria-hidden="true"></i>
-					<br>
-					<span id="nav-text">Activity</span>
-				</a>
-				<a href="" id="more" class="btn btn-default nav-more" role="group" aria-label="more">
-					<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
-					<br>
-					<span id="nav-text">More</span>
-				</a>
-			</div>
+</div>
+<!-- end side nav -->
+<!-- views will appear here --> 
+@yield('content')
+<!-- bottom navigation -->
+<div class="bottom-nav-spacer">
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="btn-group btn-group-justified navigation" id="bottom" role="group" aria-label="navigation">
+			<a href=""  class="nearby btn btn-default nav-nearby" role="group" aria-label="nearby">
+				<i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
+				<br>
+				<span id="nav-text">Nearby</span>
+			</a>
+			<a href="" class="btn btn-default nav-search search" role="group" aria-label="search">
+				<i class="fa fa-search fa-2x" aria-hidden="true"></i>
+				<br>
+				<span id="nav-text">Search</span>
+			</a>
+			<a href="/" class="btn btn-default nav-home" role="group" aria-label="home">
+				<img id="home-king" src="/img/210hopper-kangaroo.png">
+			</a>
+			<a href="/recent" class="btn btn-default nav-activity" role="group" aria-label="activity">
+				<i class="fa fa-bolt fa-2x" aria-hidden="true"></i>
+				<br>
+				<span id="nav-text">Activity</span>
+			</a>
+			<a href="" id="more" class="btn btn-default nav-more" role="group" aria-label="more">
+				<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+				<br>
+				<span id="nav-text">More</span>
+			</a>
+		</div>
 
+
+	</div>
+	<div class="row">
+		<div style="height: 70px; margin-bottom: 0; background-color: papayawhip;" role="group" class="hidden navbar-fixed-bottom btn-group btn-group-justified navigation" id="more-select">
+			<a href="" id="nearby" class="btn btn-default nav-nearby" role="group" aria-label="nearby">
+				<i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
+				<br>
+				<span id="nav-text">Nearby</span>
+			</a>
+			<a href="" class="btn btn-default nav-search search" role="group" aria-label="search">
+				<i class="fa fa-search fa-2x" aria-hidden="true"></i>
+				<br>
+				<span id="nav-text">Search</span>
+			</a>
+			<a href="/" class="btn btn-default nav-home" role="group" aria-label="home">
+				<img id="home-king" src="/img/210hopper-kangaroo.png">
+			</a>
+			<a href="/recent" class="btn btn-default nav-activity" role="group" aria-label="activity">
+				<i class="fa fa-bolt fa-2x" aria-hidden="true"></i>
+				<br>
+				<span id="nav-text">Activity</span>
+			</a>
+			<a href="" id="exit" class="btn btn-default nav-more" role="group" aria-label="more">
+				<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+				<br>
+				More
+			</a>
 
 		</div>
-		<div class="row">
-			<div style="height: 70px; margin-bottom: 0; background-color: papayawhip;" role="group" class="hidden navbar-fixed-bottom btn-group btn-group-justified navigation" id="more-select">
-				<a href="" id="nearby" class="btn btn-default nav-nearby" role="group" aria-label="nearby">
-					<i class="fa fa-location-arrow fa-2x" aria-hidden="true"></i>
-					<br>
-					<span id="nav-text">Nearby</span>
-				</a>
-				<a href="" class="btn btn-default nav-search search" role="group" aria-label="search">
-					<i class="fa fa-search fa-2x" aria-hidden="true"></i>
-					<br>
-					<span id="nav-text">Search</span>
-				</a>
-				<a href="/" class="btn btn-default nav-home" role="group" aria-label="home">
-					<img id="home-king" src="/img/210hopper-kangaroo.png">
-				</a>
-				<a href="/recent" class="btn btn-default nav-activity" role="group" aria-label="activity">
-					<i class="fa fa-bolt fa-2x" aria-hidden="true"></i>
-					<br>
-					<span id="nav-text">Activity</span>
-				</a>
-				<a href="" id="exit" class="btn btn-default nav-more" role="group" aria-label="more">
-					<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
-					<br>
-					More
-				</a>
-
-			</div>
-		</div>
 	</div>
-	<!-- Latest compiled and minified BS JavaScript -->
-	<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	@yield('scripts')
-	<script>
-		{{--asks for location on nearby button click and then sends user to nearby page--}}
-		$('.nearby').click(function(e) {
-			e.preventDefault();
-			var startPos;
-			var lat;
-			var lon;
-			var windowLocation = 'http://210hopper.com/nearby/';
-			var geoOptions = {
-				timeout: 10 * 1000,
-				maximumAge: 5 * 60 * 1000
-			};
-			var geoSuccess = function(position) {
-				startPos = position;
+</div>
+<!-- Latest compiled and minified BS JavaScript -->
+<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+@yield('scripts')
+<script>
+	{{--asks for location on nearby button click and then sends user to nearby page--}}
+	$('.nearby').click(function(e) {
+		e.preventDefault();
+		var startPos;
+		var lat;
+		var lon;
+		var windowLocation = 'http://210hopper.com/nearby/';
+		var geoOptions = {
+			timeout: 10 * 1000,
+			maximumAge: 5 * 60 * 1000
+		};
+		var geoSuccess = function(position) {
+			startPos = position;
 				// document.getElementById('startLat').innerHTML = startPos.coords.latitude;
 				// document.getElementById('startLon').innerHTML = startPos.coords.longitude;
 				lat = startPos.coords.latitude;
@@ -167,46 +161,52 @@
 			navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 		});
 
-		{{-- search button toggle--}}
-		$('.search').click(function(e){
-			e.preventDefault();
-			if($('#myTabs').hasClass('hidden')){
-//
-$('#myTabs').removeClass('hidden');
-$('#search').removeClass('hidden');
-$('.search-form').slideToggle('fast');
-} else {
-	$('#myTabs').addClass('hidden');
-	$('.search-form').slideToggle('fast');
-}
-});
+	{{-- search button toggle--}}
+	$('.search').click(function(e){
+		e.preventDefault();
+		if($('#myTabs').hasClass('hidden')){
 
-		{{-- search tab search bar toggle--}}
-		$('#search').click(function(e){
+			$('#myTabs').removeClass('hidden');
 			$('#search').removeClass('hidden');
-			$('#filter').addClass('hidden');
-		});
-		{{-- filter button show hidden feature list--}}
-		$('#filter-tab').click(function(){
-			$('#filter').removeClass('hidden');
-		});
+			$('.search-form').slideToggle('fast');
+		} else {
+			$('#myTabs').addClass('hidden');
+			$('.search-form').slideToggle('fast');
+		}
+	});
+
+	// desktop search
+	$('.filter-toggle').click(function(){
+		$('.filter-form').removeClass('hidden');
+		$('.filters').slideToggle();
+	})
+
+	{{-- search tab search bar toggle--}}
+	$('#search').click(function(e){
+		$('#search').removeClass('hidden');
+		$('#filter').addClass('hidden');
+	});
+	{{-- filter button show hidden feature list--}}
+	$('#filter-tab').click(function(){
+		$('#filter').removeClass('hidden');
+	});
 
 
-		{{-- more button toggle--}}
-		$('#more').click(function(e){
-			e.preventDefault();
-			$('#more-select').slideToggle('fast').removeClass('hidden');
-		});
-		{{-- exit button toggle--}}
-		$('#exit').click(function(e){
-			e.preventDefault();
-			$('#more-select').slideToggle('fast');
-		});
+	{{-- more button toggle--}}
+	$('#more').click(function(e){
+		e.preventDefault();
+		$('#more-select').slideToggle('fast').removeClass('hidden');
+	});
+	{{-- exit button toggle--}}
+	$('#exit').click(function(e){
+		e.preventDefault();
+		$('#more-select').slideToggle('fast');
+	});
 
 		// desktop side-nav
 		var animating = false;
 		var opened = false;
-		$('.more-options').click(function() {
+		$('#more-options').click(function() {
 			if (!animating && !opened) {
 				animating = true;
 				$('#side-nav').animate({
@@ -230,35 +230,17 @@ $('.search-form').slideToggle('fast');
 			$('#sidenav-bars').toggleClass('active')
 		});
 		$('#sidenav-events').click(function() {
-			$('#more-events').slideToggle();
-			$('#sidenav-events').toggleClass('active')
+			$(location).attr('href', '/events');
 		});
 		$('#sidenav-specials').click(function() {
-			$('#more-specials').slideToggle();
-			$('#sidenav-specials').toggleClass('active')
+			$(location).attr('href', '/specials');
+		});
+		$('#sidenav-recent').click(function() {
+			$(location).attr('href', '/recent');
 		});
 		$('#sidenav-gameplans').click(function() {
 			$('#more-gameplans').slideToggle();
 			$('#sidenav-gameplans').toggleClass('active')
-		});
-		// $('.more-options').click(function() {
-		// 	var side_nav = document.getElementById("side-nav");
-		// 	console.log(side_nav.style.width);
-		// 	if (side_nav.style.width == "0px" || side_nav.style.width == "") {
-		// 		console.log('if');
-		// 		side_nav.style.width = "250px";
-		// 		document.getElementById("main").style.marginLeft = "250px";
-		// 	} else {
-		// 		console.log('else');
-		// 		side_nav.style.width = "0";
-		// 		document.getElementById("main").style.marginLeft = "0";
-		// 	}
-		// 	});
-
-		/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-		$('.close-more').click(function() {
-			document.getElementById("mySidenav").style.width = "0";
-			document.getElementById("main").style.marginLeft = "0";
 		});
 
 	</script>

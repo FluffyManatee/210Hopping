@@ -36,7 +36,7 @@ class HomeController extends Controller
 
     public function recent()
     {
-        $bars = Bar::limit(10)->orderBy('created_at', 'desc')->get();
+        $bars = Bar::with('pictures')->limit(10)->orderBy('created_at', 'desc')->get();
         $events = Event::limit(10)->orderBy('created_at', 'desc')->get();
         $specials = Special::limit(10)->orderBy('created_at', 'desc')->get();
         $gameplans = Gameplan::limit(10)->orderBy('created_at', 'desc')->get();
