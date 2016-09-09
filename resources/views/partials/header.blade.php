@@ -3,16 +3,16 @@
 		<!-- desktop view -->
 		<div class="row" id="desktop-nav">
 			<div class="col-xs-3">
-				<a href="/"><img id="header-logo" src="/img/210hopper-white.png" alt="210Hopper"></a>
+				<a href="/"><img id="header-logo" src="/img/210hopper-orange.png" alt="210Hopper"></a>
 			</div>
 			<div class="col-xs-6">
 				<div class="row">
 					<div class="form" class="col-xs-12">
 						<form method="get" action="/search" class="navbar-form form-inline">
 							<div class="form-group">
-								<button type="button" class="filter-toggle btn btn-default">Filter</button>
+								<button type="button" class="filter-toggle btn btn-warning">Filter</button>
 								<input type="text" class="form-control" name="searchTerm" placeholder="Search">
-								<button type="submit" class="btn btn-default">Submit</button>
+								<button type="submit" class="btn btn-primary">Submit</button>
 							</div>
 							<div class="form-group hidden filter-form">
 								<div class="filters">
@@ -61,7 +61,7 @@
 			</div>
 			<div class="col-xs-3 more-options navbar-right">
 				@if (Auth::check())
-				Welcome <a href="/users/{{ Auth::user()->id }}">{{ Auth::user()->first_name }}</a>!
+				Welcome <a href="/users/{{ Auth::user()->id }}">{{ Auth::user()->first_name }}</a>! | <a href="/auth/logout">logout</a>
 				@elseif (!Auth::check())
 				<a href="/auth/register/" class="btn btn-default">Register</a>
 				<a href="/auth/login/" class="btn btn-default">Login</a>

@@ -11,8 +11,8 @@
 		min-height: 100%;
 	}
 	a {
-		color: #1496D2;
-	}
+		color: #08B7BD;
+	} a:hover { color: #1798A3; }
 	hr {
 		background-color: #818181;
 		border-top: solid 1px #B5B5B5;
@@ -90,7 +90,7 @@
 			margin-top: 1vh;
 		}
 		.more-options>.more-button { float: right; margin-top: -2vh; }
-		.more-button i { margin: 2.5vh; }
+		.more-button i { margin: 2.5vh; color: #08B7BD;}
 		.more-button:hover {
 			background-color: #262626;
 			background-clip: padding-box;
@@ -194,12 +194,20 @@
 		background-color: ;
 	}
 	.btn-primary {
-		background-color: #1496D2;
-		border-color: #1284B8;
+		background-color: #24B5C7;
+		border-color: #22ACBD;
 	}
 	.btn-primary:hover {
-		background-color: #1284B8;
-		border-color: #		border-color: #1284B8;;
+		background-color: #74E4F2;
+		border-color: #58ADB8;
+	}
+	.btn-warning {
+		background-color: #FF7B2C;
+		border-color: #E36D27;
+	}
+	.btn-warning:hover {
+		background-color: #FF9E53;
+		border-color: #B26131;
 	}
 	.nav-tabs>li>a:hover {
 		background-color: #D4D8E1;
