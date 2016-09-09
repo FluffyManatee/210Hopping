@@ -1,14 +1,18 @@
 @extends('layouts.master')
 
 @section('content')
-    {{--{{dd($gameplans)}}--}}
+    {{--<div></div>--}}
+    <div class="container-fluid" id="header">
+            <img style="height:500px; width: 100%;" src="/img/goblets.jpeg">
+    </div>
     <div class="container">
-        <div>
-            <h5>Going out with some friends? Create a Gameplan so everyone knows where you're hanging out tonight!</h5>
-        </div>
-        <div>
+        <div class="col-xs-5"></div>
+        <div class="col-xs-2">
             <a class="btn btn-warning" href="gameplans/create">Create Gameplan</a>
         </div>
+        <div class="col-xs-3"></div>
+    </div>
+    <div class="container">
             @foreach($gameplans as $gameplan)
                 <div class="row">
                     <table class="table table-condensed col-xs-12">

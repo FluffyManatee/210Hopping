@@ -9,7 +9,7 @@
 		<div class="col-xs-6">
 			<h2>{{ $user->first_name }} {{ $user->formatLastName() }}.</h2>
 			Hopper since {{ $user->created_at->format('F Y') }}
-			@if(Auth::user()->id == $user->id)
+			@if(Auth::check() && (Auth::user()->id == $user->id))
 			<div>
 				<a class="btn btn-default" href="{{ action('UserController@edit', $user->id) }}">Change your info</a>
 			</div>
@@ -39,7 +39,7 @@
 			<div>
 				{{ $review->content }}
 			</div>
-			@if(Auth::user()->id != $user->id)
+			@if(Auth::check() && (Auth::user()->id != $user->id))
 			Was this review helpful?
 			<div role="button" data-value="{{ $review->id }}" class="upvote">Yes</div> / <div role="button" data-value="{{ $review->id }}" class="downvote">No</div> 
 			<div id="{{ $review->id }}">{{ $review->totalVotes() }}</div>

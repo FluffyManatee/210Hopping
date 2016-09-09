@@ -24,6 +24,9 @@ class EventsController extends Controller
 
     public function create(Request $request)
     {
+    	if (!Auth::check()) {
+    		return view('auth.login');
+		}
 		return view('events.create', ['id' => $request->get('bar_id')]);
     }
 
@@ -65,6 +68,9 @@ class EventsController extends Controller
 
     public function edit($id)
     {
+		if (!Auth::check()) {
+			return view('auth.login');
+		}
 		$event = Event::find($id);
 		if (!$event) {
 			abort(404);

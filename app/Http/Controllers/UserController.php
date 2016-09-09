@@ -10,14 +10,11 @@ use App\User;
 use App\Review;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
 
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
 
     public function index()
     {
@@ -41,6 +38,9 @@ class UserController extends Controller
 
     public function edit($id)
     {
+		if (!Auth::check() || Auth::user()->id != $id) {
+			return redirect()->action('BarsController@index');
+		}
 		$user = User::find($id);
 		if (!$user) {
 			abort(404);
@@ -54,6 +54,9 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+		if (!Auth::check()) {
+			return view('auth.login');
+		}
 		session()->flash('fail', 'Your information was NOT updated. Please fix errors.');
 		$v = Validator::make($request->all(), User::$updateRules);
 		$v->sometimes('email', 'required|email|max:244|unique:users', function($input) use($id) {

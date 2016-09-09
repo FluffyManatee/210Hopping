@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+@if(Auth::check())
 <div class="row">
 	<div class="col-xs-8 col-xs-offset-2">
 		<h4 class="modal-title">Create a bar</h4>
@@ -78,8 +79,11 @@
 				</label>
 			</div>
 			@include('forms.error', ['field' => 'type'])
-			<button type="submit" class ="btn btn-primary pull-right">CREATE</button>
+			<button type="submit" class ="btn btn-primary pull-right">Create</button>
 		</form>
 	</div>
 </div>
+@else
+<div hidden>{!! redirect('auth/login') !!}</div>
+@endif
 @stop
