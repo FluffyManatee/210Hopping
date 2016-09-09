@@ -8,6 +8,7 @@
 		padding-top: 70px;
 		background-color: #ECF0FB;
 		color: #353432;
+		min-height: 100%;
 	}
 	a {
 		color: #1496D2;
@@ -39,6 +40,8 @@
 		.more-menu,
 		#desktop-nav,
 		.sidenav-content { display: none; }
+		.thumbnail { height: 60px; width: 60px; }
+		.top-bars>h2 { font-size: 25px }
 	}
 	.nav-nearby.nav-search.nav-home.nav-activity.nav-more {
 		height: 100%;
@@ -87,10 +90,10 @@
 			margin-top: 1vh;
 		}
 		.more-options>.more-button { float: right; margin-top: -2vh; }
-		.more-button>i { margin: 3vh; }
+		.more-button i { margin: 2.5vh; }
 		.more-button:hover {
 			background-color: #262626;
-			background-clip: initial;
+			background-clip: padding-box;
 			cursor: pointer;
 		}
 		#header-logo {
@@ -133,6 +136,8 @@
 		#more-events>li,
 		#more-specials>li,
 		#more-gameplans>li { font-size: 15px; box-shadow: 0 0 0; }
+
+		.filters {display:none;}
 	}
 	.carousel img, .carousel-caption {
 		margin: 0 auto;
