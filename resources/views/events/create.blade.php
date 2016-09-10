@@ -13,7 +13,7 @@
                     @include('forms.error', ['field' => 'title'])
                 </div>
                 <div class="form-group">
-                    <input type="date" min="" class="form-control" name="date" id="date" placeholder="Date (yyyy-mm-dd)">
+                    <input type="datetime-local" min="" class="form-control" name="date" id="date" placeholder="Date (yyyy-mm-dd)">
                     @include('forms.error', ['field' => 'date'])
                 </div>
                 <div class="form-group">

@@ -2,20 +2,19 @@
 
 @section('content')
     {{--<div></div>--}}
-    <div class="container-fluid" id="header">
-            <img style="height:500px; width: 100%;" src="/img/goblets.jpeg">
+    <div id="header" style="background-image:url('/img/gobletsedit.jpg'); background-position: center center; background-repeat: no-repeat; background-size: 100%;width:auto; height:500px;">
     </div>
     <div class="container">
         <div class="col-xs-5"></div>
-        <div class="col-xs-2">
+        <div class="col-xs-2"><br>
             <a class="btn btn-warning" href="gameplans/create">Create Gameplan</a>
         </div>
-        @foreach($gameplans as $gameplan)
+        @foreach($gameplans as $gameplanindex => $gameplan)
             <div class="row">
                 <table class="table table-condensed col-xs-12">
-                    <div class="container">
+                    <div class="container"><br><br>
                         <h3><a href="{{ action('GameplansController@show', $gameplan->id) }}">Gameplan
-                                for {{ $gameplan->date }}</a></h3>
+                                for {{ $gameplan->date->format('Y-m-d') }}</a></h3>
                         {{--code above is awesome this is the wrong place for it--}}
                         {{--<h3>Gameplan for {{ $gameplan->date }}</h3>--}}
                         <h4>Head Hopper:</h4>
@@ -25,11 +24,11 @@
                         <h4>Hop-Stops:</h4>
                         <div class="row">
                             <div class="col-xs-8 col-xs-offset-2" id="photos">
-                                <div id="carousel" class="carousel slide" data-ride="carousel">
+                                <div id="carousel{{ $gameplanindex }}" class="carousel slide" data-ride="carousel">
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner carousel-image-container events-slider" role="listbox">
                                         @foreach($gameplan->bars as $index => $gpbar)
-                                            <div data-value="{{ $gpbar->bar->id }}"
+                                            <div data-value="{{ $gpbar->id }}"
                                                  class="item @if($index == 0) {{ 'active' }} @endif">
                                                 <div class="carousel-caption">
                                                     <h2>{{ $gpbar->bar->name }}</h2>
@@ -42,11 +41,11 @@
                                         @endforeach
                                     </div>
                                     <!-- Controls -->
-                                    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                                    <a class="left carousel-control" href="#carousel{{ $gameplanindex }}" role="button" data-slide="prev">
                                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                                         <span class="sr-only">Previous</span>
                                     </a>
-                                    <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                                    <a class="right carousel-control" href="#carousel{{ $gameplanindex }}" role="button" data-slide="next">
                                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
