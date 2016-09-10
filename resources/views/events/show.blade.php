@@ -2,30 +2,55 @@
 
 @section('content')
 <div class="container">
-    <h1><a href="{{ action('BarsController@show', $event->bar->id) }}"> {{ $event->bar->name }}</a></h1>
-    <h2>{{ $event->date->format('l, F jS Y h:iA') }}</h2>
-    <h2>{{ $event->title }}</h2>
-    <div class="row">
-        <div class="col-xs-6 col-md-3">
-            <a href="{{ $event->event_pic }}" class="thumbnail">
-                <img src="{{$event->event_pic}}">
-            </a>
-        </div>
-    </div>
-    {{ $event->content }}
-    <h3>Submitted by:</h3>
-    <h5><a href="{{ action('UserController@show', $event->user->id) }}"> {{ $event->user->first_name }} {{ $event->user->formatLastName() }}.</a></h5>
-
-@if((Auth::user()) && (Auth::user()->id == $event->created_by))
-    <div>
-        <a class="btn btn-success" href="{{action('EventsController@edit', $event->id) }}">Edit Event</a>
-        <form method="POST" action="{{action('EventsController@destroy', $event->id) }}">
-            <input type="submit" class="btn btn-danger" value="Delete Event">
-            {{ method_field('DELETE') }}
-            {{ csrf_field() }}
-        </form>
-    </div>
-@endif
-    <small><a class="btn btn-info" href="{{ action('EventsController@index') }}">Go to events</a></small>
+	<br>
+	<div class="row">
+		<div class="col-xs-8">
+			<a href="{{ $event->event_pic }}">
+				<img  class="thumbnail" src="{{$event->event_pic}}" style="height: 40vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
+			</a>
+		</div>
+		<div class="col-xs-4">
+			<p class="event-month">{{ $event->date->format('M') }}</p>
+			<p class="event-date">{{ $event->date->format('d') }}</p>
+			<p class="event-title">{{ $event->title }}</p>
+			<div class="event-by">
+				<small>submitted by</small>
+				<p class="submitted-by"><a href="/users/{{ $event->user->id }}">{{ $event->user->first_name }} {{ $event->user->formatLastName() }}.</a></p>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-xs-8">
+			<h2 class="primary-label">Description</h2>
+			<p class="event-description">{{ $event->content }}</p>
+		</div>
+		<div class="col-xs-4">
+			<h2 class="primary-label">Date & Time</h2>
+			<div class="event-info">
+				<p>{{ $event->date->format('F jS, Y') }}</p>
+				<p>@ {{ $event->date->format('h:i A') }}</p>
+			</div>
+			<hr>
+			<h2 class="primary-label">Location</h2>
+			<div class="event-info">
+				<p><a href="/bars/{{ $event->bar_id }}">{{ $event->bar->name }}</a></p>
+				<p class="address-phone"><a href="http://maps.apple.com/?q={{ $event->bar->address }}">{{ $event->bar->address }}</a> | <a href="tel:{{ $event->bar->phone }}">{{ $event->bar->formatPhoneNumber() }}</a></p>
+			</div>
+			<hr>
+			@if((Auth::user()) && (Auth::user()->id == $event->created_by))
+			<div>
+				<a class="btn btn-warning btn-block" href="{{action('EventsController@edit', $event->id) }}">Edit Event</a>
+				<form method="POST" action="{{action('EventsController@destroy', $event->id) }}">
+					<input type="submit" class="btn btn-danger btn-block" value="Delete">
+					{{ method_field('DELETE') }}
+					{{ csrf_field() }}
+				</form>
+			</div>
+			@endif
+		</div>
+	</div>
+	<small><a class="btn btn-primary" href="{{ action('EventsController@index') }}">Back to Events</a></small>
+</div>
 </div>
 @stop
