@@ -7,8 +7,6 @@
 			<h3>{{ $bar->name }}</h3>
 			<p class="beer-rating">{{ $bar->averageBarRating() }}</p>
 			<br>
-			avg price here
-			<br>
 			<a href="http://maps.apple.com/?q={{ $bar->address }}">{{ $bar->address }}</a>
 			<br>
 			<a href="tel:{{$bar->phone}}">{{ $bar->formatPhoneNumber() }}</a>
@@ -84,9 +82,9 @@
 											<h5>
 												<a href="{{ action('UserController@show', $review->user->id) }}">{{ $review->user->first_name }} {{ $review->user->formatLastName() }}.</a>
 											</h5>
-											user score
+											User score
 											<br>
-											helpful?
+											Helpful?
 										</div>
 										<div class="col-xs-9">
 											<h4>{{ $review->title }} <br>

@@ -15,7 +15,7 @@
 					@if ($bar->averageBarRating() != null)
 					<p class="beer-rating">{!! $bar->averageBarRating() !!}</p>
 					@else
-					no ratings yet
+					No ratings yet
 					@endif
 				</div>
 			</div>

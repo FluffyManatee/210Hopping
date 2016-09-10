@@ -2,20 +2,19 @@
 
 @section('content')
     {{--<div></div>--}}
-    <div class="container-fluid" id="header">
-            <img style="height:500px; width: 100%;" src="/img/goblets.jpeg">
+    <div id="header" style="background-image:url('/img/gobletsedit.jpg'); background-position: center center; background-repeat: no-repeat; background-size: 100%;width:auto; height:500px;">
     </div>
     <div class="container">
         <div class="col-xs-5"></div>
-        <div class="col-xs-2">
+        <div class="col-xs-2"><br>
             <a class="btn btn-warning" href="gameplans/create">Create Gameplan</a>
         </div>
         @foreach($gameplans as $gameplan)
             <div class="row">
                 <table class="table table-condensed col-xs-12">
-                    <div class="container">
+                    <div class="container"><br><br>
                         <h3><a href="{{ action('GameplansController@show', $gameplan->id) }}">Gameplan
-                                for {{ $gameplan->date }}</a></h3>
+                                for {{ $gameplan->date->format('Y-m-d') }}</a></h3>
                         {{--code above is awesome this is the wrong place for it--}}
                         {{--<h3>Gameplan for {{ $gameplan->date }}</h3>--}}
                         <h4>Head Hopper:</h4>
