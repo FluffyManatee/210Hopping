@@ -26,7 +26,7 @@ class GameplansController extends Controller
 
     public function index()
     {
-        $gameplans = Gameplan::orderBy('created_at', 'desc')->paginate(2);
+        $gameplans = Gameplan::orderBy('created_at', 'desc')->paginate(5);
 //        dd($gameplans);
         $data = [
             'gameplans' => $gameplans
