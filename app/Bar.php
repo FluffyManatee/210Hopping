@@ -72,6 +72,7 @@ class Bar extends Model
 
     public static function searchBy($searchTerm, $features)
     {
+//        dd($features);
         $query = static::join('bar_features', 'bar_features.bar_id', '=', 'bars.id')->where('bars.name', 'LIKE', "%$searchTerm%");
         if ($features[0] != '') {
             foreach ($features as $key => $feature) {

@@ -38,7 +38,7 @@
 					<li id="sidenav-bars">Bars</li>
 					<ul id="more-bars">
 						<li><a href="" class="nearby">Nearby</a></li>
-						<li><a href="/bars">Discover</a></li>
+						<li><a href="/discover">Discover</a></li>
 						<li><a href="/bars">Top Rated</a></li>
 						<li><a href="/bars/create">List a Bar</a></li>
 					</ul>
@@ -295,6 +295,14 @@
 		});
 		barsInput.val(bars);
 	});
+	var barSelectGuts = $('#moreStopsDiv').html();
+	$('#moreStopsButton').click(function(e){
+		e.preventDefault();
+		var previousForm = $('#moreStopsDiv').html();
+		$('#moreStopsDiv').html(previousForm + barSelectGuts);
+//		console.log(barSelectGuts);
+
+	})
 
 </script>
 <script>

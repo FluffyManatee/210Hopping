@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BarsTableSeeder::class);
         $this->call(ReviewsTableSeeder::class);
         $this->call(EventsTableSeeder::class);
-        $this->call(BarPicturesTableSeeder::class);
+//        $this->call(BarPicturesTableSeeder::class);
         $this->call(BarFeaturesTableSeeder::class);
         $this->call(SpecialsTableSeeder::class);
         $this->call(VotesTableSeeder::class);

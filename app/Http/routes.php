@@ -38,6 +38,7 @@ Route::put('users/password/{id}', 'UserController@updatePassword');
 
 Route::get('/nearby/{latitude}/{longitude}', 'BarsController@nearby');
 Route::get('/search', 'BarsController@search');
+Route::get('/discover', 'BarsController@discover');
 Route::get('/recent', 'HomeController@recent');
 Route::get('gameplans/addHopper/{gameplanid}', 'GameplansController@addHopper');
 
