@@ -295,6 +295,14 @@
 		});
 		barsInput.val(bars);
 	});
+	var barSelectGuts = $('#moreStopsDiv').html();
+	$('#moreStopsButton').click(function(e){
+		e.preventDefault();
+		var previousForm = $('#moreStopsDiv').html();
+		$('#moreStopsDiv').html(previousForm + barSelectGuts);
+//		console.log(barSelectGuts);
+
+	})
 
 </script>
 <script>
