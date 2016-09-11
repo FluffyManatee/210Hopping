@@ -27,22 +27,13 @@
 										<input type="checkbox" class="filter-value" value="pet_friendly"> Pets Allowed
 									</label>
 									<label>
-										<input type="checkbox" class="filter-value" value="bikes"> Bike Racks
-									</label>
-									<label>
 										<input type="checkbox" class="filter-value" value="live_music"> Live Music
-									</label>
-									<label>
-										<input type="checkbox" class="filter-value" value="reservations"> Reservations Needed
 									</label>
 									<label>
 										<input type="checkbox" class="filter-value" value="tvs"> TVs
 									</label>
 									<label>
 										<input type="checkbox" class="filter-value" value="18+"> 18+
-									</label>
-									<label>
-										<input type="checkbox" class="filter-value" value="kids"> Kids Allowes
 									</label>
 									<label>
 										<input type="checkbox" class="filter-value" value="patio"> Outside Seating
@@ -52,6 +43,9 @@
 									</label>
 									<label>
 										<input type="checkbox" class="filter-value" value="darts"> Darts
+									</label>
+									<label>
+										<input type="checkbox" class="filter-value" value="games"> Games
 									</label>
 								</div>
 							</div>
@@ -89,16 +83,10 @@
 								<input type="checkbox" class="filter-value" value="food"> Kitchen
 							</label>
 							<label>
-								<input type="checkbox" class="filter-value" value="pet_friendly"> Pets
-							</label>
-							<label>
-								<input type="checkbox" class="filter-value" value="bikes"> Bike Racks
+								<input type="checkbox" class="filter-value" value="pet_friendly"> Pets Allowed
 							</label>
 							<label>
 								<input type="checkbox" class="filter-value" value="live_music"> Live Music
-							</label>
-							<label>
-								<input type="checkbox" class="filter-value" value="reservations"> Reservations
 							</label>
 							<label>
 								<input type="checkbox" class="filter-value" value="tvs"> TVs
@@ -107,16 +95,16 @@
 								<input type="checkbox" class="filter-value" value="18+"> 18+
 							</label>
 							<label>
-								<input type="checkbox" class="filter-value" value="kids"> Kids
-							</label>
-							<label>
-								<input type="checkbox" class="filter-value" value="patio"> Patio
+								<input type="checkbox" class="filter-value" value="patio"> Outside Seating
 							</label>
 							<label>
 								<input type="checkbox" class="filter-value" value="pool"> Pool Tables
 							</label>
 							<label>
 								<input type="checkbox" class="filter-value" value="darts"> Darts
+							</label>
+							<label>
+								<input type="checkbox" class="filter-value" value="games"> Games
 							</label>
 						</div>
 						<div role="tabpanel" class="tab-pane fade in active form-group hidden" id="search">
