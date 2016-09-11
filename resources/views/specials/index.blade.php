@@ -1,22 +1,20 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <table class="table table-condensed col-xs-12">
-                @foreach($specials as $special)
-                    <div></div>
-                    <tr>
-                        <td>{{ $special->title }}<br><a href="{{ action('BarsController@show', $special->bar->id)  }}">{{ $special->bar->name }}</a></td>
-                        <td><strong>Added on:</strong> {{ $special->created_at->format('d-m-Y g:ia')}}<br>
-                            @if($special->created_at != $special->updated_at)
-                            <strong>Updated on:</strong> {{$special->updated_at->format('d-m-Y g:ia')}}</td>
-                            @endif
-                        <td><a class="btn btn-info" href="{{action('SpecialsController@show', $special->id)}}">See Special</a></td>
-                    </tr>
-                @endforeach
-            </table>
-            {!! $specials->render() !!}
+<div class="container">
+<h3 class="h3-list-title">Specials</h3>
+<hr>
+    @foreach ($specials as $special)
+    <div data-value="{{ $special->id }}" class="row list-card special">
+        <div class="col-xs-6">
+            <h4>{{ $special->title }}</h4>
+            {{ substr($special->content, 0, 25) }}...
+        </div>
+        <div class="col-xs-6">
+            <h4>@ <a href="/bars/{{ $special->bar->id }}">{{ $special->bar->name }}</a></h4>
         </div>
     </div>
+    @endforeach
+    {!! $specials->render() !!}
+</div>
 @stop
