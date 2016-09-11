@@ -17,6 +17,9 @@
 				<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 				@include('forms.error', ['field' => 'password'])
 			</div>
+			<div class="pull-left">
+				Not a member? <a href="/auth/register">Sign up!</a>
+			</div>
 			<button type="submit" class ="btn btn-primary pull-right">Log in</button>
 		</form>
 	</div>
