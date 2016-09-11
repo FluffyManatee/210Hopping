@@ -71,7 +71,8 @@ class BarsController extends Controller
 		}
 
 		$barfeatures->save();
-//        dd($barfeatures);
+//        dd($barfeatures, $bar);
+
 		session()->flash('success', 'Your post was created successfully!');
 		return redirect()->action('BarsController@show', $bar->id);
 	}
