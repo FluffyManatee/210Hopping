@@ -9,7 +9,7 @@
 			<img src="{{ $bar->pictures->first()->pic_url }}" class="thumbnail responsive" height="100" width="100">
 		</div>
 		<div class="col-xs-9">
-			<h2><a href="{{ 'BarsController@show', $bar->id }}">{{ $bar->name }}</a></h2>
+			<h2><a href="/bars/{{ $bar->id }}">{{ $bar->name }}</a></h2>
 			<p><a href="http://maps.apple.com/?q={{ $bar->address }}"><strong>{{ $bar->address}}</strong></a>
 				| <a href="tel:{{ $bar->phone }}">{{ $bar->formatPhoneNumber() }}</a></p>
 				@if ($bar->averageBarRating() != null)

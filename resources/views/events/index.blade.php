@@ -1,37 +1,26 @@
 @extends('layouts.master')
 
 @section('content')
-        <div class="container">
-
-                <table class="table table-condensed col-xs-12">
-                    @foreach($events as $event)
-                        <div></div>
-                        <tr>
-                            <td>
-                                {{ $event->title }}<br>
-                                {{ $event->date->format('l, F j Y')  }}<br>
-                                <a href="{{ action('BarsController@show', $event->bar->id) }}">{{ $event->bar->name }}</a>
-                            </td>
-                            <div class="row">
-                                <div class="col-xs-6 col-md-3">
-                                    <td><a href="{{ $event->event_pic }}"><img class="thumbnail" src="{{ $event->event_pic }}"></a></td>
-                                </div>
-                            </div>
-                            <td>
-                                <strong>Submitted By:</strong><br>
-                                <a href="{{ action('UserController@show', $event->user->id) }}"> {{ $event->user->first_name}} {{ $event->user->formatLastName()}}.</a><br>
-                                <strong>On:</strong><br>
-                                {{ $event->created_at->format('d-m-Y g:ia')}}<br>
-                                @if($event->created_at != $event->updated_at)
-                                <strong>Updated on:</strong><br>
-                                    {{$event->updated_at->format('d-m-Y g:ia')}}
-                                @endif
-                            </td>
-                            <td><a class="btn btn-info" href="{{action('EventsController@show', $event->id)}}">See Event</a></td>
-                        </tr>
-                    @endforeach
-                </table>
-
-        </div>
-{{--{!! $events->render() !!}--}}
-@stop
+<div class="container">
+	<hr>
+	@foreach ($events as $event)
+	<div class="row">
+		<div class="col-xs-3">
+			<img  class="thumbnail" src="{{$event->event_pic}}" style="height: 20vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
+		</div>
+		<div class="col-xs-6 list-card">
+			<div class="event-info">
+				<p class="event-month">{{ $event->date->format('M j g:i A') }}</p>
+			</div>
+			<h3>{{ $event->title }}</h3>
+			<p>@ <a href="/bars/{{ $event->bar_id }}" style="font-size:17px;font-weight:bold;">{{ $event->bar->name }}</a></p>
+			</div>
+			<div class="col-xs-3">
+				<a class="btn btn-primary pull-right foreached-button" href="/events/{{ $event->id }}">View Event</a>
+			</div>
+		</div>
+		<hr>
+		@endforeach
+	</div>
+	{{--{!! $events->render() !!}--}}
+	@stop

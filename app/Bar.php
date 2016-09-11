@@ -135,6 +135,8 @@ class Bar extends Model
             $formatNumber = substr($this->phone, 0, 3) . '-' . substr($this->phone, 3);
         } elseif (strlen($this->phone) == 10) {
             $formatNumber = '(' . substr($this->phone, 0, 3) . ') ' . substr($this->phone, 3, 3) . '-' . substr(($this->phone), 6);
+        } elseif (strlen($this->phone) !== 10 && strlen($this->phone) !== 7) {
+            $formatNumber = $this->phone;
         }
         return $formatNumber;
     }
