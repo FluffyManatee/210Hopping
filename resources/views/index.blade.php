@@ -16,7 +16,7 @@
 					<div data-value="{{ $event->id }}" class="item @if($index == 0) {{ 'active' }} @endif">
 						<div class="carousel-caption">
 							<h2>{{ $event->title }}</h2>
-							<p> </p>
+							<p>{{ $event->bar->name }} @ {{ $event->date->format('h:i A') }}</p>
 						</div>
 						<img class="cover" src="{{ $event->event_pic }}" alt="{{ $event->title }}">
 					</div>

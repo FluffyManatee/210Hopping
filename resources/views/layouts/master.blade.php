@@ -44,7 +44,7 @@
 					</ul>
 					<li id="sidenav-gameplans">Gameplans</li>
 					<ul id="more-gameplans">
-						<li><a href="/gameplans">View Gameplans</a></li>
+						<li><a href="/gameplans">Browse Gameplans</a></li>
 						<li><a href="/gameplans/create">Create a Gameplan</a></li>
 					</ul>
 					<li id="sidenav-events">Events</li>
