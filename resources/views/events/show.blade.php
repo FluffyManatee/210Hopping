@@ -29,7 +29,7 @@
 			<h2 class="primary-label">Date & Time</h2>
 			<div class="event-info">
 				<p>{{ $event->date->format('F jS, Y') }}</p>
-				<p>@ {{ $event->date->format('h:i A') }}</p>
+				<p>@ {{ $event->date->format('g:i A') }}</p>
 			</div>
 			<hr>
 			<h2 class="primary-label">Location</h2>
