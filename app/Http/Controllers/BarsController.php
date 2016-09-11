@@ -194,6 +194,17 @@ class BarsController extends Controller
 		];
 		return view('bars.results', $data);
 	}
+
+	public function discover() {
+		$barCount = Bar::all()->count();
+		$randomBar = mt_rand(1, $barCount);
+		$bar = Bar::find($randomBar);
+		$data = [
+			'randomBar' => $randomBar,
+			'bar' => $bar
+		];
+		return view('bars.show', $data);
+	}
 //
 //	public function recent()
 //	{
