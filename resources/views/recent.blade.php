@@ -17,46 +17,48 @@
 							</ul>
 							<!-- Tab panes -->
 							<div class="tab-content">
+								<!-- bars -->
 								<div role="tabpanel" class="tab-pane fade in active" id="reviews">
+									<br>
 									@foreach ($recent['bars'] as $bar)
-									<div data-value="{{ $bar->id }}" class="row thisBar">
-										<div class="col-xs-2">
-											<img src="{{ $bar->pictures()->first()->pic_url or "" }}" class="thumbnail responsive"
-											height="100" width="100">
+									<div data-value="{{ $bar->id }}" class="row list-card">
+										<div class="col-xs-5 list-card-image">
+											<img class="pull-left" src="{{ $bar->pictures->first()->pic_url or "" }}" style="height: 22vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
 										</div>
-										<div class="col-xs-9">
+										<div class="col-xs-7">
 											<h2>{{ $bar->name}}</h2>
-											<p>
-												<a href="http://maps.apple.com/?q={{ $bar->address }}"><strong>{{ $bar->address}}</strong></a>
-												| <a href="tel:{{ $bar->phone }}">{{ $bar->formatPhoneNumber() }}</a></p>
+											<p><a href="http://maps.apple.com/?q={{ $bar->address }}"><strong>{{ $bar->address}}</strong></a>
+												<br>
+												<a href="tel:{{ $bar->phone }}">{{ $bar->formatPhoneNumber() }}</a></p>
 												@if ($bar->averageBarRating() != null)
 												<p class="beer-rating">{!! $bar->averageBarRating() !!}</p>
-												&nbsp; {{ count($bar->reviews) }} reviews
 												@else
-												no ratings yet
+												No ratings yet
 												@endif
 											</div>
 										</div>
-										<hr>
 										@endforeach
 									</div>
+									<!-- events -->
 									<div role="tabpanel" class="tab-pane fade" id="events">
+									<br>
 										@foreach ($recent['events'] as $event)
-										<div data-value="" class="row">
-											<div class="col-xs-2">
-												<img src="{{ $event->event_pic or "" }}" class="thumbnail responsive" height="100"
-												width="100">
+										<div data-value="{{ $event->id }}" class="row list-card">
+											<div class="col-xs-5 list-card-image">
+												<img class="pull-left" src="{{$event->event_pic}}" style="height: 20vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
 											</div>
-											<div class="col-xs-9">
-												<a href="/events/{{ $event->id }}"><h2>{{ $event->title}}</h2></a>
-												<p>Where: <a href="/bars/{{ $event->bar->id }}">{{ $event->bar->name}}</a></p>
-												<p>When: {{ $event->date }}</p>
-												<p>{{ $event->time }}</p>
+											<div class="col-xs-7">
+												<div class="event-info">
+													<p class="event-month">{{ $event->date->format('M j g:i A') }}</p>
+												</div>
+												<h4>{{ $event->title }}</h4>
+												<hr>
+												<p>@ <a href="/bars/{{ $event->bar_id }}" style="font-size:15px;font-weight:normal;">{{ $event->bar->name }}</a></p>
 											</div>
 										</div>
-										<hr>
 										@endforeach
 									</div>
+									<!-- specials -->
 									<div role="tabpanel" class="tab-pane fade" id="specials">
 										@foreach ($recent['specials'] as $special)
 										<div data-value="" class="row">
@@ -71,6 +73,7 @@
 										<hr>
 										@endforeach
 									</div>
+									<!-- gameplans -->
 									<div role="tabpanel" class="tab-pane fade" id="gameplans">
 										@foreach($recent['gameplans'] as $gameplan)
 										<div class="row">

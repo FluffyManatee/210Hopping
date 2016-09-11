@@ -2,16 +2,18 @@
 
 @section('content')
 <div class="container">
+	<h3 class="h3-list-title">Search Results</h3>
 	<hr>
 	@foreach ($bars as $bar)
-	<div data-value="{{ $bar->id }}" class="row thisBar">
-		<div class="col-xs-3">
-			<img src="{{ $bar->pictures->first()->pic_url }}" class="thumbnail responsive" height="100" width="100">
+	<div data-value="{{ $bar->id }}" class="row thisBar list-card">
+		<div class="col-xs-5 list-card-image">
+			<img class="pull-left" src="" style="height: 22vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
 		</div>
-		<div class="col-xs-9">
-			<h2><a href="/bars/{{ $bar->id }}">{{ $bar->name }}</a></h2>
+		<div class="col-xs-7">
+			<h2>{{ $bar->name }}</h2>
 			<p><a href="http://maps.apple.com/?q={{ $bar->address }}"><strong>{{ $bar->address}}</strong></a>
-				| <a href="tel:{{ $bar->phone }}">{{ $bar->formatPhoneNumber() }}</a></p>
+				<br>
+				<a href="tel:{{ $bar->phone }}">{{ $bar->formatPhoneNumber() }}</a></p>
 				@if ($bar->averageBarRating() != null)
 				<p class="beer-rating">{!! $bar->averageBarRating() !!}</p>
 				@else
@@ -19,7 +21,6 @@
 				@endif
 			</div>
 		</div>
-		<hr>
 		@endforeach
 	</div>
 	@stop

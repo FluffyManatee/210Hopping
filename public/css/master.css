@@ -78,6 +78,10 @@ hr {
 	box-shadow: rgba(0, 0, 0, 0.0980392) 0px 3px 5px 2px;
 }
 .list-card-image {padding-left:0px !important;}
+.h3-list-title {
+	text-transform: uppercase;
+	letter-spacing: .5px;
+}
 /* events/show */
 .event-month {
 	padding: 0;

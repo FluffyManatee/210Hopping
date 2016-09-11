@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-<h3>Upcoming Events</h3>
+<h3 class="h3-list-title">Upcoming Events</h3>
 <hr>
 	@foreach ($upcomingEvents as $index => $event)
 	<div data-value="{{ $event->id }}" class="row list-card">
