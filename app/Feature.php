@@ -12,15 +12,13 @@ class Feature extends Model
     	'smoking' => 'Smoking allowed',
     	'food' => 'Kitchen',
     	'pet_friendly' => 'Pet friendly',
-    	'bikes' => 'Bikes racks',
     	'live_music' => 'Live music',
-    	'reservations' => 'Needs reservation',
     	'tvs' => 'Tvs',
     	'18+' => '18+',
-    	'kids' => 'Kids allowed',
     	'patio' => 'Outside seating',
     	'pool' => 'Pool tables',
     	'darts' => 'Darts',
+        'games' => 'Games',
     ];
 
     public function bar()
