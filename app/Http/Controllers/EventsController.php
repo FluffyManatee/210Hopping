@@ -15,10 +15,8 @@ class EventsController extends Controller
 
     public function index()
     {
-		$events = Event::orderDesc(10);
-		$data = [
-			'events' => $events
-		];
+		$data['events'] = Event::orderDesc(10);
+		$data['upcomingEvents'] = Event::upcomingEvents()->get();
 		return view ('events.index', $data);
     }
 

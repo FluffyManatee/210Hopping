@@ -38,25 +38,25 @@
 	<div class="row">
 		<h2>Highest Rated Bars</h2>
 	</div>
-		@foreach ($highestRated as $sortedBar)
-		<div data-value="{{ $sortedBar->id }}" class="row thisBar">
-			<div class="col-xs-2">
-				<img src="{{ $sortedBar->pictures->first()->pic_url }}" class="thumbnail" height="100" width="100">
-			</div>
-			<div class="col-xs-10 top-bars">
-				<h2>{{ $sortedBar->name}}</h2>
-				<p><a href="http://maps.apple.com/?q={{ $sortedBar->address }}"><strong>{{ $sortedBar->address}}</strong></a>
-					| <a href="tel:{{ $sortedBar->phone }}">{{ $sortedBar->formatPhoneNumber() }}</a></p>
-					@if ($sortedBar->averageBarRating() != null)
-					<p class="beer-rating">{!! $sortedBar->averageBarRating() !!}</p> &nbsp; {{ count($sortedBar->reviews) }} reviews
-					@else
-					no ratings yet
-					@endif
-				</div>
-			</div>
-			<hr>
-			@endforeach
+	@foreach ($highestRated as $sortedBar)
+	<div data-value="{{ $sortedBar->id }}" class="row thisBar list-card">
+		<div class="col-xs-5 list-card-image">
+			<img class="pull-left" src="{{ $sortedBar->pictures->first()->pic_url }}" style="height: 20vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
 		</div>
+		<div class="col-xs-7 top-bars">
+			<h2>{{ $sortedBar->name}}</h2>
+			<p><a href="http://maps.apple.com/?q={{ $sortedBar->address }}"><strong>{{ $sortedBar->address}}</strong></a>
+			<br>
+				<a href="tel:{{ $sortedBar->phone }}">{{ $sortedBar->formatPhoneNumber() }}</a></p>
+				@if ($sortedBar->averageBarRating() != null)
+				<p class="beer-rating">{!! $sortedBar->averageBarRating() !!}</p> &nbsp; {{ count($sortedBar->reviews) }} reviews
+				@else
+				no ratings yet
+				@endif
+			</div>
+		</div>
+		@endforeach
+	</div>
 	@stop
 	@section('scripts')
 	<script>

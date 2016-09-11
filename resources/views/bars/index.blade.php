@@ -3,24 +3,28 @@
 @section('content')
 <div class="container">
 	@foreach ($bars as $bar)
-	<a href="/bars/{{ $bar->id }}">
-		<div class="row">
-			<div class="col-xs-3">
-				<img src="" class="thumbnail responsive" height="100" width="100">
+	<div data-value="{{ $bar->id }}" class="row list-card">
+		<div class="col-xs-5 list-card-image">
+			<img class="pull-left" src="" style="height: 20vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
+		</div>
+		<div class="col-xs-7">
+			<h2>{{ $bar->name}}</h2>
+			<p><a href="http://maps.apple.com/?q={{ $bar->address }}"><strong>{{ $bar->address}}</strong></a>
+				| <a href="tel:{{ $bar->phone }}">{{ $bar->formatPhoneNumber() }}</a></p>
+				@if ($bar->averageBarRating() != null)
+				<p class="beer-rating">{!! $bar->averageBarRating() !!}</p>
+				@else
+				No ratings yet
+				@endif
 			</div>
-			<div class="col-xs-9">
-				<h2>{{ $bar->name}}</h2>
-				<p><a href="http://maps.apple.com/?q={{ $bar->address }}"><strong>{{ $bar->address}}</strong></a>
-					| <a href="tel:{{ $bar->phone }}">{{ $bar->formatPhoneNumber() }}</a></p>
-					@if ($bar->averageBarRating() != null)
-					<p class="beer-rating">{!! $bar->averageBarRating() !!}</p>
-					@else
-					No ratings yet
-					@endif
-				</div>
-			</div>
-		</a>
-		<hr>
+		</div>
 		@endforeach
 	</div>
+	@stop
+	@section('scripts')
+	<script>
+		$('.list-card').click(function() {
+			$(location).attr('href', '/bars/' + $(this).data('value'));
+		})
+	</script>
 	@stop

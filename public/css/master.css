@@ -64,6 +64,20 @@ hr {
 	vertical-align: center;
 	display: table-cell;
 }
+.list-card {
+	transform: translate3d(0px, 0px, 0px);
+	background-color: #F8FAFA;
+	box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 3px 0px;
+	display: block;
+	transition: box-shadow 0.2s cubic-bezier(0, 0.2, 0.4, 1);
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.list-card:hover,
+.list-card:active {
+	box-shadow: rgba(0, 0, 0, 0.0980392) 0px 3px 5px 2px;
+}
+.list-card-image {padding-left:0px !important;}
 /* events/show */
 .event-month {
 	padding: 0;
@@ -231,7 +245,7 @@ hr {
 	content: "\f005";
 	color: #FFC100;
 }
-.user-page-review-info{
+.user-page-review-info {
 	font-size: small;
 }		
 
