@@ -70,6 +70,7 @@
 			</div>
 		</div>
 		<!-- end desktop view -->
+		
 		<!-- mobile view -->
 		<div class="row" id="search-container">
 			<ul class="nav nav-tabs hidden" id="myTabs" role="tablist">
