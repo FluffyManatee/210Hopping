@@ -16,12 +16,12 @@ class BarsController extends Controller
 	public function index()
 	{
 		$bars = Bar::orderBy('bars.beer_rating', 'desc')->get();
-        $data = [
+		$data = [
 		'bars' => $bars
 		];
 //        dd($data);
-        return view ('bars.index', $data);
-    }
+		return view ('bars.index', $data);
+	}
 
 	public function create()
 	{
@@ -36,43 +36,43 @@ class BarsController extends Controller
 		session()->flash('fail', 'Your post was NOT created. Please fix errors.');
 //        dd($request);
 		$this->validate($request, Bar::$rules);
-		 $adapter  = new Guzzle6HttpAdapter();
-		 $geocoder = new GoogleMaps($adapter);
+		$adapter  = new Guzzle6HttpAdapter();
+		$geocoder = new GoogleMaps($adapter);
 		$bar = new Bar();
 		$bar->type = $request->get('type');
 		$bar->name = $request->get('name');
 		$bar->address = $request->get('address');
         ///latlong stuff
-         $latlong = $geocoder->geocode($bar->address)->first();
-         $bar->latitude = $latlong->getLatitude();
-         $bar->longitude = $latlong->getLongitude();
+		$latlong = $geocoder->geocode($bar->address)->first();
+		$bar->latitude = $latlong->getLatitude();
+		$bar->longitude = $latlong->getLongitude();
         //dd($latlong->getLatitude(), $latlong->getLongitude());
-        $bar->phone = $request->get('phone');
+		$bar->phone = $request->get('phone');
 		$bar->website = $request->get('website');
 		$bar->email = $request->get('email');
 		$bar->save();
 //         features ======================================
-        $barfeatures = new Feature();
-        $barfeatures->bar_id = $bar->id;
+		$barfeatures = new Feature();
+		$barfeatures->bar_id = $bar->id;
 
-        $features = Feature::find(1)->get();
-        $features = $features[0]['attributes'];
-        $barinput = $request->input('features');
-        $barinput = explode(',', $barinput);
-        $barinput['constant'] = $barinput[0];
-        unset($barinput[0]);
+		$features = Feature::find(1)->get();
+		$features = $features[0]['attributes'];
+		$barinput = $request->input('features');
+		$barinput = explode(',', $barinput);
+		$barinput['constant'] = $barinput[0];
+		unset($barinput[0]);
 
-        array_pop($features);
-        array_pop($features);
-        array_shift($features);
-        array_shift($features);
-        foreach($features as $feature => $data){
-            $barfeatures->$feature = (array_search($feature,$barinput) ? 1 : 0);
-        }
+		array_pop($features);
+		array_pop($features);
+		array_shift($features);
+		array_shift($features);
+		foreach($features as $feature => $data){
+			$barfeatures->$feature = (array_search($feature,$barinput) ? 1 : 0);
+		}
 
-        $barfeatures->save();
+		$barfeatures->save();
 //        dd($barfeatures);
-        session()->flash('success', 'Your post was created successfully!');
+		session()->flash('success', 'Your post was created successfully!');
 		return redirect()->action('BarsController@show', $bar->id);
 	}
 	public function show($id)
@@ -111,42 +111,42 @@ class BarsController extends Controller
 		}
 		session()->flash('fail', $bar->name . ' was NOT updated. Please fix errors.');
 		$this->validate($request, Bar::$rules);
-        $adapter  = new Guzzle6HttpAdapter();
-        $geocoder = new GoogleMaps($adapter);
+		$adapter  = new Guzzle6HttpAdapter();
+		$geocoder = new GoogleMaps($adapter);
 		$bar->type = $request->get('type');
 		$bar->name = $request->get('name');
 		$bar->address = $request->get('address');
         ///latlong stuff
-        $latlong = $geocoder->geocode($bar->address)->first();
-        $bar->latitude = $latlong->getLatitude();
-        $bar->longitude = $latlong->getLongitude();
+		$latlong = $geocoder->geocode($bar->address)->first();
+		$bar->latitude = $latlong->getLatitude();
+		$bar->longitude = $latlong->getLongitude();
         //dd($latlong->getLatitude(), $latlong->getLongitude());
 		$bar->phone = $request->get('phone');
 		$bar->website = $request->get('website');
 		$bar->email = $request->get('email');
 		$bar->save();
 //        features ==================================
-        $barfeatures = Feature::where('bar_id', '=', $bar->id);
-        $barfeatures->delete();
+		$barfeatures = Feature::where('bar_id', '=', $bar->id);
+		$barfeatures->delete();
 //        dd($barfeatures);
-        $barfeatures = new Feature();
-        $barfeatures->bar_id = $bar->id;
-        $features = Feature::find(1)->get();
-        $features = $features[0]['attributes'];
-        $barinput = $request->input('features');
-        $barinput = explode(',', $barinput);
-        $barinput['constant'] = $barinput[0];
-        unset($barinput[0]);
+		$barfeatures = new Feature();
+		$barfeatures->bar_id = $bar->id;
+		$features = Feature::find(1)->get();
+		$features = $features[0]['attributes'];
+		$barinput = $request->input('features');
+		$barinput = explode(',', $barinput);
+		$barinput['constant'] = $barinput[0];
+		unset($barinput[0]);
 
-        array_pop($features);
-        array_pop($features);
-        array_shift($features);
-        array_shift($features);
-        foreach($features as $feature => $data){
-            $barfeatures->$feature = (array_search($feature,$barinput) ? 1 : 0);
-        }
+		array_pop($features);
+		array_pop($features);
+		array_shift($features);
+		array_shift($features);
+		foreach($features as $feature => $data){
+			$barfeatures->$feature = (array_search($feature,$barinput) ? 1 : 0);
+		}
 
-        $barfeatures->save();
+		$barfeatures->save();
 		session()->flash('success', $bar->name . ' was updated successfully!');
 		return redirect()->action('BarsController@show', $bar->id);
 	}
@@ -174,9 +174,9 @@ class BarsController extends Controller
 				$data[] = $bar;
 			}
 		}
-        $data = [
-            'bars' => $data
-        ];
+		$data = [
+		'bars' => $data
+		];
 //		dd($data);
 		return view('bars.results', $data);
 	}

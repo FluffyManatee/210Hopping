@@ -16,7 +16,7 @@
 					<div data-value="{{ $event->id }}" class="item @if($index == 0) {{ 'active' }} @endif">
 						<div class="carousel-caption">
 							<h2>{{ $event->title }}</h2>
-							<p> </p>
+							<p>{{ $event->date->format('m/j/Y @ g:i A') }}</p>
 						</div>
 						<img class="cover" src="{{ $event->event_pic }}" alt="{{ $event->title }}">
 					</div>
@@ -66,7 +66,7 @@
 		});
 		$('#myTabs a:first').tab('show');
 		$('.carousel').carousel({
-			interval: 4000
+			interval: 4500
 		});
 		$('.item').click(function (e) {
 			var $eventId = $(this).data('value');
