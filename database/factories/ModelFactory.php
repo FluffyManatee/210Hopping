@@ -75,24 +75,24 @@ $factory->define(App\Vote::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Feature::class, function (Faker\Generator $faker) {
-    return [
-        'bar_id' => App\Bar::all()->random()->id,
-        'noise_level' => mt_rand(1,5),
-        'smoking' => mt_rand(0,1),
-        'food' => mt_rand(0,1),
-        'pet_friendly' => mt_rand(0,1),
-        'bikes' => mt_rand(0,1),
-        'live_music' => mt_rand(0,1),
-        'reservations' => mt_rand(0,1),
-        'tvs' => mt_rand(0,1),
-        '18+' => mt_rand(0,1),
-        'kids' => mt_rand(0,1),
-        'patio' => mt_rand(0,1),
-        'pool' => mt_rand(0,1),
-        'darts' => mt_rand(0,1),
-    ];
-});
+//$factory->define(App\Feature::class, function (Faker\Generator $faker) {
+//    return [
+//        'bar_id' => App\Bar::all()->random()->id,
+//        'noise_level' => mt_rand(1,5),
+//        'smoking' => mt_rand(0,1),
+//        'food' => mt_rand(0,1),
+//        'pet_friendly' => mt_rand(0,1),
+//        'bikes' => mt_rand(0,1),
+//        'live_music' => mt_rand(0,1),
+//        'reservations' => mt_rand(0,1),
+//        'tvs' => mt_rand(0,1),
+//        '18+' => mt_rand(0,1),
+//        'kids' => mt_rand(0,1),
+//        'patio' => mt_rand(0,1),
+//        'pool' => mt_rand(0,1),
+//        'darts' => mt_rand(0,1),
+//    ];
+//});
 
 $factory->define(App\Picture::class, function (Faker\Generator $faker) {
     return [
