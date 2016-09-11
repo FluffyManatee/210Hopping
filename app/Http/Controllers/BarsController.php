@@ -39,7 +39,7 @@ class BarsController extends Controller
 		$adapter  = new Guzzle6HttpAdapter();
 		$geocoder = new GoogleMaps($adapter);
 		$bar = new Bar();
-		$bar->type = $request->get('type');
+//		$bar->type = $request->get('type');
 		$bar->name = $request->get('name');
 		$bar->address = $request->get('address');
         ///latlong stuff
@@ -113,7 +113,7 @@ class BarsController extends Controller
 		$this->validate($request, Bar::$rules);
 		$adapter  = new Guzzle6HttpAdapter();
 		$geocoder = new GoogleMaps($adapter);
-		$bar->type = $request->get('type');
+//		$bar->type = $request->get('type');
 		$bar->name = $request->get('name');
 		$bar->address = $request->get('address');
         ///latlong stuff

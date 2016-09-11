@@ -16,19 +16,20 @@ class CreateBarFeaturesTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('bar_id')->unsigned();
             $table->foreign('bar_id')->references('id')->on('bars');
-            $table->integer('noise_level')->unsigned();
+//            $table->integer('noise_level')->unsigned();
             $table->boolean('smoking');
             $table->boolean('food');
             $table->boolean('pet_friendly');
-            $table->boolean('bikes');
+//            $table->boolean('bikes');
             $table->boolean('live_music');
-            $table->boolean('reservations');
+//            $table->boolean('reservations');
             $table->boolean('tvs');
             $table->boolean('18+');
-            $table->boolean('kids');
+//            $table->boolean('kids');
             $table->boolean('patio');
             $table->boolean('pool');
             $table->boolean('darts');
+            $table->boolean('games');
             $table->timestamps();
         });
     }
