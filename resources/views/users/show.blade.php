@@ -19,7 +19,8 @@
 	<hr>
 	<div class="row">
 		<div class="col-xs-3">
-			{{ $user->totalUserVotes() }}
+		<h4>Total user score</h4>
+			<div class="event-date">{{ $user->totalUserVotes() }}</div>
 		</div>
 		<div class="col-xs-9">
 			<h3>Reviews</h3>
@@ -27,12 +28,12 @@
 			@foreach ($user->reviews as $review)
 			<div class="row">
 				<div class="col-xs-2">
-					<img src="" class="thumbnail responsive" height="65" width="65">
+					<img src="{{ $review->bar->pictures->first()->pic_url or '' }}" class="thumbnail responsive" height="65" width="65">
 				</div>
 				<div class="col-xs-10">
 					<a href="/bars/{{ $review->bar_id }}"><strong>{{ $review->bar->name }}</strong></a>
-					<div class="user-page-review-info">avg price | {{ $review->bar->type }}</div>
-					<div class="user-page-review-info">{{ $review->bar->address }}</div>
+					<div class="user-page-review-info">{{ $review->bar->type }}</div>
+					<a href="http://maps.apple.com/?q={{ $review->bar->address }}">{{ $review->bar->address }}</a>
 				</div>
 			</div>
 			<p class="beer-rating">{!! $review->beerRating() !!}</p> &nbsp; {{ $review->created_at->format('d/m/Y') }}
@@ -40,8 +41,11 @@
 				{{ $review->content }}
 			</div>
 			@if(Auth::check() && (Auth::user()->id != $user->id))
-			Was this review helpful?
-			<div role="button" data-value="{{ $review->id }}" class="upvote">Yes</div> / <div role="button" data-value="{{ $review->id }}" class="downvote">No</div> 
+			<strong>Was this review helpful?</strong>
+			<button role="button" data-value="{{ $review->id }}" class="btn btn-primary upvote">Yes</button> <button role="button" data-value="{{ $review->id }}" class="btn btn-danger downvote">No</button>
+			<br> 
+			<strong>Review score:</strong> 
+			<br>
 			<div id="{{ $review->id }}">{{ $review->totalVotes() }}</div>
 			<hr>
 			@endif

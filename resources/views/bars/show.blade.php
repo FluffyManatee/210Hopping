@@ -82,9 +82,7 @@
 											<h5>
 												<a href="{{ action('UserController@show', $review->user->id) }}">{{ $review->user->first_name }} {{ $review->user->formatLastName() }}.</a>
 											</h5>
-											User score
-											<br>
-											Helpful?
+											User score:
 										</div>
 										<div class="col-xs-9">
 											<h4>{{ $review->title }} <br>
@@ -92,6 +90,15 @@
 											</h4>
 											<p class="beer-rating">{!! $review->beerRating() !!}</p>
 											<p>{{ $review->content }}</p>
+											<hr>
+											@if(Auth::check() && (Auth::user()->id != $review->created_by))
+											<strong>Was this review helpful?</strong>
+											<button role="button" data-value="{{ $review->id }}" class="btn btn-primary upvote">Yes</button> <button role="button" data-value="{{ $review->id }}" class="btn btn-danger downvote">No</button>
+											<br> 
+											<strong>Review score:</strong> 
+											<br>
+											<div id="{{ $review->id }}">{{ $review->totalVotes() }}</div>
+											@endif
 										</div>
 									</div>
 									<hr>
