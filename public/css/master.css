@@ -3,7 +3,20 @@ body {
 	background-color: #ECF0FB;
 	color: #353432;
 	min-height: 100%;
+	font-family: 'Trebuchet MS', Helvetica, sans-serif;
 }
+/*@font-face {
+	font-family: 'Canter';
+	src: url('/font/canter/Canter Bold.otf');
+}*/
+/*h1, h2, h3, h4 {
+}
+h1 {
+	font-size: 4.5em;
+}
+h2 {
+	font-size: 3em;
+}*/
 a {
 	color: #08B7BD;
 } 
