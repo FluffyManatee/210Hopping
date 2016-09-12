@@ -29,6 +29,7 @@ class CreateBarFeaturesTable extends Migration
             $table->boolean('patio');
             $table->boolean('pool');
             $table->boolean('darts');
+            $table->boolean('games');
             $table->timestamps();
         });
     }

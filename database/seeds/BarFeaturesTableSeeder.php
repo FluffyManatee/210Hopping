@@ -29,6 +29,7 @@ class BarFeaturesTableSeeder extends Seeder
             $bar->patio = mt_rand(0, 1);
             $bar->pool = mt_rand(0, 1);
             $bar->darts = mt_rand(0, 1);
+            $bar->games = mt_rand(0, 1);
             $bar->save();
         }
 
