@@ -9,11 +9,19 @@
                 <input type="hidden" name="hidden-bar-input" id="hidden-bar-input">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    Date<input type="date" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD">
+                    Title<input type="text" class="form-control" name="title" id="title" placeholder="Title">
+                    @include('forms.error', ['field' => 'title'])
+                </div>
+                <div class="form-group">
+                    Description<textarea rows="3" class="form-control" name="description" id="description"></textarea>
+                    @include('forms.error', ['field' => 'description'])
+                </div>
+                <div class="form-group">
+                    Date<input type="date" class="form-control" name="date" id="date">
                     @include('forms.error', ['field' => 'date'])
                 </div>
                 <div class="form-group">
-                    Time<input type="time" class="form-control" name="time" id="time" placeholder="00:00">
+                    Time<input type="time" class="form-control" name="time" id="time" placeholder="10:00">
                     @include('forms.error', ['field' => 'time'])
                 </div>
                 Add Hop-Stops
