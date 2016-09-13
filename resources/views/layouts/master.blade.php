@@ -140,7 +140,7 @@
 		var startPos;
 		var lat;
 		var lon;
-		var windowLocation = 'http://210hopping.dev/nearby/';
+		var windowLocation = 'http://210hopper.com/nearby/';
 		var geoOptions = {
 			timeout: 10 * 1000,
 			maximumAge: 5 * 60 * 1000
