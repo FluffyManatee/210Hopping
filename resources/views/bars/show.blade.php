@@ -13,8 +13,10 @@
 			<br>
 			<a href="{{ $bar->website }}">Website</a>
 			<br>
-			@if(Auth::check())
+			@if(Auth::user()->id == $bar->created_by || Auth::user()->id == $bar->owner_id)
 			<a class="btn btn-default" href="{{ action('BarsController@edit', $bar->id) }}">Edit bar info</a>
+			@endif
+			@if(Auth::check())
 			<button style="margin-left: auto; margin-right: auto" id="image-upload" type="button" class="btn btn-default">Upload an image</button>
 			@endif
 		</div>
@@ -82,7 +84,11 @@
 											<h5>
 												<a href="{{ action('UserController@show', $review->user->id) }}">{{ $review->user->first_name }} {{ $review->user->formatLastName() }}.</a>
 											</h5>
-											User score:
+											<small>user score</small>
+											<p>&nbsp;{{ $review->user->totalUserVotes() }}</p>
+											<small>review score</small> 
+											<br>
+											<div id="{{ $review->id }}">&nbsp;{{ $review->totalVotes() }}</div>
 										</div>
 										<div class="col-xs-9">
 											<h4>{{ $review->title }} <br>
@@ -90,14 +96,13 @@
 											</h4>
 											<p class="beer-rating">{!! $review->beerRating() !!}</p>
 											<p>{{ $review->content }}</p>
-											<hr>
 											@if(Auth::check() && (Auth::user()->id != $review->created_by))
+											<hr>
 											<strong>Was this review helpful?</strong>
-											<button role="button" data-value="{{ $review->id }}" class="btn btn-primary upvote">Yes</button> <button role="button" data-value="{{ $review->id }}" class="btn btn-danger downvote">No</button>
-											<br> 
-											<strong>Review score:</strong> 
-											<br>
-											<div id="{{ $review->id }}">{{ $review->totalVotes() }}</div>
+											<div class="">
+												<button role="button" data-value="{{ $review->id }}" class="btn btn-primary upvote">Yes</button> 
+												<button role="button" data-value="{{ $review->id }}" class="btn btn-danger downvote">No</button>
+											</div>
 											@endif
 										</div>
 									</div>

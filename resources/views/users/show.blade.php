@@ -19,7 +19,7 @@
 	<hr>
 	<div class="row">
 		<div class="col-xs-3">
-		<h4>Total user score</h4>
+			<h4>Total user score</h4>
 			<div class="event-date">{{ $user->totalUserVotes() }}</div>
 		</div>
 		<div class="col-xs-9">
@@ -34,9 +34,10 @@
 					<a href="/bars/{{ $review->bar_id }}"><strong>{{ $review->bar->name }}</strong></a>
 					<div class="user-page-review-info">{{ $review->bar->type }}</div>
 					<a href="http://maps.apple.com/?q={{ $review->bar->address }}">{{ $review->bar->address }}</a>
+					<br>
+					<p class="beer-rating">{!! $review->beerRating() !!}</p> &nbsp; {{ $review->created_at->format('d/m/Y') }}
 				</div>
 			</div>
-			<p class="beer-rating">{!! $review->beerRating() !!}</p> &nbsp; {{ $review->created_at->format('d/m/Y') }}
 			<div>
 				{{ $review->content }}
 			</div>
@@ -44,11 +45,11 @@
 			<strong>Was this review helpful?</strong>
 			<button role="button" data-value="{{ $review->id }}" class="btn btn-primary upvote">Yes</button> <button role="button" data-value="{{ $review->id }}" class="btn btn-danger downvote">No</button>
 			<br> 
-			<strong>Review score:</strong> 
+			<small>review score</small> 
 			<br>
 			<div id="{{ $review->id }}">{{ $review->totalVotes() }}</div>
-			<hr>
 			@endif
+			<hr>
 			@endforeach
 		</div>
 	</div>

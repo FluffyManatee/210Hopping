@@ -106,10 +106,11 @@
 							<label>
 								<input type="checkbox" class="filter-value" value="games"> Games
 							</label>
+							<button type="submit" class="btn btn-primary pull-right">Submit</button>
 						</div>
 						<div role="tabpanel" class="tab-pane fade in active form-group hidden" id="search">
 							<input type="text" class="form-control" name="searchTerm" placeholder="Search">
-							<button type="submit" class="btn btn-default">Submit</button>
+							<button type="submit" class="btn btn-primary pull-right">Submit</button>
 						</div>
 					</div>
 				</form>
