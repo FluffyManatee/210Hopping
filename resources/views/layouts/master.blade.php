@@ -3,10 +3,10 @@
 <head>
 	<title>210 Hopper</title>
 	<!-- apple icons -->
-	<link rel="apple-touch-icon" href="apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-144x144.png">
+	<link rel="apple-touch-icon" href="apple-icon-60x60.png" />
+	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png" />
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png" />
 
 	<link rel="shortcut icon" type="text/css" href="/img/210hopper-kangaroo-black.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
