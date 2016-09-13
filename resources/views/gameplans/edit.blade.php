@@ -9,6 +9,14 @@
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
                 <div class="form-group">
+                    Title<input type="text" class="form-control" name="title" id="title" placeholder="Title">
+                    @include('forms.error', ['field' => 'title'])
+                </div>
+                <div class="form-group">
+                    Description<textarea rows="3" class="form-control" name="description" id="description"></textarea>
+                    @include('forms.error', ['field' => 'description'])
+                </div>
+                <div class="form-group">
                     Date<input type="date" class="form-control" name="date" id="date" placeholder="YYYY-MM-DD" value="{{ $gameplan->date->format('Y-m-d') }}">
                     @include('forms.error', ['field' => 'date'])
                 </div>

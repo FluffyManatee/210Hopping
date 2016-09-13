@@ -16,6 +16,8 @@ class CreateGameplansTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('author_id')->unsigned();
             $table->date('date');
+            $table->string('title');
+            $table->string('description');
             $table->time('time');
             $table->timestamps();
             $table->foreign('author_id')->references('id')->on('users');
