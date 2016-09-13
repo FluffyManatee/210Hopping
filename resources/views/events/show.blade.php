@@ -9,7 +9,7 @@
 				<img  class="thumbnail" src="{{$event->event_pic}}" style="height: 40vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
 			</a>
 		</div>
-		<div class="col-xs-4">
+		<div class="col-xs-4 event-title-info">
 			<p class="event-month">{{ $event->date->format('M') }}</p>
 			<p class="event-date">{{ $event->date->format('d') }}</p>
 			<p class="event-title">{{ $event->title }}</p>
