@@ -17,13 +17,27 @@ h1 {
 h2 {
 	font-size: 3em;
 }*/
+.index-header {
+	background-image: url('/img/bottles.jpg');
+	height: 105px;
+	color: #EDEDED;
+	object-fit: cover;
+	object-position: 50% 50%;
+	border-radius: 2px;
+	position: relative;
+}
+.index-header>h1 {
+	position: absolute;
+	bottom: 0;
+	background-color: rgba(6, 6, 6, .4);
+}
+.index-header>h1>small{ color: #EDEDED; }
 a {
 	color: #08B7BD;
 } 
 a:hover { 
 	color: #1798A3; 
 }
-
 hr {
 	background-color: #818181;
 	border-top: solid 1px #B5B5B5;
@@ -38,6 +52,10 @@ hr {
 .navbar {
 	background-color: #353432;
 	border-color: #353432;
+}
+.navbar-form {
+	border-top: 0;
+	border-bottom: 0;
 }
 .navigation#bottom {
 	position: fixed;
@@ -143,6 +161,7 @@ hr {
 	font-weight: 500;
 	margin: 0;
 }
+
 /* media queries! */
 @media only screen and (max-width: 768px) {
 	#header-logo,
@@ -151,11 +170,78 @@ hr {
 	.sidenav-content { display: none; }
 	.thumbnail { height: 60px; width: 60px; }
 	.top-bars>h2 { font-size: 25px }
+	#bottom>.btn-default {
+	background-color: #353432;
+	color: #EDEDED;
+	border-color: #414141;
+	}
+	.nav-home {
+		padding-left: 8px;
+	}
+	.mobile-login {
+		padding-top: 8px;
+	}
+	.gameplan-header {
+		height: 200px; 
+	}
+	.bottom-more-nav {
+		height: 0;
+		width: 100%; /* 0 width - change this with JavaScript */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Stay on top */
+		bottom: 0;
+		background-color: rgba(15, 15, 15, .9); /* Black*/
+		overflow-x: hidden; /* Disable horizontal scroll */
+		padding-top: 60px; /* Place content 60px from the top */
+		/*transition: 0.5s;  0.5 second transition effect to slide in the sidenav */
+		padding: 0;
+	}
+	.bottom-more-nav li {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 18px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+		cursor: pointer;
+	}
+	.bottomnav-content{ padding-top: 5px }
+	.bottom-more-nav li:hover, 
+	.bottom-more-nav li:active, 
+	.offcanvas li:focus,
+	.bottom-more-nav li.active{ color: #f1f1f1; box-shadow: 0px 3px 5px #000; }
+	#bottom-more-bars,
+	#bottom-more-events,
+	#bottom-more-specials,
+	#bottom-more-gameplans { display:none; }
+	#bottom-more-bars>li,
+	#bottom-more-events>li,
+	#bottom-more-specials>li,
+	#bottom-more-gameplans>li,
+	#bottom-more-about { font-size: 13px; box-shadow: 0 0 0; float: left; }
+	#close-more {
+		position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px !important;
+    margin-left: 50px;
+    color: #818181;
+    cursor: pointer;
+	}
+	#close-more:hover {color: #f1f1f1;}
+	.index-header {
+		background-position: 50% 50%;
+		height: 85px;
+	}
 }
 @media only screen and (min-width: 768px) {
 	.carousel-image-container, .carousel-caption {
 		height: 45vh;
 	}
+	.gameplan-list-carousel {
+		height: 30vh;
+	}
+	.mobile-login { display:none; }
 	#home-king {
 		height: 15vh;
 	}
@@ -183,6 +269,10 @@ hr {
 		padding: .5vh;
 		margin-left: -5px;
 	}
+	.gameplan-header {
+		height: 500px; 
+	}
+	.bottomnav-content { display: none; }
 	.side-nav {
 		height: 100vh;
 		margin-top: 55px;
@@ -219,6 +309,11 @@ hr {
 	#more-events>li,
 	#more-specials>li,
 	#more-gameplans>li { font-size: 15px; box-shadow: 0 0 0; }
+	#sidenav-about {
+		position: fixed;
+		bottom: 5px;
+		padding-right: 138px;
+	}
 
 	.filters {display:none;}
 }
@@ -267,6 +362,9 @@ hr {
 }		
 
 /* overriding bs colors */
+.btn {
+	border-radius: 2px;
+}
 .btn-default {
 	background-color: #D4D8E1;
 }
@@ -290,7 +388,7 @@ hr {
 }
 .btn-warning:hover {
 	background-color: #FF9E53;
-	border-color: #B26131;
+	border-color: #FF7B2C;
 }
 .nav-tabs>li>a:hover {
 	background-color: #D4D8E1;

@@ -167,16 +167,19 @@ class BarsController extends Controller
 	{
 		$bars = Bar::all();
 		$data = [];
+		$distanceInMiles = [];
 		foreach($bars as $bar)
 		{
 			$distance = $bar->getDistance($latitude, $longitude, $bar->latitude, $bar->longitude);
 //            dd($distance);
 			if($distance<15){
 				$data[] = $bar;
+				$distanceInMiles[] = $distance;
 			}
 		}
 		$data = [
-		'bars' => $data
+		'bars' => $data,
+		'distance' => $distanceInMiles,
 		];
 //		dd($data);
 		return view('bars.results', $data);

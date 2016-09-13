@@ -1,10 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container content">
-	<div class="row">
-		<h1>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%A') }}  <small>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%B %d, %Y') }}</small></h1>
+<div class="container-fluid">
+	<div class="row index-header">
+		<h1>&nbsp;{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%A') }}  <small>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%B %d, %Y') }}&nbsp;</small></h1>
 	</div>
+</div>
+<div class="container content">
 	<hr>
 	<div class="row">
 		<div class="col-xs-12" id="photos">
@@ -41,7 +43,7 @@
 	@foreach ($highestRated as $sortedBar)
 	<div data-value="{{ $sortedBar->id }}" class="row thisBar list-card">
 		<div class="col-xs-5 list-card-image">
-			<img class="pull-left" src="{{ $sortedBar->pictures->first()->pic_url }}" style="height: 22vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
+			<img class="pull-left" src="{{ $sortedBar->pictures->first()->pic_url or '' }}" style="height: 22vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
 		</div>
 		<div class="col-xs-7 top-bars">
 			<h2>{{ $sortedBar->name}}</h2>
