@@ -28,7 +28,7 @@
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner carousel-image-container events-slider" role="listbox">
                                         @foreach($gameplan->bars as $index => $gpbar)
-                                            <div data-value="{{ $gpbar->id }}"
+                                            <div data-value="{{ $gpbar->bar->id }}"
                                                  class="item @if($index == 0) {{ 'active' }} @endif">
                                                 <div class="carousel-caption">
                                                     <h2>{{ $gpbar->bar->name }}</h2>
