@@ -14,9 +14,20 @@
 			<a href="{{ $bar->website }}">Website</a>
 			<br>
 			@if(Auth::check())
-			<a class="btn btn-default" href="{{ action('BarsController@edit', $bar->id) }}">Edit bar info</a>
-			<button style="margin-left: auto; margin-right: auto" id="image-upload" type="button" class="btn btn-default">Upload an image</button>
+			@if($bar->owner_id !== null && Auth::user()->id == $bar->owner_id)
+			<a class="btn btn-warning" href="{{ action('BarsController@edit', $bar->id) }}">Edit bar info</a>
 			@endif
+			@endif
+			@if(Auth::check())
+			<button style="margin-left: auto; margin-right: auto" id="image-upload" type="button" class="btn btn-primary">Upload an image</button>
+			@endif
+
+			<div id="dropzone">
+				<form action="{{ action('PicturesController@store', $bar->id) }}" method="POST"
+					enctype="multipart/form-data" class="dropzone">
+					{{ csrf_field() }}
+				</form>
+			</div>
 		</div>
 		<div class="col-xs-6" id="photos">
 			<div id="carousel" class="carousel slide" data-ride="carousel">
@@ -47,14 +58,7 @@
 	<hr>
 	<!-- bottom portion -->
 	@if (Auth::check())
-	<a class="btn btn-default" href="/reviews/create?bar_id={{ $bar->id }}">Write a Review</a>
-
-	<div id="dropzone">
-		<form action="{{ action('PicturesController@store', $bar->id) }}" method="POST"
-			enctype="multipart/form-data" class="dropzone">
-			{{ csrf_field() }}
-		</form>
-	</div>
+	<a class="btn btn-default" href="/reviews/create?bar_id={{ $bar->id }}">Write a review</a>
 	<a class="btn btn-default" href="/specials/create?bar_id={{ $bar->id }}">Add a special</a>
 	<a class="btn btn-default" href="/events/create?bar_id={{ $bar->id }}">Add an event</a>
 	@endif
@@ -82,7 +86,11 @@
 											<h5>
 												<a href="{{ action('UserController@show', $review->user->id) }}">{{ $review->user->first_name }} {{ $review->user->formatLastName() }}.</a>
 											</h5>
-											User score:
+											<small>user score</small>
+											<p>&nbsp;{{ $review->user->totalUserVotes() }}</p>
+											<small>review score</small> 
+											<br>
+											<div id="{{ $review->id }}">&nbsp;{{ $review->totalVotes() }}</div>
 										</div>
 										<div class="col-xs-9">
 											<h4>{{ $review->title }} <br>
@@ -90,14 +98,13 @@
 											</h4>
 											<p class="beer-rating">{!! $review->beerRating() !!}</p>
 											<p>{{ $review->content }}</p>
-											<hr>
 											@if(Auth::check() && (Auth::user()->id != $review->created_by))
+											<hr>
 											<strong>Was this review helpful?</strong>
-											<button role="button" data-value="{{ $review->id }}" class="btn btn-primary upvote">Yes</button> <button role="button" data-value="{{ $review->id }}" class="btn btn-danger downvote">No</button>
-											<br> 
-											<strong>Review score:</strong> 
-											<br>
-											<div id="{{ $review->id }}">{{ $review->totalVotes() }}</div>
+											<div class="">
+												<button role="button" data-value="{{ $review->id }}" class="btn btn-primary upvote">Yes</button> 
+												<button role="button" data-value="{{ $review->id }}" class="btn btn-danger downvote">No</button>
+											</div>
 											@endif
 										</div>
 									</div>
