@@ -14,11 +14,18 @@
 			<a href="{{ $bar->website }}">Website</a>
 			<br>
 			@if(Auth::user()->id == $bar->created_by || Auth::user()->id == $bar->owner_id)
-			<a class="btn btn-default" href="{{ action('BarsController@edit', $bar->id) }}">Edit bar info</a>
+			<a class="btn btn-warning" href="{{ action('BarsController@edit', $bar->id) }}">Edit bar info</a>
 			@endif
 			@if(Auth::check())
-			<button style="margin-left: auto; margin-right: auto" id="image-upload" type="button" class="btn btn-default">Upload an image</button>
+			<button style="margin-left: auto; margin-right: auto" id="image-upload" type="button" class="btn btn-primary">Upload an image</button>
 			@endif
+
+			<div id="dropzone">
+				<form action="{{ action('PicturesController@store', $bar->id) }}" method="POST"
+				enctype="multipart/form-data" class="dropzone">
+					{{ csrf_field() }}
+				</form>
+			</div>
 		</div>
 		<div class="col-xs-6" id="photos">
 			<div id="carousel" class="carousel slide" data-ride="carousel">
@@ -49,14 +56,7 @@
 	<hr>
 	<!-- bottom portion -->
 	@if (Auth::check())
-	<a class="btn btn-default" href="/reviews/create?bar_id={{ $bar->id }}">Write a Review</a>
-
-	<div id="dropzone">
-		<form action="{{ action('PicturesController@store', $bar->id) }}" method="POST"
-			enctype="multipart/form-data" class="dropzone">
-			{{ csrf_field() }}
-		</form>
-	</div>
+	<a class="btn btn-default" href="/reviews/create?bar_id={{ $bar->id }}">Write a review</a>
 	<a class="btn btn-default" href="/specials/create?bar_id={{ $bar->id }}">Add a special</a>
 	<a class="btn btn-default" href="/events/create?bar_id={{ $bar->id }}">Add an event</a>
 	@endif

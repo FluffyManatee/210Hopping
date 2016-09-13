@@ -17,13 +17,27 @@ h1 {
 h2 {
 	font-size: 3em;
 }*/
+.index-header {
+	background-image: url('/img/bottles.jpg');
+	height: 105px;
+	color: #EDEDED;
+	object-fit: cover;
+	object-position: 50% 50%;
+	border-radius: 2px;
+	position: relative;
+}
+.index-header>h1 {
+	position: absolute;
+	bottom: 0;
+	background-color: rgba(6, 6, 6, .4);
+}
+.index-header>h1>small{ color: #EDEDED; }
 a {
 	color: #08B7BD;
 } 
 a:hover { 
 	color: #1798A3; 
 }
-
 hr {
 	background-color: #818181;
 	border-top: solid 1px #B5B5B5;
@@ -197,6 +211,10 @@ hr {
 	#more-events>li,
 	#more-specials>li,
 	#more-gameplans>li { font-size: 15px; box-shadow: 0 0 0; }
+	.index-header {
+		background-position: 50% 50%;
+		height: 85px;
+	}
 }
 @media only screen and (min-width: 768px) {
 	.carousel-image-container, .carousel-caption {
@@ -229,6 +247,7 @@ hr {
 		padding: .5vh;
 		margin-left: -5px;
 	}
+	.bottomnav-content { display: none; }
 	.side-nav {
 		height: 100vh;
 		margin-top: 55px;
@@ -265,6 +284,11 @@ hr {
 	#more-events>li,
 	#more-specials>li,
 	#more-gameplans>li { font-size: 15px; box-shadow: 0 0 0; }
+	#sidenav-about {
+		position: fixed;
+		bottom: 5px;
+		padding-right: 138px;
+	}
 
 	.filters {display:none;}
 }
@@ -313,6 +337,9 @@ hr {
 }		
 
 /* overriding bs colors */
+.btn {
+	border-radius: 2px;
+}
 .btn-default {
 	background-color: #D4D8E1;
 }
@@ -336,7 +363,7 @@ hr {
 }
 .btn-warning:hover {
 	background-color: #FF9E53;
-	border-color: #B26131;
+	border-color: #FF7B2C;
 }
 .nav-tabs>li>a:hover {
 	background-color: #D4D8E1;

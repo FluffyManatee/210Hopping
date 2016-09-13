@@ -1,10 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container content">
-	<div class="row">
-		<h1>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%A') }}  <small>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%B %d, %Y') }}</small></h1>
+<div class="container-fluid">
+	<div class="row index-header">
+		<h1>&nbsp;{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%A') }}  <small>{{ Carbon\Carbon::now('America/Chicago')->formatLocalized('%B %d, %Y') }}&nbsp;</small></h1>
 	</div>
+</div>
+<div class="container content">
 	<hr>
 	<div class="row">
 		<div class="col-xs-12" id="photos">

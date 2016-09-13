@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<title>210 Hopper</title>
-	<link rel="shortcut icon" type="text/css" href="/img/210hopper-kangaroo.png">
+	<link rel="shortcut icon" type="text/css" href="/img/210hopper-kangaroo-black.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!-- Master CSS -->
 	<link rel="stylesheet" href="/css/master.css">
@@ -50,6 +50,7 @@
 					<li id="sidenav-events">Events</li>
 					<li id="sidenav-specials">Specials</li>
 					<li id="sidenav-recent">Recent Activity</li>
+					<li id="sidenav-about">About Us</li>
 				</ul>
 			</div>
 		</div>
