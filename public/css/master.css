@@ -161,6 +161,7 @@ hr {
 	font-weight: 500;
 	margin: 0;
 }
+
 /* media queries! */
 @media only screen and (max-width: 768px) {
 	#header-logo,
@@ -179,6 +180,9 @@ hr {
 	}
 	.mobile-login {
 		padding-top: 8px;
+	}
+	.gameplan-header {
+		height: 200px; 
 	}
 	.bottom-more-nav {
 		height: 0;
@@ -234,6 +238,9 @@ hr {
 	.carousel-image-container, .carousel-caption {
 		height: 45vh;
 	}
+	.gameplan-list-carousel {
+		height: 30vh;
+	}
 	.mobile-login { display:none; }
 	#home-king {
 		height: 15vh;
@@ -261,6 +268,9 @@ hr {
 	#header-logo {
 		padding: .5vh;
 		margin-left: -5px;
+	}
+	.gameplan-header {
+		height: 500px; 
 	}
 	.bottomnav-content { display: none; }
 	.side-nav {
