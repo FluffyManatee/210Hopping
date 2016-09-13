@@ -3,7 +3,7 @@
 		<!-- desktop view -->
 		<div class="row" id="desktop-nav">
 			<div class="col-xs-3">
-				<a href="/"><img id="header-logo" src="/img/210hopper-orange.png" alt="210Hopper"></a>
+				<a href="/"><img id="header-logo" src="/img/210hopper-orange.png" alt="Hop on home!"></a>
 			</div>
 			<div class="col-xs-5">
 				<div class="row">
@@ -114,6 +114,14 @@
 						</div>
 					</div>
 				</form>
+			</div>
+			<div class="col-xs-6 mobile-login navbar-right pull-right">
+				@if (Auth::check())
+				Welcome <a href="/users/{{ Auth::user()->id }}">{{ Auth::user()->first_name }}</a>! | <a href="/auth/logout">logout</a>
+				@elseif (!Auth::check())
+				<a href="/auth/register/" class="btn btn-default">Register</a>
+				<a href="/auth/login/" class="btn btn-default">Login</a>
+				@endif
 			</div>
 		</div>
 	</div>

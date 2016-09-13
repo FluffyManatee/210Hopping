@@ -40,13 +40,17 @@
 						<li><a href="" class="nearby">Nearby</a></li>
 						<li><a href="/discover">Discover</a></li>
 						<li><a href="/bars">Top Rated</a></li>
+						@if(Auth::check())
 						<li><a href="/bars/create">List a Bar</a></li>
+						@endif
 					</ul>
+					@if(Auth::check())
 					<li id="sidenav-gameplans">Gameplans</li>
 					<ul id="more-gameplans">
 						<li><a href="/gameplans">Browse Gameplans</a></li>
 						<li><a href="/gameplans/create">Create a Gameplan</a></li>
 					</ul>
+					@endif
 					<li id="sidenav-events">Events</li>
 					<li id="sidenav-specials">Specials</li>
 					<li id="sidenav-recent">Recent Activity</li>
@@ -95,21 +99,24 @@
 		<div class="col-xs-3 bottom-more-nav" id="bottom-more-nav">
 			<div class="bottomnav-content">
 				<div class="pull-right" id="close-more">×</div>
-				<li id="sidenav-bars">Bars</li>
-				<ul id="more-bars">
-					<li><a href="" class="nearby">Nearby</a></li>
+				<li id="bottomnav-bars">Bars</li>
+				<ul id="bottom-more-bars">
 					<li><a href="/discover">Discover</a></li>
 					<li><a href="/bars">Top Rated</a></li>
+					@if(Auth::check())
 					<li><a href="/bars/create">List a Bar</a></li>
+					@endif
 				</ul>
-				<li id="sidenav-gameplans">Gameplans</li>
-				<ul id="more-gameplans">
+				@if(Auth::check())
+				<li id="bottomnav-gameplans">Gameplans</li>
+				<ul id="bottom-more-gameplans">
 					<li><a href="/gameplans">Browse Gameplans</a></li>
 					<li><a href="/gameplans/create">Create a Gameplan</a></li>
 				</ul>
-				<li id="sidenav-events">Events</li>
-				<li id="sidenav-specials">Specials</li>
-				<li id="sidenav-recent">Recent Activity</li>
+				@endif
+				<li id="bottomnav-events">Events</li>
+				<li id="bottomnav-specials">Specials</li>
+				<li id="bottomnav-about">About Us</li>
 			</ul>
 		</div>
 	</div>
@@ -164,10 +171,10 @@
 
 			$('#myTabs').removeClass('hidden');
 			$('#search').removeClass('hidden');
-			$('.search-form').slideToggle('fast');
+			$('.search-form').slideToggle();
 		} else {
 			$('#myTabs').addClass('hidden');
-			$('.search-form').slideToggle('fast');
+			$('.search-form').slideToggle();
 		}
 	});
 
@@ -213,6 +220,23 @@
 					up = false;
 				});
 			}
+		});
+		$('#bottomnav-bars').click(function() {
+			$('#bottom-more-bars').slideToggle();
+			$('#bottomnav-bars').toggleClass('active')
+		});
+		$('#bottomnav-events').click(function() {
+			$(location).attr('href', '/events');
+		});
+		$('#bottomnav-specials').click(function() {
+			$(location).attr('href', '/specials');
+		});
+		$('#bottomnav-recent').click(function() {
+			$(location).attr('href', '/recent');
+		});
+		$('#bottomnav-gameplans').click(function() {
+			$('#bottom-more-gameplans').slideToggle();
+			$('#bottomnav-gameplans').toggleClass('active')
 		});
 
 		// desktop side-nav
