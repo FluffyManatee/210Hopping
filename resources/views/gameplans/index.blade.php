@@ -53,7 +53,7 @@
 			</div>
 		</div>
 		<div class="row">
-		<div class="col-xs-6 col-xs-offset-1">
+			<div class="col-xs-6 col-xs-offset-1">
 				<h4>Hoppers:</h4>
 				@foreach($gameplan->hoppers as $hopper)
 				<h5>{{ $hopper->user->first_name . ' ' . $hopper->user->formatLastName() }}</h5>
@@ -75,7 +75,7 @@
 		$(location).attr('href', '/bars/' + $barId);
 	});
 	$('.list-card').click(function () {
-			$(location).attr('href', '/gameplans/' + $(this).data('value'));
-		});
+		$(location).attr('href', '/gameplans/' + $(this).data('value'));
+	});
 </script>
 @stop
