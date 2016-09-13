@@ -37,7 +37,7 @@
 				<div class="sidenav-content">
 					<li id="sidenav-bars">Bars</li>
 					<ul id="more-bars">
-						<li><a href="/nearby" class="nearby">Nearby</a></li>
+						<li><a href="" class="nearby">Nearby</a></li>
 						<li><a href="/discover">Discover</a></li>
 						<li><a href="/bars">Top Rated</a></li>
 						<li><a href="/bars/create">List a Bar</a></li>
