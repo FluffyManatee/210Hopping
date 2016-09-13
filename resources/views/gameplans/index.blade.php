@@ -18,12 +18,13 @@
 	<div data-value="{{ $gameplan->id }}" class="list-card">
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-1">
-				<h3>{{ $gameplan->author->first_name . ' ' . $gameplan->author->formatLastName() }}.'s Gameplan for {{ $gameplan->date->format('m/j/Y') }}</h3>
+				<h3>{{ $gameplan->title }}</h3>
+				<p class="event-month">{{ $gameplan->date->format('M') }}</p>
+				<p class="event-date">{{ $gameplan->date->format('d') }}</p>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2" id="photos">
-				<h4>Hop-Stops:</h4>
 				<div id="carousel{{ $gameplanindex }}" class="carousel slide gameplan-list-carousel" data-ride="carousel">
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner carousel-image-container events-slider" role="listbox">

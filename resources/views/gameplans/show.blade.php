@@ -34,7 +34,7 @@
 		<div class="col-xs-4">
 			<p class="event-month">{{ $gameplan->date->format('M') }}</p>
 			<p class="event-date">{{ $gameplan->date->format('d') }}</p>
-			<p class="event-title">{{ $gameplan->author->first_name }}'s Gameplan for {{ $gameplan->date->format('m/j/Y') }}</p>
+			<p class="event-title">{{ $gameplan->title }}</p>
 			<div class="event-by">
 				<small>submitted by</small>
 				<p class="submitted-by"><a href="/users/{{ $gameplan->author->id }}">{{ $gameplan->author->first_name }} {{ $gameplan->author->formatLastName() }}.</a></p>
@@ -45,7 +45,7 @@
 	<div class="row">
 		<div class="col-xs-8">
 			<h2 class="primary-label">Description</h2>
-			<p class="event-description"></p>
+			<p class="event-description">{{ $gameplan->description }}</p>
 		</div>
 		<div class="col-xs-4">
 			<h2 class="primary-label">Date & Time</h2>
@@ -56,7 +56,9 @@
 			<hr>
 			<h2 class="primary-label">Hoppers</h2>
 			<div class="event-info">
-				foreach here
+				@foreach($gameplan->hoppers as $hopper)
+					<p>{{$hopper->user->first_name . ' ' . $hopper->user->formatLastName() . '.'}}</p>
+				@endforeach
 			</div>
 			<hr>
 			@if((Auth::user()) && (Auth::user()->id == $gameplan->author_id))
