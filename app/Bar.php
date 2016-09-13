@@ -9,6 +9,7 @@ class Bar extends Model
 {
 	protected $table = 'bars';
 
+<<<<<<< HEAD
 	public static $rules =
 	[
 	'name' => 'required|max:50',
@@ -17,6 +18,16 @@ class Bar extends Model
 	'email' => 'email|max:244|unique:users',
 	'phone' => 'min:7|max:10',
 	];
+=======
+    public static $rules =
+    [
+    'name' => 'required|max:50',
+//    'type' => 'required|max:255',
+    'address' => 'required|max:255',
+    'email' => 'email|max:244|unique:users',
+    'phone' => 'min:7|max:10',
+    ];
+>>>>>>> master
 
 	public function events()
 	{
