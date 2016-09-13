@@ -13,8 +13,10 @@
 			<br>
 			<a href="{{ $bar->website }}">Website</a>
 			<br>
-			@if(Auth::user()->id == $bar->created_by || Auth::user()->id == $bar->owner_id)
+			@if(Auth::check())
+			@if($bar->owner_id !== null && Auth::user()->id == $bar->owner_id)
 			<a class="btn btn-warning" href="{{ action('BarsController@edit', $bar->id) }}">Edit bar info</a>
+			@endif
 			@endif
 			@if(Auth::check())
 			<button style="margin-left: auto; margin-right: auto" id="image-upload" type="button" class="btn btn-primary">Upload an image</button>
@@ -22,7 +24,7 @@
 
 			<div id="dropzone">
 				<form action="{{ action('PicturesController@store', $bar->id) }}" method="POST"
-				enctype="multipart/form-data" class="dropzone">
+					enctype="multipart/form-data" class="dropzone">
 					{{ csrf_field() }}
 				</form>
 			</div>
