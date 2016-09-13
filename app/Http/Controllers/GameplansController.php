@@ -26,7 +26,7 @@ class GameplansController extends Controller
 
     public function index()
     {
-        $gameplans = Gameplan::orderBy('created_at', 'desc')->paginate(5);
+        $gameplans = Gameplan::orderBy('date', 'asc')->paginate(5);
 //        dd($gameplans);
         $data = [
             'gameplans' => $gameplans
@@ -72,6 +72,8 @@ class GameplansController extends Controller
         $gameplan->author_id = Auth::id();
         $gameplan->date = $request->get('date');
         $gameplan->time = $request->get('time');
+        $gameplan->title = $request->get('title');
+        $gameplan->description = $request->get('description');
         $gameplan->save();
         $hopper = new Hopper();
         $hopper->hopper_id = Auth::id();
@@ -163,6 +165,8 @@ class GameplansController extends Controller
         }
         $gameplan->date = $request->get('date');
 		$gameplan->time = $request->get('time');
+        $gameplan->title = $request->get('title');
+        $gameplan->description = $request->get('description');
         $bars = explode(',', $request->get('hidden-bar-input'));
         $barsCollection = GameplanBar::where('gameplan_id', '=', $gameplan->id);
         $barsCollection->delete();

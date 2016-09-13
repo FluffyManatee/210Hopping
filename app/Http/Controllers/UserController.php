@@ -73,6 +73,13 @@ class UserController extends Controller
 		$user->first_name = $request->input('first_name');
 		$user->last_name = $request->input('last_name');
 		$user->email = $request->input('email');
+		if ($request->file('image')) {
+			$imagePath = 'img/';
+			$imageExtension = $request->file('image')->getClientOriginalExtension();
+			$imageName = uniqid() . '.' . $imageExtension;
+			$request->file('image')->move($imagePath, $imageName);
+			$user->avatar = '/img/' . $imageName;
+		}
 		$user->save();
 		session()->flash('success', 'Your information was updated successfully!');
 		return redirect()->action('UserController@show', $user->id);
