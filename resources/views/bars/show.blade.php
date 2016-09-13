@@ -32,9 +32,9 @@
 		<div class="col-xs-6" id="photos">
 			<div id="carousel" class="carousel slide" data-ride="carousel">
 				<!-- Wrapper for slides -->
-				<div class="carousel-inner carousel-image-container" role="listbox">
+				<div style="cursor:pointer;" class="carousel-inner carousel-image-container" role="listbox">
 					@foreach ($bar->pictures as $index => $picture)
-					<div class="item @if($index == 0) {{ 'active' }} @endif">
+					<div data-value="{{ $picture->pic_url }}" class="item @if($index == 0) {{ 'active' }} @endif">
 						<img class="cover" src="{{ $picture->pic_url }}" alt="...">
 						<div class="carousel-caption">
 							<!-- maybe add captions to pictures table? -->
@@ -78,6 +78,7 @@
 							<!-- Tab panes -->
 							<div class="tab-content">
 								<div role="tabpanel" class="tab-pane fade in active" id="reviews">
+									<br>
 									@foreach ($bar->reviews as $review)
 									<div class="row">
 										<div class="col-xs-3">
@@ -115,6 +116,7 @@
 									{{--@if(Auth::user())--}}
 									{{--<a href="/specials/create?bar_id={{ $bar->id }}">Add a special...</a>--}}
 									{{--@endif--}}
+									<br>
 									@foreach ($bar->specials as $special)
 									<div class="row">
 										<div class="col-xs-3">
@@ -140,19 +142,20 @@
 									{{--<a href="/events/create?bar_id={{ $bar->id }}">Add an event...</a>--}}
 									{{--@endif--}}
 									@foreach ($bar->events as $event)
-									<div class="row">
-										<img src="{{ $event->event_pic }}" class="thumbnail responsive col-xs-2" height="60"
-										width="60">
-										<div class="col-xs-3">
-											<h5>
-												<a href="{{ action('EventsController@show', $event->id) }}">{{ $event->title }}</a>
-											</h5>
+									<br>
+									<div data-value="{{ $event->id }}" class="row list-card">
+										<div class="col-xs-5 list-card-image">
+											<img class="pull-left" src="{{$event->event_pic}}" style="height: 20vh;width: 100%;object-fit: cover;object-position: 50% 50%;">
 										</div>
 										<div class="col-xs-7">
-											<p>{{ $event->content }}</p>
+											<div class="event-info">
+												<p class="event-month">{{ $event->date->format('M j g:i A') }}</p>
+											</div>
+											<h4>{{ $event->title }}</h4>
+											<hr>
+											<p>@ <a href="/bars/{{ $event->bar_id }}" style="font-size:15px;font-weight:normal;">{{ $event->bar->name }}</a></p>
 										</div>
 									</div>
-									<hr>
 									@endforeach
 								</div>
 							</div>
@@ -172,6 +175,12 @@
 					});
 					$('#image-upload').click(function () {
 						$('#dropzone').slideToggle('slow');
+					});
+					$('.list-card').click(function() {
+						$(location).attr('href', '/events/' + $(this).data('value'));
+					});
+					$('.item').click(function() {
+						$(location).attr('href', $(this).data('value'));
 					});
 				</script>
 				@include('partials.vote-ajax')
