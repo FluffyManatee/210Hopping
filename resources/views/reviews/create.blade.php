@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
 	<div class="col-xs-8 col-xs-offset-2">
-		<h4 class="modal-title">write a review</h4>
+		<h4 class="modal-title">Write a review</h4>
 		<form method="POST" action="{{ action('ReviewsController@store') }}">
 			{{ csrf_field() }}
 			<input hidden name="bar_id" value="{{$id}}">
@@ -24,7 +24,7 @@
 					<input type="radio" id="star1" name="beer_rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
 				</fieldset>
 			</div>
-			<button type="submit" class ="btn btn-primary pull-right">POST</button>
+			<button type="submit" class ="btn btn-primary pull-right">Post</button>
 		</form>
 	</div>
 </div>
