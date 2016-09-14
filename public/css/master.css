@@ -19,6 +19,8 @@ h2 {
 }*/
 .index-header {
 	background-image: url('/img/bottles.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
 	height: 105px;
 	color: #EDEDED;
 	object-fit: cover;
@@ -163,7 +165,7 @@ hr {
 }
 
 /* media queries! */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 770px) {
 	#header-logo,
 	.more-menu,
 	#desktop-nav,
@@ -233,13 +235,21 @@ hr {
 		background-position: 50% 50%;
 		height: 85px;
 	}
+	.event-title {
+		font-size: 20px;
+	}
+	.event-title-info {
+		padding-left: 0;
+	}
 }
 @media only screen and (min-width: 768px) {
 	.carousel-image-container, .carousel-caption {
-		height: 45vh;
-	}
-	.gameplan-list-carousel {
 		height: 30vh;
+	}
+	.gameplan-list-carousel>img {
+		object-fit: cover;
+		object-position: 50% 50%;
+		max-height: 50px !important;
 	}
 	.mobile-login { display:none; }
 	#home-king {
@@ -317,7 +327,7 @@ hr {
 
 	.filters {display:none;}
 }
-.carousel img, .carousel-caption {
+.carousel>img, .carousel-caption {
 	margin: 0 auto;
 	object-position: 50% 50%;
 	object-fit: cover;
