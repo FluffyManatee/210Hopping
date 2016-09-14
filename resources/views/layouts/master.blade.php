@@ -18,6 +18,9 @@
 	<link rel="stylesheet" href="/css/basic.css">
 	<!-- FontAwesome -->
 	<script src="https://use.fontawesome.com/2bcd30c787.js"></script>
+	<!-- Pirobox -->
+	<link rel="stylesheet" type="text/css" href="css_pirobox/style_1/style.css"/>
+	<script type="text/javascript" src="js/pirobox_extended.js"></script>
 </head>
 <body>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">

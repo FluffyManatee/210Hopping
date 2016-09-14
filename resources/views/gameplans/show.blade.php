@@ -58,7 +58,10 @@
 			<div class="event-info">
 				foreach here
 			</div>
-			<hr>
+			@if(Auth::user()->id != $gameplan->author->id)
+			<a class="btn btn-warning" href="addHopper/{{ $gameplan->id }}">Join Gameplan</a>
+				<hr>
+			@endif
 			@if((Auth::user()) && (Auth::user()->id == $gameplan->author_id))
 			<div>
 				<a class="btn btn-warning btn-block" href="{{action('GameplansController@edit', $gameplan->id) }}">Edit Event</a>

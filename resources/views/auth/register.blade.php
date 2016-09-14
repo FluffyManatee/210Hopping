@@ -53,7 +53,7 @@
 		</div>
 		<!-- add remember me button -->
 		<div class="pull-left">
-			Already a memeber? <a href="/auth/login">Log in here</a>
+			Already a member? <a href="/auth/login">Log in here</a>
 		</div>
 		<button type="submit" class="btn btn-primary pull-right">Sign up</button>
 	</form>

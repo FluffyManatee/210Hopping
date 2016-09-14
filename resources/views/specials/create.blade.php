@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
-            <h4 class="modal-title">Add an event</h4>
+            <h4 class="modal-title">Add a special</h4>
             <form method="POST" action="{{ action('SpecialsController@store') }}">
                 {{ csrf_field() }}
                 <input hidden name="bar_id" value="{{ $id }}">
@@ -15,7 +15,7 @@
                     <textarea class="form-control" name="content" id="content" placeholder="Description"></textarea>
                     @include('forms.error', ['field' => 'content'])
                 </div>
-                <button type="submit" class ="btn btn-primary pull-right">Create Event</button>
+                <button type="submit" class ="btn btn-primary pull-right">Create Special</button>
             </form>
         </div>
     </div>

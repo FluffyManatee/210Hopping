@@ -35,7 +35,9 @@
 				<div class="carousel-inner carousel-image-container" role="listbox">
 					@foreach ($bar->pictures as $index => $picture)
 					<div class="item @if($index == 0) {{ 'active' }} @endif">
+						<a href="{{ $picture->pic_url }}" rel="gallery"  class="pirobox_gall">
 						<img class="cover" src="{{ $picture->pic_url }}" alt="...">
+						</a>
 						<div class="carousel-caption">
 							<!-- maybe add captions to pictures table? -->
 						</div>
@@ -172,6 +174,16 @@
 					});
 					$('#image-upload').click(function () {
 						$('#dropzone').slideToggle('slow');
+					});
+				</script>
+
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$().piroBox_ext({
+							piro_speed : 900,
+							bg_alpha : 0.1,
+							piro_scroll : true //pirobox always positioned at the center of the page
+						});
 					});
 				</script>
 				@include('partials.vote-ajax')

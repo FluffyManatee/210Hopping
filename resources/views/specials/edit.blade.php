@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
-            <h4 class="modal-title">Add an event</h4>
+            <h4 class="modal-title">Update Special</h4>
             <form method="POST" action="{{ action('SpecialsController@update', $special->id) }}">
                 {{ method_field('PUT') }}
                 {{ csrf_field() }}
