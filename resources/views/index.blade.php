@@ -49,7 +49,7 @@
 			<h2>{{ $sortedBar->name}}</h2>
 			<p><a href="http://maps.apple.com/?q={{ $sortedBar->address }}"><strong>{{ $sortedBar->address}}</strong></a>
 				<br>
-				@if($bar->phone != 0)
+				@if($sortedBar->phone != 0)
 				<a href="tel:{{ $sortedBar->phone }}">{{ $sortedBar->formatPhoneNumber() }}</a></p>
 				@endif
 				@if ($sortedBar->averageBarRating() != null)
