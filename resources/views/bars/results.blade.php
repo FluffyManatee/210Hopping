@@ -13,7 +13,9 @@
 			<h2>{{ $bar->name }}</h2>
 			<p><a href="http://maps.apple.com/?q={{ $bar->address }}"><strong>{{ $bar->address}}</strong></a>
 				<br>
+				@if($bar->phone != 0)
 				<a href="tel:{{ $bar->phone }}">{{ $bar->formatPhoneNumber() }}</a></p>
+				@endif
 				<div class="row">
 					@if ($bar->averageBarRating() != null)
 					<div class="col-xs-6">
