@@ -9,7 +9,9 @@
 			<br>
 			<a href="http://maps.apple.com/?q={{ $bar->address }}">{{ $bar->address }}</a>
 			<br>
+			@if($bar->phone != 0)
 			<a href="tel:{{$bar->phone}}">{{ $bar->formatPhoneNumber() }}</a>
+			@endif
 			<br>
 			<a href="{{ $bar->website }}">Website</a>
 			<br>
